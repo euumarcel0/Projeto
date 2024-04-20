@@ -78,13 +78,14 @@
           </div>
         </div>
         
-        <<!-- Modal para o Grupo de Recursos -->
-        <div class="modal-content resource-group-modal">
+         <!-- Modal para o Grupo de Recursos -->
+         <div class="modal-content resource-group-modal" style="display: none;">
           <form id="form-grupo-recursos">
             <label for="nome-grupo">Nome do Grupo:</label>
             <input type="text" id="nome-grupo" name="nome-grupo" required><br>
             <label for="regiao-grupo">Região do Grupo:</label>
             <input type="text" id="regiao-grupo" name="regiao-grupo" required><br>
+            <button id="submit-grupo-recursos">Submit</button>
           </form>
           <span class="modal-message"></span>
           <span class="close" onclick="closeModal('resource-group-modal')">&times;</span>
@@ -97,6 +98,7 @@
             <input type="text" id="nome-conta" name="nome-conta" required><br>
             <label for="regiao-conta">Região da Conta:</label>
             <input type="text" id="regiao-conta" name="regiao-conta" required><br>
+            <button id="submit-conta-armazenamento">Submit</button>
           </form>
           <span class="modal-message"></span>
           <span class="close" onclick="closeModal('conta-armazenamento-modal')">&times;</span>
@@ -109,6 +111,7 @@
             <input type="text" id="nome-vnet" name="nome-vnet" required><br>
             <label for="regiao-vnet">Região da VNET:</label>
             <input type="text" id="regiao-vnet" name="regiao-vnet" required><br>
+            <button id="submit-vnet">Submit</button>
           </form>
           <span class="modal-message"></span>
           <span class="close" onclick="closeModal('vnet-modal')">&times;</span>
@@ -116,7 +119,7 @@
 
           <div class="update">
             <div class="updt-left">
-              <img src="/Logos/Azure/Conta_Armazenamento.svg" Ícone da atualização" />
+              <img src="/Logos/Azure/Conta_Armazenamento.svg" Ícone da atualização />
               <h1>Conta de Armazenamento</h1>
             </div>
             <div class="buttons">
@@ -222,17 +225,27 @@
 
       // Adicionando eventos de clique aos botões
       awsBtn.addEventListener('click', function() {
-          window.location.href = './aws.html'; 
+        window.location.href = './aws.html';
       });
 
       azureBtn.addEventListener('click', function() {
-          window.location.href = './azure.html';
+        window.location.href = './azure.html';
       });
-      menuBnt.addEventListener( 'click' ,function(){
-      window.location.href = './index.html'
-    });
+      menuBnt.addEventListener('click', function() {
+        window.location.href = './index.html'
+      });
+      // Obtendo os botões "Update"
+      const updateButtons = document.querySelectorAll('.update button');
+
+      // Adicionando eventos de clique para os botões "Update"
+      updateButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          openModal(); // Chamando a função openModal() quando um botão "Update" é clicado
+        });
+      });
     </script>
     <script src="/Front-end/js/script.js"></script>
   </div>
 </body>
+
 </html>
