@@ -78,95 +78,99 @@
           </div>
         </div>
         
-        <!-- Modal para o Grupo de Recursos -->
+        <<!-- Modal para o Grupo de Recursos -->
         <div class="modal-content resource-group-modal">
+          <form id="form-grupo-recursos">
+            <label for="nome-grupo">Nome do Grupo:</label>
+            <input type="text" id="nome-grupo" name="nome-grupo" required><br>
+            <label for="regiao-grupo">Região do Grupo:</label>
+            <input type="text" id="regiao-grupo" name="regiao-grupo" required><br>
+          </form>
           <span class="modal-message"></span>
           <span class="close" onclick="closeModal('resource-group-modal')">&times;</span>
-          <form class="resource-group-form">
-            <label for="resource-group-name">Nome do Grupo de Recursos:</label>
-            <input type="text" id="resource-group-name" name="resource-group-name" required>
-            <label for="resource-group-region">Região:</label>
-            <input type="text" id="resource-group-region" name="resource-group-region" required>
-            <button type="submit">Enviar</button>
+        </div>
+
+        <!-- Modal para Conta de Armazenamento -->
+        <div class="modal-content conta-armazenamento-modal" style="display: none;">
+          <form id="form-conta-armazenamento">
+            <label for="nome-conta">Nome da Conta:</label>
+            <input type="text" id="nome-conta" name="nome-conta" required><br>
+            <label for="regiao-conta">Região da Conta:</label>
+            <input type="text" id="regiao-conta" name="regiao-conta" required><br>
           </form>
+          <span class="modal-message"></span>
+          <span class="close" onclick="closeModal('conta-armazenamento-modal')">&times;</span>
         </div>
-        <!-- Modal -->
-        <div id="modal-content" class="modal-content">
-          <span id="modal-message"></span>
-          <span id="close-modal" class="close" onclick="closeModal()">&times;</span>
-        <!-- Formulário para o grupo de recursos -->
-        <form id="resource-group-form">
-        <label for="resource-group-name">Nome do Grupo de Recursos:</label>
-        <input type="text" id="resource-group-name" name="resource-group-name" required>
-        <label for="resource-group-region">Região:</label>
-        <input type="text" id="resource-group-region" name="resource-group-region" required>
-        <button type="submit">Enviar</button>
+
+        <!-- Modal para VNET -->
+        <div class="modal-content vnet-modal" style="display: none;">
+          <form id="form-vnet">
+            <label for="nome-vnet">Nome da VNET:</label>
+            <input type="text" id="nome-vnet" name="nome-vnet" required><br>
+            <label for="regiao-vnet">Região da VNET:</label>
+            <input type="text" id="regiao-vnet" name="regiao-vnet" required><br>
+          </form>
+          <span class="modal-message"></span>
+          <span class="close" onclick="closeModal('vnet-modal')">&times;</span>
         </div>
-        
+
           <div class="update">
             <div class="updt-left">
               <img src="/Logos/Azure/Conta_Armazenamento.svg" Ícone da atualização" />
               <h1>Conta de Armazenamento</h1>
             </div>
             <div class="buttons">
-              <div id="resultado-azure"></div>
-              <a id="conta-armazenamento-btn" target="_warning">
-                <button>Update</button>
-              </a>
+              <button id="conta-armazenamento-btn" onclick="openModal()">Update</button>
             </div>
           </div>
 
           <div class="update">
-    
             <div class="updt-left">
               <img src="/Logos/Azure/VNET.svg" alt="VNET icon" />
               <h1>VNET</h1>
             </div>
-    
             <div class="buttons">
-              <a id="vnet-btn" target="_warning">
-                  <button>Update</button>
-                </a>
+              <button id="vnet-btn" onclick="openModal()">Update</button>
             </div>
           </div>
     
           <div class="update">
-    
             <div class="updt-left">
               <img src="/Logos/Azure/VNET.svg" alt="Subrede icon" />
               <h1>Subrede Pública</h1>
             </div>
-    
             <div class="buttons">
-              <a id="subnet-publica-btn" target="_warning">
-                <button>Update</button>
-              </a>
+              <button id="subnet-publica-btn" onclick="openModal()">Update</button>
             </div>
           </div>
     
           <div class="update">
-    
             <div class="updt-left">
               <img src="/Logos/Azure/VNET.svg" alt="Subrede icon" />
               <h1>Subrede Privada</h1>
             </div>
-    
             <div class="buttons">
-              <a id="subnet-privada-btn" target="_warning">
-                <button>Update</button>
-            </a>
+              <button id="subnet-privada-btn" onclick="openModal()">Update</button>
+            </div>
+          </div>
+
+        <div class="update">
+          <div class="updt-left">
+            <img src="/Logos/Azure/Grupo_de_Segurança.svg" alt="Ícone da atualização" />
+            <h1>Grupo de Segurança Linux</h1>
+          </div>
+          <div class="buttons">
+            <button id="grupo-seguranca-linux-btn" onclick="openModal()">Update</button>
           </div>
         </div>
 
         <div class="update">
           <div class="updt-left">
             <img src="/Logos/Azure/Grupo_de_Segurança.svg" alt="Ícone da atualização" />
-            <h1>Grupo de Segurança</h1>
+            <h1>Grupo de Segurança Windows</h1>
           </div>
           <div class="buttons">
-            <a id="grupo-seguranca-btn" target="_warning">
-              <button>Update</button>
-            </a>
+            <button id="grupo-seguranca-windows-btn" onclick="openModal()">Update</button>
           </div>
         </div>
 
@@ -176,9 +180,7 @@
             <h1>IP Publico Linux</h1>
           </div>
           <div class="buttons">
-            <a id="ip-publico-linux-btn" target="_warning">
-              <button>Update</button>
-            </a>
+            <button id="ip-publico-linux-btn" onclick="openModal()">Update</button>
           </div>
         </div>
 
@@ -188,33 +190,7 @@
             <h1>IP Publico windows</h1>
           </div>
           <div class="buttons">
-            <a id="ip-publico-windows-btn" target="_warning">
-              <button>Update</button>
-            </a>
-          </div>
-        </div>
-
-        <div class="update">
-          <div class="updt-left">
-            <img src="/Logos/Azure/INT_Rede.svg" alt="Ícone da atualização" />
-            <h1>Interface de rede Linux</h1>
-          </div>
-          <div class="buttons">
-            <a id="interface-rede-linux-btn" target="_warning">
-              <button>Update</button>
-            </a>
-          </div>
-        </div>
-
-        <div class="update">
-          <div class="updt-left">
-            <img src="/Logos/Azure/INT_Rede.svg" alt="Ícone da atualização" />
-            <h1>Interface de rede Windows</h1>
-          </div>
-          <div class="buttons">
-            <a id="interface-rede-windows-btn" target="_warning">
-              <button>Update</button>
-            </a>
+            <button id="ip-publico-windows-btn" onclick="openModal()">Update</button>
           </div>
         </div>
 
@@ -224,9 +200,7 @@
             <h1>Máquina Virtual Windows</h1>
           </div>
           <div class="buttons">
-            <a id="maquina-virtual-windows-btn" target="_warning">
-              <button>Update</button>
-            </a>
+            <button id="maquina-virtual-windows-btn" onclick="openModal()">Update</button>
           </div>
         </div>
 
@@ -236,39 +210,27 @@
             <h1>Máquina Virtual Linux</h1>
           </div>
           <div class="buttons">
-            <a id="maquina-virtual-linux-btn" target="_warning">
-              <button>Update</button>
-            </a>
+            <button id="maquina-virtual-linux-btn" onclick="openModal()">Update</button>
           </div>
         </div>
       </section>
     </div>
     <script>
-        // Obtendo os botões
-        const awsBtn = document.querySelector('.aws-btn');
-        const azureBtn = document.getElementById('azure-btn');
+      // Obtendo os botões
+      const awsBtn = document.querySelector('.aws-btn');
+      const azureBtn = document.getElementById('azure-btn');
 
-        // Adicionando eventos de clique aos botões
-        awsBtn.addEventListener('click', function() {
-            window.location.href = './aws.html'; 
-        });
-
-        azureBtn.addEventListener('click', function() {
-            window.location.href = './azure.html';
-        });
-        menuBnt.addEventListener( 'click' ,function(){
-        window.location.href = './index.html'
+      // Adicionando eventos de clique aos botões
+      awsBtn.addEventListener('click', function() {
+          window.location.href = './aws.html'; 
       });
-      // Obtendo todos os botões de atualização
-      const updateButtons = document.querySelectorAll('.update button');
 
-      // Adicionando eventos de clique a cada botão de atualização
-      updateButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              const resourceName = this.closest('.update').querySelector('h1').textContent;
-              criarRecursosAzure(resourceName);
-          });
+      azureBtn.addEventListener('click', function() {
+          window.location.href = './azure.html';
       });
+      menuBnt.addEventListener( 'click' ,function(){
+      window.location.href = './index.html'
+    });
     </script>
     <script src="/Front-end/js/script.js"></script>
   </div>

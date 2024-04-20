@@ -2,23 +2,23 @@
 
 variable "nome_grupo_recursos" {
   description = "Descricao da variavel nome_grupo_recursos"
-  default     = "gabriela"
+  default     = ""
 }
 variable "regiao" {
   description = "Descricao da variavel regiao"
-  default     = "East Us"
+  default     = ""
 }
 variable "nome_conta_armazenamento" {
   description = "Descricao da variavel nome_conta_armazenamento"
-  default     = "stockmann"
+  default     = ""
 }
 variable "nome_vnet" {
   description = "Descricao da variavel nome_vnet"
-  default     = "vnet"
+  default     = "Nome da VNET"
 }
 variable "endereco_vnet" {
   description = "Descricao da variavel endereco_vnet"
-  default     = ["172.16.0.0/16"]
+  default     = ["Endereço da VNET"]
 }
 variable "nome_subrede_publica" {
   description = "Descricao da variavel nome_subrede_publica"
