@@ -18,7 +18,7 @@ variable "nome_vnet" {
 }
 variable "endereco_vnet" {
   description = "Descricao da variavel endereco_vnet"
-  default     = ["Endereço da VNET"]
+  default     = ["Endereco da VNET"]
 }
 variable "nome_subrede_publica" {
   description = "Descricao da variavel nome_subrede_publica"

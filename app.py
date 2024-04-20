@@ -1,5 +1,5 @@
 # Importações necessárias para o aplicativo Flask
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, redirect, render_template, request, url_for
 from flask_swagger import swagger
 from flask_swagger_ui import get_swaggerui_blueprint
 from flasgger import Swagger, swag_from
@@ -535,6 +535,51 @@ def destruir_recursos_aws():
         return jsonify({"message": "Recursos na AWS destruídos com sucesso!"}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Erro ao destruir recursos na AWS: {e}"}), 500
+
+@app.route('/adminazure', methods=['POST', 'OPTIONS'])
+def fazer_login_azure():
+    terraform_dir = './azure/'
+    try:
+        # Execute o login e inicialize o terraform
+        subprocess.run('az login && terraform init', shell=True, cwd=terraform_dir)
+        return jsonify({"message": "Login realizado com sucesso!"}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": f"Erro ao fazer login na Azure: {e}"}), 500
+    
+@app.route('/adminaws', methods=['POST', 'OPTIONS'])
+def fazer_login_aws():
+    terraform_dir = './azure/'
+    try:
+        subprocess.run('terraform init', shell=True, cwd=terraform_dir)
+        return jsonify({"message": "Login realizado com sucesso!"}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": f"Erro ao fazer login na Azure: {e}"}), 500
+
+def cadastrar_usuario(nome, email, senha):
+    # Abrir o arquivo de usuários em modo de escrita (append)
+    with open('usuarios.txt', 'a') as file:
+        # Escrever os dados do novo usuário no arquivo
+        file.write(f'{nome},{email},{senha}\n')
+
+def pagina_menu():
+    # Aqui você pode colocar o código para renderizar a página de menu
+    return render_template('/Front-end/menu.html')
+                           
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar_usuario_route():
+    try:
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+
+        cadastrar_usuario(nome, email, senha)
+
+        # Redirecionar para a página de menu após o cadastro
+        return redirect(url_for('pagina_menu'))
+    except Exception as e:
+        # Em caso de erro, retornar uma resposta de erro
+        return jsonify({'error': str(e)}), 500
+
 
 # Inicialização do servidor Flask
 if __name__ == '__main__':

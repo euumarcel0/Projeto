@@ -34,57 +34,40 @@
   <body class="cadastro-page">
     <div class="page">
         <form method="POST" class="formCadastro">
-            <h1>Login</h1>
+            <h1>Cadastro</h1>
             <label for="nome">Nome</label>
             <input type="text" name="nome" placeholder="Digite seu nome" autofocus="true">
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Digite seu email">
             <label for="senha">Senha</label>
             <input type="password" name="senha" placeholder="Digite sua senha">
-            <button id="loginBtn">Acessar</button>
+            <button id="cadastroBtn">Cadastrar</button>
         </form>
     </div>
+    
     <script>
-    document.getElementById("loginBtn").addEventListener("click", function() {
-    // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-    fetch('http://localhost:5000/adminazure', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
-    })
-    .then(response => {
-        if (response.ok) {
-            // Se a resposta for OK, exibe uma mensagem de sucesso
-            return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-        } else {
-            // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-            throw new Error('Erro na requisição.');
-        }
-    })
-    .then(response => {
-    if (response.ok) {
-        // Se a resposta for OK, exibe uma mensagem de sucesso
-        return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-    } else {
-        // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-        throw new Error('Erro na requisição.');
-    }
-    })
-    .then(data => {
-        // Exibe a mensagem retornada pela API
-        alert(data.message);
-        // Redireciona para a página menu.html após o sucesso da requisição
-        window.location.href = "menu.html"; 
-    })
-    .catch(error => {
-        // Exibe a mensagem de erro
-        console.error('Erro:', error);
-        alert("Erro na requisição. Login não foi executado com sucesso!");
-        // Redireciona para a página de erro em caso de erro na requisição
-        window.location.href = "menu.html"; 
-    });
+        document.getElementById("cadastroBtn").addEventListener("click", function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do botão de enviar o formulário
+            const form = document.querySelector('.formCadastro');
+            const formData = new FormData(form);
+
+            fetch('http://localhost:5000/cadastrar', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                    window.location.href = "/menu.html"; // Redireciona para a página de menu após o cadastro
+                } else {
+                    throw new Error('Erro ao cadastrar usuário.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Erro ao cadastrar usuário.");
+            });
+        });
     </script>
-</body>
-</html>
+    </body>
+    </html>
