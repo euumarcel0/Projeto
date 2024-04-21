@@ -357,3 +357,34 @@ document.addEventListener('click', function(event) {
     closeModal();
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleciona a tag h1 onde o nome do usuário será exibido
+  const userName = document.querySelector('.profile h1');
+
+  // Função para atualizar o nome do usuário
+  const updateUserName = () => {
+      // Obtém o nome do usuário armazenado no localStorage
+      const storedUserName = localStorage.getItem('userName');
+
+      // Verifica se há um nome de usuário armazenado
+      if (storedUserName) {
+          // Atualiza o conteúdo da tag h1 com o nome armazenado
+          userName.textContent = storedUserName;
+      }
+  };
+
+  // Chama a função updateUserName para atualizar o nome do usuário quando a página é carregada
+  updateUserName();
+
+  // Adiciona um evento para detectar mudanças no localStorage
+  window.addEventListener('storage', function(event) {
+      // Verifica se a chave modificada é 'userName'
+      if (event.key === 'userName') {
+          // Atualiza o nome do usuário na página atual
+          updateUserName();
+      }
+  });
+});
+

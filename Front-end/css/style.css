@@ -441,3 +441,55 @@ form button {
 form button:hover {
   background-color: #45a049; /* altera a cor de fundo do botão ao passar o mouse sobre ele */
 }
+
+.user-form {
+  background-color: transparent; /* Torna o formulário transparente */
+  padding: 2em; /* Adiciona um espaçamento interno */
+  border-radius: 20px; /* Arredonda as bordas */
+  backdrop-filter: blur(10px); /* Aplica um efeito de desfoque no fundo */
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+  text-align: center; /* Centraliza o conteúdo */
+  position: relative; /* Posicionamento relativo */
+  transition: all 0.2s ease-in-out; /* Transição suave */
+  margin: 160px auto 0; /* Centraliza o formulário horizontalmente */
+  width: 95%; /* Define a largura do formulário em porcentagem */
+  max-width: 1000px; /* Define a largura máxima do formulário */
+}
+
+.user-form input[type="nome"],
+.user-form input[type="sobrenome"],
+.user-form button {
+  display: block; /* Exibe como bloco para ocupar a largura total */
+  margin: 10px auto; /* Centraliza verticalmente */
+  padding: 10px; /* Adiciona um preenchimento interno */
+  width: 90%; /* Define a largura dos campos de entrada e do botão em porcentagem */
+  border-radius: 5px; /* Arredonda as bordas */
+  border: none; /* Remove a borda */
+  background: rgba(240, 0, 0, 0.1); /* Torna o fundo dos campos de entrada transparente */
+  color: white; /* Define a cor do texto */
+  font-size: 16px; /* Define o tamanho da fonte */
+}
+
+.user-form button {
+  cursor: pointer; /* Altera o cursor ao passar sobre o botão */
+  background-color: #171817; /* Define a cor de fundo do botão */
+  transition: background-color 0.3s; /* Adiciona uma transição suave */
+}
+
+.user-form button:hover {
+  background-color: #45a049; /* Altera a cor de fundo do botão ao passar o mouse sobre ele */
+}
+
+.profile-button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 40px; /* Define a largura desejada */
+}
+
+.profile--pic {
+  width: 40px; /* Largura da imagem do perfil */
+  height: 40px; /* Altura da imagem do perfil */
+  border-radius: 50%; /* Torna a imagem do perfil circular */
+}
