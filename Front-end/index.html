@@ -198,8 +198,11 @@
         // Seleciona o menu do usuário
         const userMenu = document.getElementById('userMenu');
 
-        // Adiciona um evento de clique ao botão userMenuBtn
-        userMenuBtn.addEventListener('click', function() {
+        // Selecione o botão da bolinha
+        const menuButton = document.querySelector('.menu');
+
+        // Adicione um evento de clique ao botão da bolinha
+        menuButton.addEventListener('click', function() {
             // Exibe o menu do usuário
             userMenu.style.display = 'block';
         });

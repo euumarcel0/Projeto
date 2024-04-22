@@ -35,7 +35,7 @@
       </div>
   
       <div class="profile">
-        <img src="https://scontent-gru2-2.cdninstagram.com/v/t39.30808-6/402949656_18313349770141322_4377482542700818250_n.jpg?stp=dst-jpg_e35_p640x640_sh0.08&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyIn0&_nc_ht=scontent-gru2-2.cdninstagram.com&_nc_cat=102&_nc_ohc=1jw--3X9y1kAb63FVuJ&edm=ACWDqb8AAAAA&ccb=7-5&ig_cache_key=MzIzODI4NjMwNTExMTAyNzgxOQ%3D%3D.2-ccb7-5&oh=00_AfC1Q0lHGoP7s2j7av5Ubq6ggZuXpaHQMKErj9ncmFfFtA&oe=66180145&_nc_sid=ee9879" alt="Profile Pic" class="profile--pic" />
+        <img src="https://assets-global.website-files.com/64462c9aa967772377e53b6e/653248804d0afe70afa76e5f_Feature%20announcement_%20Humanitec%20Terraform%20Driver%20Enters%20General%20Availability.jpg" alt="Profile Pic" class="profile--pic" />
   
         <h1>Marcelo Mesquita</h1>
       </div>
@@ -78,44 +78,101 @@
           </div>
         </div>
         
-         <!-- Modal para o Grupo de Recursos -->
-         <div class="modal-content resource-group-modal" style="display: none;">
-          <form id="form-grupo-recursos">
-            <label for="nome-grupo">Nome do Grupo:</label>
-            <input type="text" id="nome-grupo" name="nome-grupo" required><br>
-            <label for="regiao-grupo">Região do Grupo:</label>
-            <input type="text" id="regiao-grupo" name="regiao-grupo" required><br>
-            <button id="submit-grupo-recursos">Submit</button>
-          </form>
-          <span class="modal-message"></span>
-          <span class="close" onclick="closeModal('resource-group-modal')">&times;</span>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message">Preencha as informações necessárias:</p>
+            <form id="modal-form">
+              <!-- Campos para criar Grupo de Recursos -->
+              <div id="grupo-recursos-fields" style="display: none;">
+                <label for="nome-grupo">Nome do Grupo de Recursos:</label><br>
+                <input type="text" id="nome-grupo" name="nome-grupo" required><br>
+                <label for="regiao-grupo">Região:</label><br>
+                <input type="text" id="regiao-grupo" name="regiao-grupo" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Conta de Armazenamento -->
+              <div id="conta-armazenamento-fields" style="display: none;">
+                <label for="nome-conta">Nome da Conta de Armazenamento:</label><br>
+                <input type="text" id="nome-conta" name="nome-conta" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar VNET -->
+              <div id="vnet-fields" style="display: none;">
+                <label for="nome-vnet">Nome da VNET:</label><br>
+                <input type="text" id="nome-vnet" name="nome-vnet" required><br>
+                <label for="endereco-vnet">Endereço da VNET:</label><br>
+                <input type="text" id="endereco-vnet" name="endereco-vnet" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Subrede Pública -->
+              <div id="subnet-publica-fields" style="display: none;">
+                <label for="nome-subrede-publica">Nome da Subrede Pública:</label><br>
+                <input type="text" id="nome-subrede-publica" name="nome-subrede-publica" required><br>
+                <label for="endereco-subrede-publica">Endereço da Subrede Pública:</label><br>
+                <input type="text" id="endereco-subrede-publica" name="endereco-subrede-publica" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Subrede Privada -->
+              <div id="subnet-privada-fields" style="display: none;">
+                <label for="nome-subrede-privada">Nome da Subrede Privada:</label><br>
+                <input type="text" id="nome-subrede-privada" name="nome-subrede-privada" required><br>
+                <label for="endereco-subrede-privada">Endereço da Subrede Privada:</label><br>
+                <input type="text" id="endereco-subrede-privada" name="endereco-subrede-privada" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Grupo de Segurança -->
+              <div id="grupo-seguranca-fields" style="display: none;">
+                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança:</label><br>
+                <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar IP Público Linux -->
+              <div id="ip-publico-linux-fields" style="display: none;">
+                <label for="nome-ip-publico-linux">Nome do IP Público Linux:</label><br>
+                <input type="text" id="nome-ip-publico-linux" name="nome-ip-publico-linux" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar IP Público Windows -->
+              <div id="ip-publico-windows-fields" style="display: none;">
+                <label for="nome-ip-publico-windows">Nome do IP Público Windows:</label><br>
+                <input type="text" id="nome-ip-publico-windows" name="nome-ip-publico-windows" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Máquina Virtual Linux -->
+              <div id="maquina-virtual-linux-fields" style="display: none;">
+                <label for="nome-maquina-linux">Nome da Máquina Virtual Linux:</label><br>
+                <input type="text" id="nome-maquina-linux" name="nome-maquina-linux" required><br>
+                <label for="usuario-linux">Usuário:</label><br>
+                <input type="text" id="usuario-linux" name="usuario-linux" required><br>
+                <label for="senha-linux">Senha:</label><br>
+                <input type="password" id="senha-linux" name="senha-linux" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+        
+              <!-- Campos para criar Máquina Virtual Windows -->
+              <div id="maquina-virtual-windows-fields" style="display: none;">
+                <label for="nome-maquina-windows">Nome da Máquina Virtual Windows:</label><br>
+                <input type="text" id="nome-maquina-windows" name="nome-maquina-windows" required><br>
+                <label for="usuario-windows">Usuário:</label><br>
+                <input type="text" id="usuario-windows" name="usuario-windows" required><br>
+                <label for="senha-windows">Senha:</label><br>
+                <input type="password" id="senha-windows" name="senha-windows" required><br>
+                <button type="submit" class="enviar-btn">Enviar</button>
+              </div>
+            </form>
+            <button id="modal-submit">Submit</button>
+          </div>
         </div>
-
-        <!-- Modal para Conta de Armazenamento -->
-        <div class="modal-content conta-armazenamento-modal" style="display: none;">
-          <form id="form-conta-armazenamento">
-            <label for="nome-conta">Nome da Conta:</label>
-            <input type="text" id="nome-conta" name="nome-conta" required><br>
-            <label for="regiao-conta">Região da Conta:</label>
-            <input type="text" id="regiao-conta" name="regiao-conta" required><br>
-            <button id="submit-conta-armazenamento">Submit</button>
-          </form>
-          <span class="modal-message"></span>
-          <span class="close" onclick="closeModal('conta-armazenamento-modal')">&times;</span>
-        </div>
-
-        <!-- Modal para VNET -->
-        <div class="modal-content vnet-modal" style="display: none;">
-          <form id="form-vnet">
-            <label for="nome-vnet">Nome da VNET:</label>
-            <input type="text" id="nome-vnet" name="nome-vnet" required><br>
-            <label for="regiao-vnet">Região da VNET:</label>
-            <input type="text" id="regiao-vnet" name="regiao-vnet" required><br>
-            <button id="submit-vnet">Submit</button>
-          </form>
-          <span class="modal-message"></span>
-          <span class="close" onclick="closeModal('vnet-modal')">&times;</span>
-        </div>
+            
 
           <div class="update">
             <div class="updt-left">
@@ -243,6 +300,19 @@
           openModal(); // Chamando a função openModal() quando um botão "Update" é clicado
         });
       });
+      document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona a tag h1 onde o nome do usuário será exibido
+    const userName = document.querySelector('.profile h1');
+
+    // Recupera o nome do usuário do localStorage
+    const storedUserName = localStorage.getItem('userName');
+
+    // Verifica se o nome do usuário foi armazenado no localStorage
+    if (storedUserName) {
+        // Atualiza o conteúdo da tag h1 com o nome do usuário
+        userName.textContent = storedUserName;
+    }
+});
     </script>
     <script src="/Front-end/js/script.js"></script>
   </div>

@@ -456,8 +456,8 @@ form button:hover {
   max-width: 1000px; /* Define a largura máxima do formulário */
 }
 
-.user-form input[type="nome"],
-.user-form input[type="sobrenome"],
+.user-form input[type="firstName"],
+.user-form input[type="lastName"],
 .user-form button {
   display: block; /* Exibe como bloco para ocupar a largura total */
   margin: 10px auto; /* Centraliza verticalmente */

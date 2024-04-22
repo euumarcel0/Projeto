@@ -35,7 +35,7 @@
       </div>
   
       <div class="profile">
-        <img src="https://scontent-gru2-2.cdninstagram.com/v/t39.30808-6/402949656_18313349770141322_4377482542700818250_n.jpg?stp=dst-jpg_e35_p640x640_sh0.08&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyIn0&_nc_ht=scontent-gru2-2.cdninstagram.com&_nc_cat=102&_nc_ohc=1jw--3X9y1kAb63FVuJ&edm=ACWDqb8AAAAA&ccb=7-5&ig_cache_key=MzIzODI4NjMwNTExMTAyNzgxOQ%3D%3D.2-ccb7-5&oh=00_AfC1Q0lHGoP7s2j7av5Ubq6ggZuXpaHQMKErj9ncmFfFtA&oe=66180145&_nc_sid=ee9879" alt="Profile Pic" class="profile--pic" />
+        <img src="https://assets-global.website-files.com/64462c9aa967772377e53b6e/653248804d0afe70afa76e5f_Feature%20announcement_%20Humanitec%20Terraform%20Driver%20Enters%20General%20Availability.jpg" alt="Profile Pic" class="profile--pic" />
         <h1 id="userName">noem</h1>
       </div>
     </aside>
@@ -193,6 +193,19 @@
     // Obtendo todos os botões de atualização
     const updateButtons = document.querySelectorAll('.update button');
 
+    document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona a tag h1 onde o nome do usuário será exibido
+    const userName = document.querySelector('.profile h1');
+
+    // Recupera o nome do usuário do localStorage
+    const storedUserName = localStorage.getItem('userName');
+
+    // Verifica se o nome do usuário foi armazenado no localStorage
+    if (storedUserName) {
+        // Atualiza o conteúdo da tag h1 com o nome do usuário
+        userName.textContent = storedUserName;
+    }
+});
     // Adicionando eventos de clique a cada botão de atualização
     updateButtons.forEach(button => {
         button.addEventListener('click', function () {

@@ -1,18 +1,3 @@
-//THIS APP IS NOT THE EXACT COPY OF THE APP STORE BUT IS SIMILAR TO IT ;).... and btw inspired by Aysenur Turk's pen (who i follow A LOT).
-
-const side_bar_btns = document.querySelectorAll("#sidebar-btn");
-
-
-side_bar_btns.forEach((elem) => {
-  elem.addEventListener("click", () => {
-    for (let index = 0; index < side_bar_btns.length; index++) {
-      side_bar_btns[index].classList.remove("active");
-    }
-    elem.classList.add("active");
-  });
-});
-
-let min = true;
 
 // ----------------------------------------------------AZURE----------------------------------------------------------- //
 
@@ -52,15 +37,21 @@ async function criarRecursosAzure(recurso, dados) {
 }
 
 // Event listener para o botão de criar Grupo de Recursos
-document.getElementById('submit-grupo-recursos').addEventListener('click', function(event) {
-  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
-  const nome = document.getElementById('nome-grupo').value;
-  const regiao = document.getElementById('regiao-grupo').value;
-  const dados = {
-    nome: nome,
-    regiao: regiao
-  };
-  criarRecursosAzure('criar-grupo-recursos', dados);
+document.getElementById('grupo-recursos-btn').addEventListener('click', function(event) {
+    event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+    
+    // Obtém os dados preenchidos pelo usuário
+    const nome = document.getElementById('nome-grupo').value;
+    const regiao = document.getElementById('regiao-grupo').value;
+    
+    // Cria um objeto com os dados
+    const dados = {
+      nome: nome,
+      regiao: regiao
+    };
+
+    // Chama a função para criar recursos na Azure, passando os dados
+    criarRecursosAzure('criar-grupo-recursos', dados);
 });
 
 // Event listener para o botão de criar Conta de Armazenamento
@@ -167,6 +158,28 @@ document.getElementById('maquina-virtual-windows-btn').addEventListener('click',
     senha: senha
   };
   criarRecursosAzure('criar-maquina-virtual-windows', dados);
+});
+
+// ----------------------------------------------------MODAL/Azure----------------------------------------------------------- //
+
+// Função para abrir o modal
+function openModal() {
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+}
+
+// Event listener para fechar o modal quando o usuário clica no botão "Fechar" (X)
+document.querySelector('.close').addEventListener('click', function() {
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'none';
+});
+
+// Event listener para fechar o modal quando o usuário clica fora do modal
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('myModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
 });
 
 // ----------------------------------------------------AWS---------------------------------------------------------- //
@@ -312,52 +325,6 @@ document.getElementById('load-balancer-aws-btn').addEventListener('click', funct
 });
 
 // ----------------------------------------------------MODAL----------------------------------------------------------- //
-
-// Adicione eventos de clique aos botões que enviam formulários
-document.getElementById('submit-conta-armazenamento').addEventListener('click', function(event) {
-  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
-  document.getElementById('form-conta-armazenamento').submit(); // Submete o formulário
-});
-
-document.getElementById('submit-vnet').addEventListener('click', function(event) {
-  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
-  document.getElementById('form-vnet').submit(); // Submete o formulário
-});
-
-// Função para abrir o modal
-function openModal() {
-  document.getElementById('modal-content').style.display = "block"; // Mostra o modal
-  document.body.classList.add('modal-open'); // Adiciona a classe modal-open ao body
-}
-
-// Função para fechar o modal
-function closeModal() {
-  document.getElementById('modal-message').innerText = ''; // Limpa o conteúdo do modal
-  document.getElementById('modal-content').style.display = "none"; // Esconde o modal
-  document.body.classList.remove('modal-open'); // Remove a classe modal-open do body
-}
-
-// Adicionar um ouvinte de evento para fechar o modal quando o usuário clicar fora dele
-document.addEventListener('DOMContentLoaded', function() {
-  const modalContent = document.getElementById('modal-content');
-  const closeModalButton = document.getElementById('close-modal');
-
-  closeModalButton.addEventListener('click', closeModal);
-
-  // Ajuste no ouvinte de evento para fechar o modal quando o usuário clicar fora dele
-  window.onclick = function(event) {
-    if (event.target == modalContent) { // Certifique-se de que o ID do modal esteja correto
-      closeModal();
-    }
-  }
-});
-
-document.addEventListener('click', function(event) {
-  if (event.target == modalContent) {
-    closeModal();
-  }
-});
-
 
 document.addEventListener('DOMContentLoaded', function() {
   // Seleciona a tag h1 onde o nome do usuário será exibido
