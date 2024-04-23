@@ -62,7 +62,7 @@
               <h1>Load Balancer</h1>
             </div>
             <div class="buttons">
-              <button id="botão-aws-btn" onclick="openModal()">Update</button>
+              <button id="botão-load-btn" onclick="openModal('modal-load-balancer-aws')">Update</button>
             </div>
           </div>
 
@@ -72,15 +72,120 @@
                 <h1>VPC</h1>
             </div>
             <div class="buttons">
-                <button id="aws-vpc-btn" onclick="openModal()">Update</button>
+                <button id="aws-vpc-btn" onclick="openModal('modal-vpc')">Update</button>
             </div>
         </div>
 
         <!-- Modal -->
-        <div id="modal-content" class="modal-content">
-            <span id="modal-message"></span>
-            <span id="close-modal" class="close" onclick="closeModal()">&times;</span>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="close">&times;</span>
+
+          <!-- Modal para LoadBalancer -->
+          <div class="modal-load-balancer-aws">
+            <form>
+              <label for="nome-grupo">Nome do Load Balancer:</label><br>
+              <input type="text" id="nome-grupo" name="nome-load" required><br>
+              <button type="submit" class="enviar-btn-load-balancer">Enviar</button>
+            </form>
           </div>
+
+          <!-- Modal para criar VPC -->
+          <div class="modal-vpc">
+            <form>
+              <label for="nome-vpc">Nome da VPC:</label><br>
+              <input type="text" id="nome-vpc" name="nome-vpc" required><br>
+              <label for="endereco-vpc">Endereço da VPC:</label><br>
+              <input type="text" id="endereco-vpc" name="endereco-vpc" required><br>
+              <button type="submit" class="enviar-btn-vpc">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Subrede Pública -->
+          <div class="modal-subrede-publica-aws">
+            <form>
+              <label for="nome-subrede-publica">Nome da Subrede Pública:</label><br>
+              <input type="text" id="nome-subrede-publica" name="nome-subrede-publica" required><br>
+              <label for="endereco-subrede-publica">Endereço da Subrede Pública:</label><br>
+              <input type="text" id="endereco-subrede-publica" name="endereco-subrede-publica" required><br>
+              <button type="submit" class="enviar-btn-subrede-publica">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Subrede Privada -->
+          <div class="modal-subrede-privada-aws">
+            <form>
+              <label for="nome-subrede-privada">Nome da Subrede Privada:</label><br>
+              <input type="text" id="nome-subrede-privada" name="nome-subrede-privada" required><br>
+              <label for="endereco-subrede-privada">Endereço da Subrede Privada:</label><br>
+              <input type="text" id="endereco-subrede-privada" name="endereco-subrede-privada" required><br>
+              <button type="submit" class="enviar-btn-subrede-privada">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Gateway -->
+          <div class="modal-gateway">
+            <form>
+              <label for="nome-gateway">Nome do Gateway:</label><br>
+              <input type="text" id="nome-gateway" name="nome-gateway" required><br>
+              <button type="submit" class="enviar-btn-gateway">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Tabela de Rotas -->
+          <div class="modal-tabela-rotas">
+            <form>
+              <label for="nome-tabela-rotas">Nome do Grupo de Segurança Windows:</label><br>
+              <input type="text" id="nome-tabela-rotas" name="nome-tabela-rotas" required><br>
+              <button type="submit" class="enviar-btn-tabela-rotas">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Grupo de Segurança Linux -->
+          <div class="modal-grupo-seguranca-linux-aws">
+            <form>
+              <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Linux:</label><br>
+              <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
+              <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Grupo de Segurança Windows -->
+          <div class="modal-grupo-seguranca-Windows-aws">
+            <form>
+                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Windows:</label><br>
+                <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
+                <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+              </form>
+            </div>
+
+          <!-- Modal para criar Máquina Virtual Linux -->
+          <div class="modal-maquina-virtual-linux-aws">
+            <form>
+              <label for="nome-maquina-linux">Nome da Máquina Virtual Linux:</label><br>
+              <input type="text" id="nome-maquina-linux" name="nome-maquina-linux" required><br>
+              <label for="usuario-linux">Usuário:</label><br>
+              <input type="text" id="usuario-linux" name="usuario-linux" required><br>
+              <label for="senha-linux">Senha:</label><br>
+              <input type="password" id="senha-linux" name="senha-linux" required><br>
+              <button type="submit" class="enviar-btn-maquina-virtual-linux">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Modal para criar Máquina Virtual Windows -->
+          <div class="modal-maquina-virtual-windows-aws">
+            <form>
+              <label for="nome-maquina-windows">Nome da Máquina Virtual Windows:</label><br>
+              <input type="text" id="nome-maquina-windows" name="nome-maquina-windows" required><br>
+              <label for="usuario-windows">Usuário:</label><br>
+              <input type="text" id="usuario-windows" name="usuario-windows" required><br>
+              <label for="senha-windows">Senha:</label><br>
+              <input type="password" id="senha-windows" name="senha-windows" required><br>
+              <button type="submit" class="enviar-btn-maquina-virtual-windows">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
         <div class="update">
             <div class="updt-left">
@@ -88,7 +193,7 @@
                 <h1>Subrede Pública</h1>
             </div>
             <div class="buttons">
-                <button id="aws-subnet-publica-btn" onclick="openModal()">Update</button>
+                <button id="aws-subnet-publica-btn" onclick="openModal('modal-subrede-publica-aws')">Update</button>
             </div>
         </div>
 
@@ -98,7 +203,7 @@
                 <h1>Subrede Privada</h1>
             </div>
             <div class="buttons">
-                <button id="aws-subnet-privada-btn" onclick="openModal()">Update</button>
+                <button id="aws-subnet-privada-btn" onclick="openModal('modal-subrede-privada-aws')">Update</button>
             </div>
         </div>
 
@@ -108,7 +213,7 @@
                 <h1>Gateway</h1>
             </div>
             <div class="buttons">
-                <button id="aws-gateway-btn" onclick="openModal()">Update</button>
+                <button id="aws-gateway-btn" onclick="openModal('modal-gateway')">Update</button>
             </div>
         </div>
 
@@ -118,17 +223,7 @@
                 <h1>Tabela de Rota</h1>
             </div>
             <div class="buttons">
-                <button id="aws-tabela-rota-btn" onclick="openModal()">Update</button>
-            </div>
-        </div>
-
-        <div class="update">
-            <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Associar Tabela de Rota icon" />
-                <h1>Associar Tabela de Rota</h1>
-            </div>
-            <div class="buttons">
-                <button id="aws-associar-tabela-rota-btn" onclick="openModal()">Update</button>
+                <button id="aws-tabela-rota-btn" onclick="openModal('modal-tabela-rotas')">Update</button>
             </div>
         </div>
 
@@ -138,7 +233,7 @@
                 <h1>Grupo de Segurança Linux</h1>
             </div>
             <div class="buttons">
-                <button id="aws-grupo-seguranca-linux-btn" onclick="openModal()">Update</button>
+                <button id="aws-grupo-seguranca-linux-btn" onclick="openModal('modal-grupo-seguranca-linux-aws')">Update</button>
             </div>
         </div>
 
@@ -148,7 +243,7 @@
               <h1>Grupo de Segurança Windows</h1>
           </div>
           <div class="buttons">
-              <button id="aws-grupo-seguranca-windows-btn" onclick="openModal()">Update</button>
+              <button id="aws-grupo-seguranca-windows-btn" onclick="openModal('modal-ip-publico-Windows-aws')">Update</button>
           </div>
       </div>
 
@@ -158,7 +253,7 @@
                 <h1>Máquina Virtual Windows</h1>
             </div>
             <div class="buttons">
-                <button id="aws-maquina-virtual-windows-btn" onclick="openModal()">Update</button>
+                <button id="aws-maquina-virtual-windows-btn" onclick="openModal('modal-maquina-virtual-windows-aws')">Update</button>
             </div>
         </div>
 
@@ -168,7 +263,7 @@
                 <h1>Máquina Virtual Linux</h1>
             </div>
             <div class="buttons">
-                <button id="aws-maquina-virtual-linux-btn" onclick="openModal()">Update</button>
+                <button id="aws-maquina-virtual-linux-btn" onclick="openModal('modal-maquina-virtual-linux-aws')">Update</button>
             </div>
         </div>
 
@@ -190,8 +285,16 @@
     menuBnt.addEventListener('click', function () {
         window.location.href = './index.html'
     });
-    // Obtendo todos os botões de atualização
+    
+    // Obtendo os botões "Update"
     const updateButtons = document.querySelectorAll('.update button');
+
+    // Adicionando eventos de clique para os botões "Update"
+    updateButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        openModal(); // Chamando a função openModal() quando um botão "Update" é clicado
+      });
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
     // Seleciona a tag h1 onde o nome do usuário será exibido

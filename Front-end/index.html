@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="https://www.svgrepo.com/show/376353/terraform.svg" type="image/x-icon"/>
-    <title>API Terraform</title>
-    <link rel="stylesheet" href="/Front-end/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="https://www.svgrepo.com/show/376353/terraform.svg" type="image/x-icon" />
+  <title>API Terraform</title>
+  <link rel="stylesheet" href="/Front-end/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-<div class="container" id="container">
+  <div class="container" id="container">
     <header>
       <section class="window--buttons">
         <div class="window__close"></div>
-  
+
         <div class="window__minimize"></div>
-  
+
         <div class="window__maximize"></div>
       </section>
     </header>
     <div class="menu">
-      <div class="dot"></div> 
       <div class="dot"></div>
       <div class="dot"></div>
-    </div>    
+      <div class="dot"></div>
+    </div>
     <aside>
       <div>
         <input type="text" placeholder="Search" /><br />
@@ -32,83 +34,88 @@
         <button id="azure-btn">AZURE</button>
         <button id="sidebar-btn">Atualizações</button>
       </div>
-  
+
       <div class="profile">
         <button id="userMenuBtn" class="profile-button">
-            <img src="https://assets-global.website-files.com/64462c9aa967772377e53b6e/653248804d0afe70afa76e5f_Feature%20announcement_%20Humanitec%20Terraform%20Driver%20Enters%20General%20Availability.jpg" alt="Profile Pic" class="profile--pic" />
+          <img
+            src="https://assets-global.website-files.com/64462c9aa967772377e53b6e/653248804d0afe70afa76e5f_Feature%20announcement_%20Humanitec%20Terraform%20Driver%20Enters%20General%20Availability.jpg"
+            alt="Profile Pic" class="profile--pic" />
         </button>
         <h1>Marcelo Mesquita</h1>
-    </div>
-    <div class="user-menu" id="userMenu">
+      </div>
+      <div class="user-menu" id="userMenu">
         <form id="userForm">
-            <label for="firstName">Nome:</label><br>
-            <input type="text" id="firstName" name="firstName"><br>
-            <label for="lastName">Sobrenome:</label><br>
-            <input type="text" id="lastName" name="lastName"><br><br>
-            <button type="button" id="saveBtn">Salvar</button>
+          <label for="firstName">Nome:</label><br>
+          <input type="text" id="firstName" name="firstName"><br>
+          <label for="lastName">Sobrenome:</label><br>
+          <input type="text" id="lastName" name="lastName"><br><br>
+          <button type="button" id="saveBtn">Salvar</button>
         </form>
-    </div>
+      </div>
     </aside>
-  
+
     <div class="content">
       <div class="ideas">
         <div class="idea">
           <p>Bem Vindo</p>
           <h1>Terraform<br> Azure</h1>
         </div>
-  
+
         <div class="idea">
           <p>Bem Vindo</p>
           <h1>Terraform<br> AWS</h1>
         </div>
       </div>
-  
+
       <section class="updates">
         <h1>Updates</h1>
-  
+
         <div class="update update-1">
-  
+
           <div class="updt-left">
-            <img src="https://cdn.iconscout.com/icon/free/png-256/free-aws-1869025-1583149.png?f=webp" alt="powerpoint icon" />
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-aws-1869025-1583149.png?f=webp"
+              alt="powerpoint icon" />
             <h1>AWS</h1>
           </div>
           <div class="buttons">
             <button id="loginawsBtn">Acessar</button>
+          </div>
         </div>
-      </div>
-  
+
         <div class="update">
-  
+
           <div class="updt-left">
             <img src="https://cdn-icons-png.flaticon.com/512/873/873107.png" alt="word icon" />
             <h1>AZURE</h1>
           </div>
           <div class="buttons">
-              <button id="loginBtn">Acessar</button>
+            <button id="loginBtn">Acessar</button>
           </div>
         </div>
-  
+
         <div class="update">
-  
+
           <div class="updt-left">
             <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="lightroom icon" />
             <h1>GITHUB</h1>
           </div>
-  
+
           <div class="buttons">
             <a href="https://github.com/euumarcel0/Terraform-API.git" target="_warning">
               <button>Update</button>
             </a>
           </div>
         </div>
-  
+
         <div class="update">
-  
+
           <div class="updt-left">
-            <img src="https://static.vecteezy.com/system/resources/previews/018/930/587/original/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="xcode icon" />
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/018/930/587/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
+              alt="xcode icon" />
             <h1>Linkedin</h1>
           </div>
-  
+
           <div class="buttons">
             <a href="https://www.linkedin.com/in/marcelo-mesquita-941843267/" target="_warning">
               <button>Update</button>
@@ -118,131 +125,156 @@
       </section>
     </div>
     <script>
-        document.getElementById("loginBtn").addEventListener("click", function() {
-            // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-            fetch('http://localhost:5000/adminazure', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Se a resposta for OK, exibe uma mensagem de sucesso
-                    return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-                } else {
-                    // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-                    throw new Error('Erro na requisição.');
-                }
-            })
-            .then(data => {
-                // Exibe a mensagem retornada pela API
-                alert(data.message);
-            })
-            .catch(error => {
-                // Exibe a mensagem de erro
-                console.error('Erro:', error);
-                alert("Login executado com sucesso!");
-            });
-        });
-
-        document.getElementById("loginawsBtn").addEventListener("click", function() {
-            // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-            fetch('http://localhost:5000/adminaws', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Se a resposta for OK, exibe uma mensagem de sucesso
-                    return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-                } else {
-                    // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-                    throw new Error('Erro na requisição.');
-                }
-            })
-            .then(data => {
-                // Exibe a mensagem retornada pela API
-                alert(data.message);
-            })
-            .catch(error => {
-                // Exibe a mensagem de erro
-                console.error('Erro:', error);
-                alert("Login executado com sucesso!");
-            });
-        });
-
-        // Obtendo os botões
-        const awsBtn = document.getElementById('aws-btn');
-        const azureBtn = document.getElementById('azure-btn');
-
-        // Adicionando eventos de clique aos botões
-        awsBtn.addEventListener('click', function() {
-            window.location.href = './aws.html'; 
-        });
-
-        azureBtn.addEventListener('click', function() {
-            window.location.href = './azure.html';
-        });
-
-        menuBnt.addEventListener( 'click' ,function(){
-            window.location.href = './index.html';
-        });
-        // Seleciona o botão userMenuBtn
-        const userMenuBtn = document.getElementById('userMenuBtn');
-
-        // Seleciona o menu do usuário
-        const userMenu = document.getElementById('userMenu');
-
-        // Selecione o botão da bolinha
-        const menuButton = document.querySelector('.menu');
-
-        // Adicione um evento de clique ao botão da bolinha
-        menuButton.addEventListener('click', function() {
-            // Exibe o menu do usuário
-            userMenu.style.display = 'block';
-        });
-
-        // Seleciona o botão saveBtn
-        const saveBtn = document.getElementById('saveBtn');
-
-        // Seleciona os campos de entrada do formulário
-        const firstNameInput = document.getElementById('firstName');
-        const lastNameInput = document.getElementById('lastName');
-
-        // Seleciona a tag h1
-        const userName = document.querySelector('.profile h1');
-
-        // Adiciona um evento de clique ao botão saveBtn
-        saveBtn.addEventListener('click', function() {
-            // Obtém os valores dos campos de entrada
-            const firstName = firstNameInput.value;
-            const lastName = lastNameInput.value;
-
-            // Verifica se ambos os campos foram preenchidos
-            if (firstName.trim() !== '' && lastName.trim() !== '') {
-                // Atualiza o conteúdo da tag h1 com o nome completo
-                userName.textContent = `${firstName} ${lastName}`;
-                
-                // Armazena o nome do usuário no localStorage
-                localStorage.setItem('userName', `${firstName} ${lastName}`);
-
-                // Oculta o menu do usuário após salvar
-                userMenu.style.display = 'none';
-
-                // Dispara o evento storage para que as outras páginas detectem a mudança no nome do usuário
-                window.dispatchEvent(new Event('storage'));
+      document.getElementById("loginBtn").addEventListener("click", function () {
+        // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
+        fetch('http://localhost:5000/adminazure', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
+        })
+          .then(response => {
+            if (response.ok) {
+              // Se a resposta for OK, exibe uma mensagem de sucesso
+              return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
             } else {
-                // Caso algum campo esteja vazio, exibe uma mensagem de alerta
-                alert('Por favor, preencha todos os campos.');
+              // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
+              throw new Error('Erro na requisição.');
             }
+          })
+          .then(data => {
+            // Exibe a mensagem retornada pela API
+            alert(data.message);
+          })
+          .catch(error => {
+            // Exibe a mensagem de erro
+            console.error('Erro:', error);
+            alert("Login executado com sucesso!");
+          });
+      });
+
+      document.getElementById("loginawsBtn").addEventListener("click", function () {
+        // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
+        fetch('http://localhost:5000/adminaws', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
+        })
+          .then(response => {
+            if (response.ok) {
+              // Se a resposta for OK, exibe uma mensagem de sucesso
+              return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
+            } else {
+              // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
+              throw new Error('Erro na requisição.');
+            }
+          })
+          .then(data => {
+            // Exibe a mensagem retornada pela API
+            alert(data.message);
+          })
+          .catch(error => {
+            // Exibe a mensagem de erro
+            console.error('Erro:', error);
+            alert("Login executado com sucesso!");
+          });
+      });
+
+      // Obtendo os botões
+      const awsBtn = document.getElementById('aws-btn');
+      const azureBtn = document.getElementById('azure-btn');
+
+      // Adicionando eventos de clique aos botões
+      awsBtn.addEventListener('click', function () {
+        window.location.href = './aws.html';
+      });
+
+      azureBtn.addEventListener('click', function () {
+        window.location.href = './azure.html';
+      });
+
+      menuBnt.addEventListener('click', function () {
+        window.location.href = './index.html';
+      });
+      // Seleciona o botão userMenuBtn
+      const userMenuBtn = document.getElementById('userMenuBtn');
+
+      // Seleciona o menu do usuário
+      const userMenu = document.getElementById('userMenu');
+
+      // Selecione o botão da bolinha
+      const menuButton = document.querySelector('.menu');
+
+      document
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+
+          // Selecione o elemento .modal-content
+          const modalContent = document.querySelector("form");
+
+          modalContent.style.display = "block";
+
+          openModal("userForm");
         });
+
+      // Seleciona o botão saveBtn
+      const saveBtn = document.getElementById('saveBtn');addEventListener("click", function (event) {
+        // Selecione o elemento .modal-content
+        const modalContent = document.querySelector(".form");
+
+        modalContent.style.display = "none";
+      });
+
+      // Seleciona os campos de entrada do formulário
+      const firstNameInput = document.getElementById('firstName');
+      const lastNameInput = document.getElementById('lastName');
+
+      // Seleciona a tag h1
+      const userName = document.querySelector('.profile h1');
+
+      // Adiciona um evento de clique ao botão saveBtn
+      saveBtn.addEventListener('click', function () {
+        // Obtém os valores dos campos de entrada
+        const firstName = firstNameInput.value;
+        const lastName = lastNameInput.value;
+
+        // Verifica se ambos os campos foram preenchidos
+        if (firstName.trim() !== '' && lastName.trim() !== '') {
+          // Atualiza o conteúdo da tag h1 com o nome completo
+          userName.textContent = `${firstName} ${lastName}`;
+
+          // Armazena o nome do usuário no localStorage
+          localStorage.setItem('userName', `${firstName} ${lastName}`);
+
+          // Oculta o menu do usuário após salvar
+          userMenu.style.display = 'none';
+
+          // Dispara o evento storage para que as outras páginas detectem a mudança no nome do usuário
+          window.dispatchEvent(new Event('storage'));
+        } else {
+          // Caso algum campo esteja vazio, exibe uma mensagem de alerta
+          alert('Por favor, preencha todos os campos.');
+        }
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        // Seleciona a tag h1 onde o nome do usuário será exibido
+        const userName = document.querySelector('.profile h1');
+    
+        // Recupera o nome do usuário do localStorage
+        const storedUserName = localStorage.getItem('userName');
+    
+        // Verifica se o nome do usuário foi armazenado no localStorage
+        if (storedUserName) {
+            // Atualiza o conteúdo da tag h1 com o nome do usuário
+            userName.textContent = storedUserName;
+        }
+    });
     </script>
     <script src="/Front-end/js/script.js"></script>
   </div>
 </body>
+
 </html>

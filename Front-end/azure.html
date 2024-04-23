@@ -58,13 +58,13 @@
         <h1>Updates</h1>
         
 
-        <div class="update update-grupo-recursos">
+        <div class="update update-load-balancer">
           <div class="updt-left">
             <img src="https://cdn-icons-png.flaticon.com/512/873/873107.png" alt="Botão icon" />
             <h1>Load Balancer</h1>
           </div>
           <div class="buttons">
-            <button id="botão-btn" onclick="openModal()">Update</button>
+            <button id="load-balancer-btn" onclick="openModal('modal-load-balancer')">Update</button>
           </div>
         </div>
 
@@ -81,7 +81,17 @@
         <div id="myModal" class="modal">
           <div class="modal-content">
             <span class="close" id="close">&times;</span>
-           
+
+
+              <!-- Modal para LoadBalancer -->
+            <div class="modal-load-balancer">
+              <form>
+                <label for="nome-grupo">Nome do Load Balancer:</label><br>
+                <input type="text" id="nome-grupo" name="nome-load" required><br>
+                <button type="submit" class="enviar-btn-grupo-recursos">Enviar</button>
+              </form>
+            </div>
+
               <!-- Modal para criar Grupo de Recursos -->
             <div class="modal-grupo-recursos">
               <form>
@@ -135,10 +145,19 @@
               </form>
             </div>
 
-            <!-- Modal para criar Grupo de Segurança -->
-            <div class="modal-grupo-seguranca">
+            <!-- Modal para criar Grupo de Segurança Linux -->
+            <div class="modal-grupo-seguranca-linux">
               <form>
-                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança:</label><br>
+                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Linux:</label><br>
+                <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
+                <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Grupo de Segurança Windows -->
+            <div class="modal-grupo-seguranca-windows">
+              <form>
+                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Windows:</label><br>
                 <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
                 <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
               </form>
@@ -197,7 +216,7 @@
               <h1>Conta de Armazenamento</h1>
             </div>
             <div class="buttons">
-              <button id="conta-armazenamento-btn" onclick="openModal()">Update</button>
+              <button id="conta-armazenamento-btn" onclick="openModal('modal-conta-armazenamento')">Update</button>
             </div>
           </div>
 
@@ -207,7 +226,7 @@
               <h1>VNET</h1>
             </div>
             <div class="buttons">
-              <button id="vnet-btn" onclick="openModal()">Update</button>
+              <button id="vnet-btn" onclick="openModal('modal-vnet')">Update</button>
             </div>
           </div>
     
@@ -217,7 +236,7 @@
               <h1>Subrede Pública</h1>
             </div>
             <div class="buttons">
-              <button id="subnet-publica-btn" onclick="openModal()">Update</button>
+              <button id="subnet-publica-btn" onclick="openModal('modal-subrede-publica')">Update</button>
             </div>
           </div>
     
@@ -227,7 +246,7 @@
               <h1>Subrede Privada</h1>
             </div>
             <div class="buttons">
-              <button id="subnet-privada-btn" onclick="openModal()">Update</button>
+              <button id="subnet-privada-btn" onclick="openModal('modal-subrede-privada')">Update</button>
             </div>
           </div>
 
@@ -237,7 +256,7 @@
             <h1>Grupo de Segurança Linux</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-seguranca-linux-btn" onclick="openModal()">Update</button>
+            <button id="grupo-seguranca-linux-btn" onclick="openModal('modal-grupo-seguranca-linux')">Update</button>
           </div>
         </div>
 
@@ -247,7 +266,7 @@
             <h1>Grupo de Segurança Windows</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-seguranca-windows-btn" onclick="openModal()">Update</button>
+            <button id="grupo-seguranca-windows-btn" onclick="openModal('modal-grupo-seguranca-windows')">Update</button>
           </div>
         </div>
 
@@ -257,7 +276,7 @@
             <h1>IP Publico Linux</h1>
           </div>
           <div class="buttons">
-            <button id="ip-publico-linux-btn" onclick="openModal()">Update</button>
+            <button id="ip-publico-linux-btn" onclick="openModal('modal-ip-publico-linux')">Update</button>
           </div>
         </div>
 
@@ -267,7 +286,7 @@
             <h1>IP Publico windows</h1>
           </div>
           <div class="buttons">
-            <button id="ip-publico-windows-btn" onclick="openModal()">Update</button>
+            <button id="ip-publico-windows-btn" onclick="openModal('modal-ip-publico-windows')">Update</button>
           </div>
         </div>
 
@@ -277,7 +296,7 @@
             <h1>Máquina Virtual Windows</h1>
           </div>
           <div class="buttons">
-            <button id="maquina-virtual-windows-btn" onclick="openModal()">Update</button>
+            <button id="maquina-virtual-windows-btn" onclick="openModal('modal-maquina-virtual-windows')">Update</button>
           </div>
         </div>
 
@@ -287,7 +306,7 @@
             <h1>Máquina Virtual Linux</h1>
           </div>
           <div class="buttons">
-            <button id="maquina-virtual-linux-btn" onclick="openModal()">Update</button>
+            <button id="maquina-virtual-linux-btn" onclick="openModal('modal-maquina-virtual-linux')">Update</button>
           </div>
         </div>
       </section>

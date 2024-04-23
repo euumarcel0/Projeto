@@ -42,6 +42,46 @@ document.getElementById("close").addEventListener("click", function (event) {
   modalContent.style.display = "none";
 });
 
+// Event listener para o botão de Load Balancer
+document
+  .getElementById("load-balancer-btn")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+
+    // Selecione o elemento .modal-content
+    const modalContent = document.querySelector(".modal-content");
+
+    modalContent.style.display = "block";
+
+    // Defina o novo valor do índice
+    const novoIndice = 2; // Novo valor do índice
+
+    // Construa o seletor CSS com o novo valor do índice
+    const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+    // Selecione o elemento que corresponde ao novo seletor
+    const novoElemento = modalContent.querySelector(novoSeletor);
+
+    // Aplique o estilo desejado ao novo elemento
+    if (novoElemento) {
+      novoElemento.style.display = "block";
+    }
+
+    openModal("modal-load-balancer");
+
+    // Obtém os dados preenchidos pelo usuário
+    const nome = document.getElementById("nome-load").value;
+
+    // Cria um objeto com os dados
+    const dados = {
+      nome: nome,
+      regiao: regiao,
+    };
+
+    // Chama a função para criar recursos na Azure, passando os dados
+    criarRecursosAzure("criar-grupo-recursos", dados);
+  });
+
 // Event listener para o botão de criar Grupo de Recursos
 document
   .getElementById("grupo-recursos-btn")
@@ -54,7 +94,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 3; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -85,7 +125,7 @@ document
 
 // Event listener para o botão de criar Conta de Armazenamento
 document
-  .getElementById("submit-conta-armazenamento")
+  .getElementById("conta-armazenamento-btn")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
 
@@ -95,7 +135,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 3; // Novo valor do índice
+    const novoIndice = 4; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -119,7 +159,7 @@ document
 
 // Event listener para o botão de criar VNET
 document
-  .getElementById("submit-vnet")
+  .getElementById("vnet-btn")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
     
@@ -129,7 +169,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 5; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -164,7 +204,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 6; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -199,7 +239,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 7; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -227,6 +267,28 @@ document
 document
   .getElementById("grupo-seguranca-linux-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+    const modalContent = document.querySelector(".modal-content");
+
+    modalContent.style.display = "block";
+
+    // Defina o novo valor do índice
+    const novoIndice = 8; // Novo valor do índice
+
+    // Construa o seletor CSS com o novo valor do índice
+    const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+    // Selecione o elemento que corresponde ao novo seletor
+    const novoElemento = modalContent.querySelector(novoSeletor);
+
+    // Aplique o estilo desejado ao novo elemento
+    if (novoElemento) {
+      novoElemento.style.display = "block";
+    }
+
+    openModal("modal-grupo-seguranca-linux");
+
     const nome = document.getElementById("nome-grupo-seguranca").value;
     const dados = {
       nome: nome,
@@ -238,6 +300,28 @@ document
 document
   .getElementById("grupo-seguranca-windows-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+    const modalContent = document.querySelector(".modal-content");
+
+    modalContent.style.display = "block";
+
+    // Defina o novo valor do índice
+    const novoIndice = 9; // Novo valor do índice
+
+    // Construa o seletor CSS com o novo valor do índice
+    const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+    // Selecione o elemento que corresponde ao novo seletor
+    const novoElemento = modalContent.querySelector(novoSeletor);
+
+    // Aplique o estilo desejado ao novo elemento
+    if (novoElemento) {
+      novoElemento.style.display = "block";
+    }
+
+    openModal("modal-grupo-seguranca-windows");
+
     const nome = document.getElementById("nome-grupo-seguranca").value;
     const dados = {
       nome: nome,
@@ -256,7 +340,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 10; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -289,7 +373,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 11; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -322,7 +406,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 12; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -359,7 +443,7 @@ document
     modalContent.style.display = "block";
 
     // Defina o novo valor do índice
-    const novoIndice = 2; // Novo valor do índice
+    const novoIndice = 13; // Novo valor do índice
 
     // Construa o seletor CSS com o novo valor do índice
     const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
@@ -422,9 +506,72 @@ async function criarRecursosAWS(recurso, dados) {
   }
 }
 
+document.getElementById("close").addEventListener("click", function (event) {
+  // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "none";
+});
+
+// Event listener para o botão de criar Load Balancer na AWS
+document
+  .getElementById("botão-load-btn")
+  .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 2; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-load-balancer-aws");
+
+    const nome = document.getElementById("nome-load-balancer-aws").value;
+    const dados = {
+      nome: nome,
+    };
+    criarRecursosAWS("Load Balancer", dados);
+  });
+
 // Event listener para o botão de criar VPC na AWS
-document.getElementById("vpc-aws-btn").addEventListener("click", function () {
-  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+document
+  .getElementById("aws-vpc-btn")
+  .addEventListener("click", function () {
+  
+  // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 3; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-vpc");
+
   const nome = document.getElementById("nome-vpc").value;
   const endereco = document.getElementById("endereco-vpc").value;
   const dados = {
@@ -436,8 +583,30 @@ document.getElementById("vpc-aws-btn").addEventListener("click", function () {
 
 // Event listener para o botão de criar Subrede Pública na AWS
 document
-  .getElementById("subnet-publica-aws-btn")
+  .getElementById("aws-subnet-publica-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 4; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-subrede-publica-aws");
+
     const nome = document.getElementById("nome-subrede-publica-aws").value;
     const endereco = document.getElementById(
       "endereco-subrede-publica-aws"
@@ -451,8 +620,30 @@ document
 
 // Event listener para o botão de criar Subrede Privada na AWS
 document
-  .getElementById("subnet-privada-aws-btn")
+  .getElementById("aws-subnet-privada-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 5; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-subrede-privada-aws");
+
     const nome = document.getElementById("nome-subrede-privada-aws").value;
     const endereco = document.getElementById(
       "endereco-subrede-privada-aws"
@@ -466,8 +657,30 @@ document
 
 // Event listener para o botão de criar Gateway de Internet na AWS
 document
-  .getElementById("gateway-internet-aws-btn")
+  .getElementById("aws-gateway-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 6; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-gateway");
+
     const nome = document.getElementById("nome-gateway").value;
     const dados = {
       nome: nome,
@@ -477,8 +690,30 @@ document
 
 // Event listener para o botão de criar Tabela de Rotas na AWS
 document
-  .getElementById("tabela-rotas-aws-btn")
+  .getElementById("aws-tabela-rota-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 7; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-tabela-rotas");
+
     const nome = document.getElementById("nome-tabela").value;
     const dados = {
       nome: nome,
@@ -488,8 +723,30 @@ document
 
 // Event listener para o botão de criar Grupo de Segurança Linux na AWS
 document
-  .getElementById("grupo-seguranca-linux-aws-btn")
+  .getElementById("aws-grupo-seguranca-linux-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 8; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-grupo-seguranca-linux-aws");
+
     const nome = document.getElementById(
       "nome-grupo-seguranca-linux-aws"
     ).value;
@@ -501,8 +758,30 @@ document
 
 // Event listener para o botão de criar Grupo de Segurança Windows na AWS
 document
-  .getElementById("grupo-seguranca-windows-aws-btn")
+  .getElementById("aws-grupo-seguranca-windows-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 9; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-grupo-seguranca-Windows-aws");
+
     const nome = document.getElementById(
       "nome-grupo-seguranca-windows-aws"
     ).value;
@@ -514,8 +793,30 @@ document
 
 // Event listener para o botão de criar Instância EC2 Linux na AWS
 document
-  .getElementById("maquina-virtual-linux-aws-btn")
+  .getElementById("aws-maquina-virtual-linux-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 10; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-maquina-virtual-linux-aws");
+
     const nome = document.getElementById("nome-maquina-linux-aws").value;
     const usuario = document.getElementById("usuario-linux-aws").value;
     const senha = document.getElementById("senha-linux-aws").value;
@@ -529,8 +830,30 @@ document
 
 // Event listener para o botão de criar Instância EC2 Windows na AWS
 document
-  .getElementById("maquina-virtual-windows-aws-btn")
+  .getElementById("aws-maquina-virtual-windows-btn")
   .addEventListener("click", function () {
+
+    // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.style.display = "block";
+
+  // Defina o novo valor do índice
+  const novoIndice = 11; // Novo valor do índice
+
+  // Construa o seletor CSS com o novo valor do índice
+  const novoSeletor = `.modal-content > div:nth-child(${novoIndice})`;
+
+  // Selecione o elemento que corresponde ao novo seletor
+  const novoElemento = modalContent.querySelector(novoSeletor);
+
+  // Aplique o estilo desejado ao novo elemento
+  if (novoElemento) {
+    novoElemento.style.display = "block";
+  }
+
+  openModal("modal-maquina-virtual-windows-aws");
+
     const nome = document.getElementById("nome-maquina-windows-aws").value;
     const usuario = document.getElementById("usuario-windows-aws").value;
     const senha = document.getElementById("senha-windows-aws").value;
@@ -542,29 +865,7 @@ document
     criarRecursosAWS("Máquina Virtual Windows", dados);
   });
 
-// Event listener para o botão de criar Load Balancer na AWS
-document
-  .getElementById("load-balancer-aws-btn")
-  .addEventListener("click", function () {
-    const nome = document.getElementById("nome-load-balancer-aws").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAWS("Load Balancer", dados);
-  });
 // ----------------------------------------------------MODAL----------------------------------------------------------- //
-
-document
-  .getElementById("conta-armazenamento-btn")
-  .addEventListener("click", function () {});
-
-// Event listener para o botão de "Update" do Grupo de Recursos
-document
-  .getElementById("grupo-recursos-btn")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
-    openModal("modal-grupo-recursos");
-  });
 
 document.addEventListener("DOMContentLoaded", function () {
   // Seleciona a tag h1 onde o nome do usuário será exibido
@@ -594,3 +895,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
