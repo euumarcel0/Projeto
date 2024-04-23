@@ -74,102 +74,119 @@
             <h1>Grupo de Recursos</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-recursos-btn" onclick="openModal()">Update</button>
+            <button id="grupo-recursos-btn" onclick="openModal('modal-grupo-recursos')">Update</button>
           </div>
         </div>
         
         <div id="myModal" class="modal">
           <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="modal-message">Preencha as informações necessárias:</p>
-            <form id="modal-form">
-              <!-- Campos para criar Grupo de Recursos -->
-              <div id="grupo-recursos-fields" style="display: none;">
+            <span class="close" id="close">&times;</span>
+           
+              <!-- Modal para criar Grupo de Recursos -->
+            <div class="modal-grupo-recursos">
+              <form>
                 <label for="nome-grupo">Nome do Grupo de Recursos:</label><br>
                 <input type="text" id="nome-grupo" name="nome-grupo" required><br>
                 <label for="regiao-grupo">Região:</label><br>
                 <input type="text" id="regiao-grupo" name="regiao-grupo" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Conta de Armazenamento -->
-              <div id="conta-armazenamento-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-grupo-recursos">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Conta de Armazenamento -->
+            <div class="modal-conta-armazenamento">
+              <form>
                 <label for="nome-conta">Nome da Conta de Armazenamento:</label><br>
                 <input type="text" id="nome-conta" name="nome-conta" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar VNET -->
-              <div id="vnet-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-conta-armazenamento">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar VNET -->
+            <div class="modal-vnet">
+              <form>
                 <label for="nome-vnet">Nome da VNET:</label><br>
                 <input type="text" id="nome-vnet" name="nome-vnet" required><br>
                 <label for="endereco-vnet">Endereço da VNET:</label><br>
                 <input type="text" id="endereco-vnet" name="endereco-vnet" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Subrede Pública -->
-              <div id="subnet-publica-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-vnet">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Subrede Pública -->
+            <div class="modal-subrede-publica">
+              <form>
                 <label for="nome-subrede-publica">Nome da Subrede Pública:</label><br>
                 <input type="text" id="nome-subrede-publica" name="nome-subrede-publica" required><br>
                 <label for="endereco-subrede-publica">Endereço da Subrede Pública:</label><br>
                 <input type="text" id="endereco-subrede-publica" name="endereco-subrede-publica" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Subrede Privada -->
-              <div id="subnet-privada-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-subrede-publica">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Subrede Privada -->
+            <div class="modal-subrede-privada">
+              <form>
                 <label for="nome-subrede-privada">Nome da Subrede Privada:</label><br>
                 <input type="text" id="nome-subrede-privada" name="nome-subrede-privada" required><br>
                 <label for="endereco-subrede-privada">Endereço da Subrede Privada:</label><br>
                 <input type="text" id="endereco-subrede-privada" name="endereco-subrede-privada" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Grupo de Segurança -->
-              <div id="grupo-seguranca-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-subrede-privada">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Grupo de Segurança -->
+            <div class="modal-grupo-seguranca">
+              <form>
                 <label for="nome-grupo-seguranca">Nome do Grupo de Segurança:</label><br>
                 <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar IP Público Linux -->
-              <div id="ip-publico-linux-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar IP Público Linux -->
+            <div class="modal-ip-publico-linux">
+              <form>
                 <label for="nome-ip-publico-linux">Nome do IP Público Linux:</label><br>
                 <input type="text" id="nome-ip-publico-linux" name="nome-ip-publico-linux" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar IP Público Windows -->
-              <div id="ip-publico-windows-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-ip-publico-linux">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar IP Público Windows -->
+            <div class="modal-ip-publico-windows">
+              <form>
                 <label for="nome-ip-publico-windows">Nome do IP Público Windows:</label><br>
                 <input type="text" id="nome-ip-publico-windows" name="nome-ip-publico-windows" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Máquina Virtual Linux -->
-              <div id="maquina-virtual-linux-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-ip-publico-windows">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Máquina Virtual Linux -->
+            <div class="modal-maquina-virtual-linux">
+              <form>
                 <label for="nome-maquina-linux">Nome da Máquina Virtual Linux:</label><br>
                 <input type="text" id="nome-maquina-linux" name="nome-maquina-linux" required><br>
                 <label for="usuario-linux">Usuário:</label><br>
                 <input type="text" id="usuario-linux" name="usuario-linux" required><br>
                 <label for="senha-linux">Senha:</label><br>
                 <input type="password" id="senha-linux" name="senha-linux" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-        
-              <!-- Campos para criar Máquina Virtual Windows -->
-              <div id="maquina-virtual-windows-fields" style="display: none;">
+                <button type="submit" class="enviar-btn-maquina-virtual-linux">Enviar</button>
+              </form>
+            </div>
+
+            <!-- Modal para criar Máquina Virtual Windows -->
+            <div class="modal-maquina-virtual-windows">
+              <form>
                 <label for="nome-maquina-windows">Nome da Máquina Virtual Windows:</label><br>
                 <input type="text" id="nome-maquina-windows" name="nome-maquina-windows" required><br>
                 <label for="usuario-windows">Usuário:</label><br>
                 <input type="text" id="usuario-windows" name="usuario-windows" required><br>
                 <label for="senha-windows">Senha:</label><br>
                 <input type="password" id="senha-windows" name="senha-windows" required><br>
-                <button type="submit" class="enviar-btn">Enviar</button>
-              </div>
-            </form>
-            <button id="modal-submit">Submit</button>
+                <button type="submit" class="enviar-btn-maquina-virtual-windows">Enviar</button>
+              </form>
+            </div>
           </div>
         </div>
             

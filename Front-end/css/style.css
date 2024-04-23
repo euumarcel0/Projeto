@@ -76,11 +76,19 @@ body {
   transform: translate(-50%, -50%); /* Move o modal para o centro */
   width: 50%; /* Defina a largura desejada do modal */
   max-width: 1200px; /* Defina a largura máxima do modal, se desejar */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(253, 251, 251, 0.4);
   overflow: auto;
-  padding: 200px;
+  padding: 20px;
   border-radius: 10px;
   text-align: center; /* Centraliza o conteúdo dentro do modal */
+}
+
+.modal-content > div{
+  display: none;
+}
+
+.modal-content > div:nth-child(4){
+  display: none;
 }
 
 .modal-content form {
