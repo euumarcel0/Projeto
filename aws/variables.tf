@@ -18,11 +18,11 @@ variable "token" {
 // ----------------------------------------------------VARIABLES----------------------------------------------------------- //
 variable "nome_vpc" {
   description = "Descricao da variavel nome_vpc"
-  default     = "vpcsla"
+  default     = "bacana"
 }
 variable "endereco_vpc" {
   description = "Descricao da variavel endereco_vpc"
-  default     = "153.10.0.0/16"
+  default     = "10.0.0.0/16"
 }
 variable "nome_subrede_publica_aws" {
   description = "Descricao da variavel nome_subrede_publica_aws"
@@ -90,5 +90,5 @@ variable "senha_usuario_windows_aws" {
 }
 variable "nome_load_balancer_aws" {
   description = "Descricao da variavel nome_load_balancer_aws"
-  default     = "sdadad"
+  default     = "string"
 }

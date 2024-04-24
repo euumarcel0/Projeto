@@ -501,7 +501,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/vpc": {
+    "/aws/VPC": {
       "post": {
         "parameters": [
           {
@@ -535,7 +535,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Subrede Pública": {
+    "/aws/subrede-publica": {
       "post": {
         "summary": "Cria uma Subrede Pública na AWS",
         "parameters": [
@@ -570,7 +570,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Subrede Privada": {
+    "/aws/subrede-privada": {
       "post": {
         "summary": "Cria uma Subrede Privada na AWS",
         "parameters": [
@@ -605,7 +605,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Gateway": {
+    "/aws/gateway": {
       "post": {
         "summary": "Cria um Gateway de Internet na AWS",
         "parameters": [
@@ -636,7 +636,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Tabela de Rota": {
+    "/aws/tabela-de-rotas": {
       "post": {
         "summary": "Cria uma Tabela de Rotas na AWS",
         "parameters": [
@@ -667,7 +667,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Grupo de Segurança Linux": {
+    "/aws/grupo-linux": {
       "post": {
         "summary": "Cria um Grupo de Segurança Linux na AWS",
         "parameters": [
@@ -702,7 +702,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Grupo de Segurança Windows": {
+    "/aws/grupo-windows": {
       "post": {
         "summary": "Cria um Grupo de Segurança Windows na AWS",
         "parameters": [
@@ -737,7 +737,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Máquina Virtual Linux": {
+    "/aws/maquinas-linux": {
       "post": {
         "summary": "Cria uma Instância EC2 Linux na AWS",
         "parameters": [
@@ -777,7 +777,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Máquina Virtual Windows": {
+    "/aws/maquina-windows": {
       "post": {
         "summary": "Cria uma Instância EC2 Windows na AWS",
         "parameters": [
@@ -817,7 +817,7 @@
         "tags": ["AWS"]
       }
     },
-    "/aws/Load Balancer": {
+    "/aws/load-balancer": {
       "post": {
         "summary": "Cria um Load Balancer na AWS",
         "parameters": [

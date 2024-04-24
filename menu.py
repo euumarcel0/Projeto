@@ -112,7 +112,7 @@
 }
 # Criar Subrede Privada na AWS:
 # Método: POST
-# Endpoint: /aws/Subrede Privada
+# Endpoint: /aws/subrede-privada
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_subrede_privada",
@@ -120,7 +120,7 @@
 }
 # Criar Subrede Pública na AWS:
 # Método: POST
-# Endpoint: /aws/Subrede Pública
+# Endpoint: /aws/subrede-publica
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_subrede_publica",
@@ -128,54 +128,56 @@
 }
 # Criar Gateway de Internet na AWS:
 # Método: POST
-# Endpoint: /aws/Gateway
+# Endpoint: /aws/gateway
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_gateway"
 }
 # Criar Tabela de Rota na AWS:
 # Método: POST
-# Endpoint: /aws/Tabela de Rota
+# Endpoint: /aws/tabela-de-rotas
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_tabela_rotas"
 }
 # Criar Grupo de Segurança Linux na AWS:
 # Método: POST
-# Endpoint: /aws/Grupo de Segurança Linux
+# Endpoint: /aws/grupo-linux
 # Corpo da Requisição (JSON):
 {
-    "nome": "nome_grupo_seguranca_linux"
+  "nome": "nome_do_grupo",
+  "descrição": "descricao"
 }
 # Criar Grupo de Segurança Windows na AWS:
 # Método: POST
-# Endpoint: /aws/Grupo de Segurança Windows
+# Endpoint: /aws/grupo-windows
 # Corpo da Requisição (JSON):
 {
-    "nome": "nome_grupo_seguranca_windows"
+  "nome": "nome_do_grupo",
+  "descrição": "descricao"
 }
 # Criar Instância EC2 Linux na AWS:
 # Método: POST
-# Endpoint: /aws/Máquina Virtual Windows
+# Endpoint: /aws/maquina-linux
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_maquina_virtual_windows"
 }
 # Criar Instância EC2 Windows na AWS:
 # Método: POST
-# Endpoint: /aws/Máquina Virtual Linux
+# Endpoint: /aws/maquina-windows
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_maquina_virtual_linux"
 }
 # Criar Balanceador de Carga na AWS:
 # Método: POST
-# Endpoint: /aws/Load Balancer
+# Endpoint: /aws/load-balancer
 # Corpo da Requisição (JSON):
 {
     "nome": "nome_balanceador_carga"
 }
 # Destruir Recursos na AWS:
 # Método: POST
-# Endpoint: /aws/Destruir Recursos
+# Endpoint: /aws/destruir
 # Somente Rodar com o Endpoint

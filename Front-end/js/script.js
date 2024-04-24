@@ -1,5 +1,4 @@
 // ----------------------------------------------------AZURE----------------------------------------------------------- //
-
 // Função para criar recursos na Azure
 async function criarRecursosAzure(recurso, dados) {
   try {
@@ -38,6 +37,12 @@ async function criarRecursosAzure(recurso, dados) {
 document.getElementById("close").addEventListener("click", function (event) {
   // Selecione o elemento .modal-content
   const modalContent = document.querySelector(".modal-content");
+
+  const modais = document.querySelectorAll(".modal-content > div");
+
+  modais.forEach(div => {
+    div.style.display = "none";  
+  });
 
   modalContent.style.display = "none";
 });
@@ -602,7 +607,6 @@ document.querySelector(".modal-maquina-virtual-windows .enviar-btn-maquina-virtu
   }
 });
 
-
 // ----------------------------------------------------AWS---------------------------------------------------------- //
 
 // Função para criar recursos na AWS
@@ -640,18 +644,11 @@ async function criarRecursosAWS(recurso, dados) {
   }
 }
 
-document.getElementById("close").addEventListener("click", function (event) {
-  // Selecione o elemento .modal-content
-  const modalContent = document.querySelector(".modal-content");
-
-  modalContent.style.display = "none";
-});
-
 // ----------------------------------------------------AWS/MODAL----------------------------------------------------------- //
 
 // Event listener para o botão de criar Load Balancer na AWS
 document
-  .getElementById("botão-load-btn")
+  .getElementById("load-balancer-btn")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
 
@@ -669,11 +666,6 @@ document
   // Selecione o elemento que corresponde ao novo seletor
   const novoElemento = modalContent.querySelector(novoSeletor);
 
-  // Oculte todos os elementos dentro de modal-content antes de exibir o novo
-  // modalContent.querySelectorAll('div').forEach(elemento => {
-  //   elemento.style.display = "none";
-  // });
-
   // Aplique o estilo desejado ao novo elemento
   if (novoElemento) {
     novoElemento.style.display = "block";
@@ -684,7 +676,7 @@ document
 
 // Event listener para o botão de criar VPC na AWS
 document
-  .getElementById("aws-vpc-btn")
+  .getElementById("grupo-recursos-btn")
   .addEventListener("click", function () {
   
   // Selecione o elemento .modal-content
@@ -711,7 +703,7 @@ document
 
 // Event listener para o botão de criar Subrede Pública na AWS
 document
-  .getElementById("aws-subnet-publica-btn")
+  .getElementById("conta-armazenamento-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -738,7 +730,7 @@ document
 
 // Event listener para o botão de criar Subrede Privada na AWS
 document
-  .getElementById("aws-subnet-privada-btn")
+  .getElementById("vnet-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -765,7 +757,7 @@ document
 
 // Event listener para o botão de criar Gateway de Internet na AWS
 document
-  .getElementById("aws-gateway-btn")
+  .getElementById("subnet-publica-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -792,7 +784,7 @@ document
 
 // Event listener para o botão de criar Tabela de Rotas na AWS
 document
-  .getElementById("aws-tabela-rota-btn")
+  .getElementById("subnet-privada-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -819,7 +811,7 @@ document
 
 // Event listener para o botão de criar Grupo de Segurança Linux na AWS
 document
-  .getElementById("aws-grupo-seguranca-linux-btn")
+  .getElementById("grupo-seguranca-linux-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -846,7 +838,7 @@ document
 
 // Event listener para o botão de criar Grupo de Segurança Windows na AWS
 document
-  .getElementById("aws-grupo-seguranca-windows-btn")
+  .getElementById("grupo-seguranca-windows-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -873,7 +865,7 @@ document
 
 // Event listener para o botão de criar Instância EC2 Linux na AWS
 document
-  .getElementById("aws-maquina-virtual-linux-btn")
+  .getElementById("ip-publico-linux-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -900,7 +892,7 @@ document
 
 // Event listener para o botão de criar Instância EC2 Windows na AWS
 document
-  .getElementById("aws-maquina-virtual-windows-btn")
+  .getElementById("ip-publico-windows-btn")
   .addEventListener("click", function () {
 
     // Selecione o elemento .modal-content
@@ -932,38 +924,42 @@ document.querySelector(".modal-load-balancer-aws .enviar-btn-load-balancer-aws")
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
-  const nome = document.getElementById("nome-load-aws").value;
-
+  const nome = document.getElementById("nome-load").value; // Corrigido para nome-load
+  
   // Cria um objeto com os dados
   const dados = {
     nome: nome,
   };
 
   try {
-      // Chama a função para criar recursos na Azure, passando os dados
-      await criarRecursosAzure("Load Balancer", dados);
+      // Chama a função para criar recursos na AWS, passando os dados
+      await criarRecursosAWS("load-balancer", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
   }
 });
 
-// Event listener para o botão de enviar dentro do modal de VNET
-document.querySelector(".modal-vpc .enviar-btn-vpc").addEventListener("click", async function (event) {
-  event.preventDefault(); 
-  
+// Event listener para o botão de enviar dentro do modal de VPC
+document.getElementById("enviar-btn-vpc").addEventListener("click", async function (event) {
+  event.preventDefault(); // Previne o comportamento padrão do formulário
+
+  // Obtém os valores dos campos do formulário
   const nome = document.getElementById("nome-vpc").value;
   const endereco = document.getElementById("endereco-vpc").value;
 
+  // Cria um objeto com os dados
   const dados = {
-    nome: nome,
-    endereco: endereco,
+      nome: nome,
+      endereco: endereco
   };
 
   try {
-      await criarRecursosAzure("vpc", dados);
+      // Chama a função para criar recursos na AWS, passando os dados
+      await criarRecursosAWS("VPC", dados);
   } catch (error) {
       console.error(error);
+      // Trate o erro conforme necessário
   }
 });
 
@@ -980,7 +976,7 @@ document.querySelector(".modal-subrede-publica-aws .enviar-btn-subrede-publica-a
   };
 
   try {
-      await criarRecursosAzure("Subrede Pública", dados);
+      await criarRecursosAzure("subrede-publica", dados);
   } catch (error) {
       console.error(error);
   }
@@ -999,7 +995,7 @@ document.querySelector(".modal-subrede-privada-aws .enviar-btn-subrede-privada-a
   };
 
   try {
-      await criarRecursosAzure("Subrede Privada", dados);
+      await criarRecursosAzure("subrede-privada", dados);
   } catch (error) {
       console.error(error);
   }
@@ -1019,7 +1015,7 @@ document.querySelector(".modal-gateway .enviar-btn-gateway").addEventListener("c
 
   try {
       // Chama a função para criar recursos na Azure, passando os dados
-      await criarRecursosAzure("Gateway", dados);
+      await criarRecursosAzure("gateway", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
@@ -1040,7 +1036,7 @@ document.querySelector(".modal-tabela-rotas .enviar-btn-tabela-rotas").addEventL
 
   try {
       // Chama a função para criar recursos na Azure, passando os dados
-      await criarRecursosAzure("Tabela de Rota", dados);
+      await criarRecursosAzure("tabela-de-rotas", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
@@ -1059,7 +1055,7 @@ document.querySelector(".modal-grupo-seguranca-linux-aws .enviar-btn-grupo-segur
   };
 
   try {
-      await criarRecursosAzure("Grupo de Segurança Linux", dados);
+      await criarRecursosAzure("grupo-linux", dados);
   } catch (error) {
       console.error(error);
   }
@@ -1077,7 +1073,7 @@ document.querySelector(".modal-grupo-seguranca-windows-aws .enviar-btn-grupo-seg
   };
 
   try {
-      await criarRecursosAzure("Grupo de Segurança Windows", dados);
+      await criarRecursosAzure("grupo-windows", dados);
   } catch (error) {
       console.error(error);
   }
@@ -1098,7 +1094,7 @@ document.querySelector(".modal-maquina-virtual-linux-aws .enviar-btn-maquina-vir
   };
 
   try {
-      await criarRecursosAzure("Máquina Virtual Linux", dados);
+      await criarRecursosAzure("maquinas-linux", dados);
   } catch (error) {
       console.error(error);
   }
@@ -1119,7 +1115,7 @@ document.querySelector(".modal-maquina-virtual-windows-aws .enviar-btn-maquina-v
   };
 
   try {
-      await criarRecursosAzure("Máquina Virtual Windows", dados);
+      await criarRecursosAzure("maquina-windows", dados);
   } catch (error) {
       console.error(error);
   }

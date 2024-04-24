@@ -361,7 +361,7 @@ def criar_vpc():
         return jsonify({"error": f"Erro ao criar VPC: {e}"}), 500
     
 # Endpoint para criar uma Subrede Privada na AWS
-@app.route('/aws/Subrede Privada', methods=['POST'])
+@app.route('/aws/subrede-privada', methods=['POST'])
 def criar_subrede_privada_aws():
     dados = request.json
     nome_subrede_privada = dados['nome']
@@ -380,7 +380,7 @@ def criar_subrede_privada_aws():
         return jsonify({"error": f"Erro ao criar Subrede Privada: {e}"}), 500
 
 # Função para criar Subrede Pública na AWS
-@app.route('/aws/Subrede Pública', methods=['POST'])
+@app.route('/aws/subrede-publica', methods=['POST'])
 def criar_subrede_publica_aws():
     dados = request.json
     nome_subrede_publica = dados['nome']
@@ -399,7 +399,7 @@ def criar_subrede_publica_aws():
         return jsonify({"error": f"Erro ao criar Subrede Pública: {e}"}), 500
 
 # Função para criar Gateway de Internet na AWS
-@app.route('/aws/Gateway', methods=['POST'])
+@app.route('/aws/gateway', methods=['POST'])
 def criar_gateway_internet_aws():
     dados = request.json
     nome_gateway = dados['nome']
@@ -414,7 +414,7 @@ def criar_gateway_internet_aws():
         return jsonify({"error": f"Erro ao criar Gateway de Internet: {e}"}), 500
 
 # Função para criar Tabela de Rotas na AWS
-@app.route('/aws/Tabela de Rota', methods=['POST'])
+@app.route('/aws/tabela-de-rotas', methods=['POST'])
 def criar_tabela_rotas_aws():
     dados = request.json
     nome_tabela_rotas = dados['nome']
@@ -430,7 +430,7 @@ def criar_tabela_rotas_aws():
         return jsonify({"error": f"Erro ao criar Tabela de Rotas: {e}"}), 500
 
 # Função para criar Grupo de Segurança Linux na AWS
-@app.route('/aws/Grupo de Segurança Linux', methods=['POST'])
+@app.route('/aws/grupo-linux', methods=['POST'])
 def criar_grupo_seguranca_linux_aws():
     dados = request.json
     nome_grupo_seguranca_linux = dados['nome']
@@ -448,7 +448,7 @@ def criar_grupo_seguranca_linux_aws():
         return jsonify({"error": f"Erro ao criar Grupo de Segurança: {e}"}), 500
 
 # Função para criar Grupo de Segurança Windows na AWS
-@app.route('/aws/Grupo de Segurança Windows', methods=['POST'])
+@app.route('/aws/grupo-windows', methods=['POST'])
 def criar_grupo_seguranca_windows_aws():
     dados = request.json
     nome_grupo_seguranca_windows = dados['nome']
@@ -466,7 +466,7 @@ def criar_grupo_seguranca_windows_aws():
         return jsonify({"error": f"Erro ao criar Grupo de Segurança: {e}"}), 500
 
 # Função para criar instância EC2 Linux na AWS
-@app.route('/aws/Máquina Virtual Windows', methods=['POST'])
+@app.route('/aws/maquinas-linux', methods=['POST'])
 def criar_instancia_ec2_linux_aws():
     dados = request.json
     nome_maquina_virtual_windows = dados['nome']
@@ -486,7 +486,7 @@ def criar_instancia_ec2_linux_aws():
         return jsonify({"error": f"Erro ao criar Instância EC2 Linux: {e}"}), 500
 
 # Função para criar instância EC2 Windows na AWS
-@app.route('/aws/Máquina Virtual Linux', methods=['POST'])
+@app.route('/aws/maquina-windows', methods=['POST'])
 def criar_instancia_ec2_windows_aws():
     dados = request.json
     nome_maquina_virtual_linux = dados['nome']
@@ -506,7 +506,7 @@ def criar_instancia_ec2_windows_aws():
         return jsonify({"error": f"Erro ao criar Instância EC2 Windows: {e}"}), 500
 
 # Criar Load Balancer AWS
-@app.route('/aws/Load Balancer', methods=['POST'])
+@app.route('/aws/load-balancer', methods=['POST'])
 def criar_load_balancer_aws():
     dados = request.json
     nome_load_balancer = dados['nome']

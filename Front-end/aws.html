@@ -27,16 +27,16 @@
     <aside>
       <div>
         <input type="text" placeholder="Search" /><br />
-  
         <button class="active" id="menuBnt">MENU</button>
-        <button id="aws-btn">AWS</button>
+        <button class="aws-btn">AWS</button>
         <button id="azure-btn">AZURE</button>
         <button id="sidebar-btn">Atualizações</button>
       </div>
   
       <div class="profile">
         <img src="https://assets-global.website-files.com/64462c9aa967772377e53b6e/653248804d0afe70afa76e5f_Feature%20announcement_%20Humanitec%20Terraform%20Driver%20Enters%20General%20Availability.jpg" alt="Profile Pic" class="profile--pic" />
-        <h1 id="userName">noem</h1>
+  
+        <h1>Marcelo Mesquita</h1>
       </div>
     </aside>
   
@@ -55,53 +55,54 @@
   
       <section class="updates">
         <h1>Updates</h1>
+        
 
-        <div class="update update-grupo-recursos">
-            <div class="updt-left">
-              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Botão icon" />
-              <h1>Load Balancer</h1>
-            </div>
-            <div class="buttons">
-              <button id="botão-load-btn" onclick="openModal('modal-load-balancer-aws')">Update</button>
-            </div>
+        <div class="update update-load-balancer">
+          <div class="updt-left">
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Botão icon" />
+            <h1>Load Balancer</h1>
           </div>
-
-        <div class="update">
-            <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="VPC icon" />
-                <h1>VPC</h1>
-            </div>
-            <div class="buttons">
-                <button id="aws-vpc-btn" onclick="openModal('modal-vpc')">Update</button>
-            </div>
+          <div class="buttons">
+            <button id="load-balancer-btn" onclick="openModal('modal-load-balancer-aws')">Update</button>
+          </div>
         </div>
 
+        <div class="update update-grupo-recursos">
+          <div class="updt-left">
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Grupo de Recursos icon" />
+            <h1>VPC</h1>
+          </div>
+          <div class="buttons">
+            <button id="grupo-recursos-btn" onclick="openModal('modal-vpc')">Update</button>
+          </div>
+        </div>
+        
         <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-content">
               <span class="close" id="close">&times;</span>
 
-          <!-- Modal para LoadBalancer -->
-          <div class="modal-load-balancer-aws">
-            <form>
-              <label for="nome-load-aws">Nome do Load Balancer:</label><br>
-              <input type="text" id="nome-load-aws" name="nome-load-aws" required><br>
-              <button type="submit" class="enviar-btn-load-balancer-aws">Enviar</button>
-            </form>
-          </div>
+              <!-- Modal para LoadBalancer -->
+            <div class="modal-load-balancer-aws">
+              <form>
+                <label for="nome-load">Nome do Load Balancer:</label><br>
+                <input type="text" id="nome-load" name="nome-load" required><br>
+                <button type="submit" class="enviar-btn-load-balancer-aws">Enviar</button>
+              </form>
+            </div>
 
-          <!-- Modal para criar VPC -->
+              <!-- Modal para criar VPC -->
           <div class="modal-vpc">
             <form>
               <label for="nome-vpc">Nome da VPC:</label><br>
               <input type="text" id="nome-vpc" name="nome-vpc" required><br>
               <label for="endereco-vpc">Endereço da VPC:</label><br>
               <input type="text" id="endereco-vpc" name="endereco-vpc" required><br>
-              <button type="submit" class="enviar-btn-vpc">Enviar</button>
+              <button type="submit" class="enviar-btn-vpc" id="enviar-btn-vpc">Enviar</button>
             </form>
           </div>
 
-          <!-- Modal para criar Subrede Pública -->
+            <!-- Modal para criar Subrede Pública -->
           <div class="modal-subrede-publica-aws">
             <form>
               <label for="nome-subrede-publica">Nome da Subrede Pública:</label><br>
@@ -135,7 +136,7 @@
           <!-- Modal para criar Tabela de Rotas -->
           <div class="modal-tabela-rotas">
             <form>
-              <label for="nome-tabela-rotas">Nome do Grupo de Segurança Windows:</label><br>
+              <label for="nome-tabela-rotas">Nome da Tabela de Rotas:</label><br>
               <input type="text" id="nome-tabela-rotas" name="nome-tabela-rotas" required><br>
               <button type="submit" class="enviar-btn-tabela-rotas">Enviar</button>
             </form>
@@ -190,117 +191,116 @@
           </div>
         </div>
       </div>
+            
 
-        <div class="update">
+          <div class="update">
             <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Subrede icon" />
-                <h1>Subrede Pública</h1>
+              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" Ícone da atualização />
+              <h1>Subrede Pública</h1>
             </div>
             <div class="buttons">
-                <button id="aws-subnet-publica-btn" onclick="openModal('modal-subrede-publica-aws')">Update</button>
+              <button id="conta-armazenamento-btn" onclick="openModal('')">Update</button>
             </div>
-        </div>
+          </div>
 
-        <div class="update">
+          <div class="update">
             <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Subrede icon" />
-                <h1>Subrede Privada</h1>
+              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="VNET icon" />
+              <h1>Subrede Privada</h1>
             </div>
             <div class="buttons">
-                <button id="aws-subnet-privada-btn" onclick="openModal('modal-subrede-privada-aws')">Update</button>
+              <button id="vnet-btn" onclick="openModal('modal-vnet')">Update</button>
             </div>
-        </div>
-
-        <div class="update">
+          </div>
+    
+          <div class="update">
             <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Gateway icon" />
-                <h1>Gateway</h1>
+              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Subrede icon" />
+              <h1>Gateway</h1>
             </div>
             <div class="buttons">
-                <button id="aws-gateway-btn" onclick="openModal('modal-gateway')">Update</button>
+              <button id="subnet-publica-btn" onclick="openModal('')">Update</button>
             </div>
-        </div>
-
-        <div class="update">
+          </div>
+    
+          <div class="update">
             <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Tabela de Rota icon" />
-                <h1>Tabela de Rota</h1>
+              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Subrede icon" />
+              <h1>Tabela de Rota</h1>
             </div>
             <div class="buttons">
-                <button id="aws-tabela-rota-btn" onclick="openModal('modal-tabela-rotas')">Update</button>
+              <button id="subnet-privada-btn" onclick="openModal('')">Update</button>
             </div>
-        </div>
+          </div>
 
         <div class="update">
-            <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Grupo de Segurança icon" />
-                <h1>Grupo de Segurança Linux</h1>
-            </div>
-            <div class="buttons">
-                <button id="aws-grupo-seguranca-linux-btn" onclick="openModal('modal-grupo-seguranca-linux-aws')">Update</button>
-            </div>
+          <div class="updt-left">
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Ícone da atualização" />
+            <h1>Grupo de Segurança Linux</h1>
+          </div>
+          <div class="buttons">
+            <button id="grupo-seguranca-linux-btn" onclick="openModal('')">Update</button>
+          </div>
         </div>
 
         <div class="update">
           <div class="updt-left">
-              <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Grupo de Segurança icon" />
-              <h1>Grupo de Segurança Windows</h1>
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Ícone da atualização" />
+            <h1>Grupo de Segurança Windows</h1>
           </div>
           <div class="buttons">
-              <button id="aws-grupo-seguranca-windows-btn" onclick="openModal('modal-ip-publico-Windows-aws')">Update</button>
+            <button id="grupo-seguranca-windows-btn" onclick="openModal('')">Update</button>
           </div>
-      </div>
-
-        <div class="update">
-            <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Máquina Virtual Windows icon" />
-                <h1>Máquina Virtual Windows</h1>
-            </div>
-            <div class="buttons">
-                <button id="aws-maquina-virtual-windows-btn" onclick="openModal('modal-maquina-virtual-windows-aws')">Update</button>
-            </div>
         </div>
 
         <div class="update">
-            <div class="updt-left">
-                <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Máquina Virtual Linux icon" />
-                <h1>Máquina Virtual Linux</h1>
-            </div>
-            <div class="buttons">
-                <button id="aws-maquina-virtual-linux-btn" onclick="openModal('modal-maquina-virtual-linux-aws')">Update</button>
-            </div>
+          <div class="updt-left">
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Ícone da atualização" />
+            <h1>Máquina Virtual Windows</h1>
+          </div>
+          <div class="buttons">
+            <button id="ip-publico-linux-btn" onclick="openModal('')">Update</button>
+          </div>
         </div>
 
-    </section>
-</div>
-<script>
-    // Obtendo os botões
-    const awsBtn = document.getElementById('aws-btn');
-    const azureBtn = document.getElementById('azure-btn');
+        <div class="update">
+          <div class="updt-left">
+            <img src="https://iconape.com/wp-content/png_logo_vector/aws-vpc.png" alt="Ícone da atualização" />
+            <h1>Máquina Virtual Linux</h1>
+          </div>
+          <div class="buttons">
+            <button id="ip-publico-windows-btn" onclick="openModal('')">Update</button>
+          </div>
+        </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      // Obtendo os botões
+      const awsBtn = document.querySelector('.aws-btn');
+      const azureBtn = document.getElementById('azure-btn');
 
-    // Adicionando eventos de clique aos botões
-    awsBtn.addEventListener('click', function () {
+      // Adicionando eventos de clique aos botões
+      awsBtn.addEventListener('click', function() {
         window.location.href = './aws.html';
-    });
-
-    azureBtn.addEventListener('click', function () {
-        window.location.href = './azure.html';
-    });
-    menuBnt.addEventListener('click', function () {
-        window.location.href = './index.html'
-    });
-    
-    // Obtendo os botões "Update"
-    const updateButtons = document.querySelectorAll('.update button');
-
-    // Adicionando eventos de clique para os botões "Update"
-    updateButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        openModal(); // Chamando a função openModal() quando um botão "Update" é clicado
       });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
+      azureBtn.addEventListener('click', function() {
+        window.location.href = './azure.html';
+      });
+      menuBnt.addEventListener('click', function() {
+        window.location.href = './index.html'
+      });
+      // Obtendo os botões "Update"
+      const updateButtons = document.querySelectorAll('.update button');
+
+      // Adicionando eventos de clique para os botões "Update"
+      updateButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          openModal(); // Chamando a função openModal() quando um botão "Update" é clicado
+        });
+      });
+      document.addEventListener('DOMContentLoaded', function() {
     // Seleciona a tag h1 onde o nome do usuário será exibido
     const userName = document.querySelector('.profile h1');
 
@@ -313,16 +313,9 @@
         userName.textContent = storedUserName;
     }
 });
-    // Adicionando eventos de clique a cada botão de atualização
-    updateButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const resourceName = this.closest('.update').querySelector('h1').textContent;
-            criarRecursosAWS(resourceName);
-        });
-    });
-</script>
-<script src="/Front-end/js/script.js"></script>
-</div>
+    </script>
+    <script src="/Front-end/js/script.js"></script>
+  </div>
 </body>
 
 </html>

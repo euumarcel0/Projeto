@@ -78,9 +78,28 @@
             <h1>AWS</h1>
           </div>
           <div class="buttons">
-            <button id="loginawsBtn">Acessar</button>
+            <button id="loginawsBtn" onclick="openModal('modal-aws')">Acessar</button>
           </div>
         </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+
+            <!-- Modal para LoadBalancer -->
+          <div class="modal-aws">
+            <form>
+              <label for="acces_key">Acces_key:</label><br>
+              <input type="text" id="acces_key" name="acces_key" required><br>
+              <label for="secret_access_key">Secret_key:</label><br>
+              <input type="text" id="secret_access_key" name="secret_access_key" required><br>
+              <label for="token">Token:</label><br>
+              <input type="text" id="token" name="token" required><br>
+              <button type="submit" class="enviar-btn-acesso">Enviar</button>
+            </form>
+          </div>
+          </div>
 
         <div class="update">
 
@@ -125,9 +144,30 @@
       </section>
     </div>
     <script>
+        // Event listener para o botão de acesso a AWS
+        document.querySelector(".modal-aws .enviar-btn-acesso").addEventListener("click", async function (event) {
+          event.preventDefault(); 
+          
+          const nome = document.getElementById("access_key").value;
+          const usuario = document.getElementById("secret_access_key").value;
+          const senha = document.getElementById("token").value;
+
+          const dados = {
+            nome: nome,
+            usuario: usuario,
+            senha: senha,
+          };
+
+          try {
+              await criarRecursosAWS("login", dados);
+          } catch (error) {
+              console.error(error);
+          }
+        });
+
       document.getElementById("loginBtn").addEventListener("click", function () {
         // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-        fetch('http://localhost:5000/adminazure', {
+        fetch('http://localhost:5000/azure/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -156,7 +196,7 @@
 
       document.getElementById("loginawsBtn").addEventListener("click", function () {
         // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-        fetch('http://localhost:5000/adminaws', {
+        fetch('http://localhost:5000/aws/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
