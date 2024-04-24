@@ -1055,6 +1055,7 @@ document.querySelector(".modal-grupo-seguranca-linux-aws .enviar-btn-grupo-segur
 
   const dados = {
     nome: nome,
+    descrição: descrição
   };
 
   try {
@@ -1072,6 +1073,7 @@ document.querySelector(".modal-grupo-seguranca-windows-aws .enviar-btn-grupo-seg
 
   const dados = {
     nome: nome,
+    descrição: descrição
   };
 
   try {
