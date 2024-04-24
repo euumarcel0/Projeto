@@ -13,8 +13,9 @@ terraform {
 
 provider "aws" {
  region = "us-east-1"
- shared_config_files      = ["C:/Users/46683590842/.aws/config"]
- shared_credentials_files = ["C:/Users/46683590842/.aws/credentials"]
+ access_key = var.access_key
+ secret_key = var.secret_key
+ token = var.token
 }
 
 # Criar VPC

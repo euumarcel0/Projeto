@@ -81,6 +81,3 @@ variable "nome_load_balancer" {
   default     = "sla"
 }
 
-
-
-

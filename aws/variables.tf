@@ -1,3 +1,21 @@
+// ----------------------------------------------------LOGIN----------------------------------------------------------- //
+
+variable "access_key" {
+  description = "access_key AWS"
+  default     = "sla"
+}
+
+variable "secret_key" {
+  description = "secret_key AWS"
+  default     = "sla"
+}
+
+variable "token" {
+  description = "Token AWS"
+  default     = "sla"
+}
+
+// ----------------------------------------------------VARIABLES----------------------------------------------------------- //
 variable "nome_vpc" {
   description = "Descricao da variavel nome_vpc"
   default     = "vpcsla"

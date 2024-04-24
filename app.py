@@ -540,7 +540,7 @@ def destruir_recursos_aws():
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Erro ao destruir recursos na AWS: {e}"}), 500
 
-@app.route('/adminazure', methods=['POST', 'OPTIONS'])
+@app.route('/azure/login', methods=['POST', 'OPTIONS'])
 def fazer_login_azure():
     terraform_dir = './azure/'
     try:
@@ -549,15 +549,25 @@ def fazer_login_azure():
         return jsonify({"message": "Login realizado com sucesso!"}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Erro ao fazer login na Azure: {e}"}), 500
-    
-@app.route('/adminaws', methods=['POST', 'OPTIONS'])
+
+@app.route('/aws/login', methods=['POST'])
 def fazer_login_aws():
-    terraform_dir = './azure/'
+    dados = request.json
+    access_key = dados['access_key']
+    secret_key = dados['secret_access_key']
+    token = dados['token']
+    
+    terraform_dir = './aws/'
+    
+    atualizar_nomes_tf({"nome": "access_key", "valor": access_key}, terraform_dir)
+    atualizar_nomes_tf({"nome": "secret_key", "valor": secret_key}, terraform_dir)
+    atualizar_nomes_tf({"nome": "token", "valor": token}, terraform_dir)
+     
     try:
         subprocess.run('terraform init', shell=True, cwd=terraform_dir)
-        return jsonify({"message": "Login realizado com sucesso!"}), 200
-    except subprocess.CalledProcessError as e:
-        return jsonify({"error": f"Erro ao fazer login na Azure: {e}"}), 500
+        return "Variáveis atualizadas com sucesso.", 200
+    except Exception as e:
+        return f"Erro ao aplicar as variáveis: {str(e)}", 500
                 
 # Inicialização do servidor Flask
 if __name__ == '__main__':

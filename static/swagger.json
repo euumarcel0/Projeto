@@ -16,6 +16,31 @@
     }
   ],
   "paths": {
+    "/azure/login": {
+      "post": {
+        "summary": "Realiza o login na Azure",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Credenciais de login na Azure",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login na Azure realizado com sucesso"
+          },
+          "401": {
+            "description": "Credenciais inválidas"
+          }
+        },
+        "tags": ["Azure"]
+      }
+    },
     "/azure/criar-grupo-recursos": {
       "post": {
         "summary": "Cria um Grupo de Recursos na Azure",
@@ -435,6 +460,45 @@
           }
         },
         "tags": ["Azure"]
+      }
+    },
+    "/aws/login": {
+      "post": {
+        "summary": "Realiza o login na AWS",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Credenciais de login na AWS",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access_key": {
+                  "type": "string",
+                  "description": "Chave de acesso da conta AWS"
+                },
+                "secret_access_key": {
+                  "type": "string",
+                  "description": "Chave secreta de acesso da conta AWS"
+                },
+                "token": {
+                  "type": "string",
+                    "description": "Token de acesso da conta AWS"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login na AWS realizado com sucesso"
+          },
+          "401": {
+            "description": "Credenciais inválidas"
+          }
+        },
+        "tags": ["AWS"]
       }
     },
     "/aws/vpc": {
