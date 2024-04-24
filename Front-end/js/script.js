@@ -31,7 +31,7 @@ async function criarRecursosAzure(recurso, dados) {
     //document.getElementById('modal-message').innerText = error.message;
 
     // Abre o modal
-    openModal();
+    openModal(modalContent);
   }
 }
 
@@ -41,6 +41,8 @@ document.getElementById("close").addEventListener("click", function (event) {
 
   modalContent.style.display = "none";
 });
+
+// ----------------------------------------------------AZURE/MODAL----------------------------------------------------------- //
 
 // Event listener para o botão de Load Balancer
 document
@@ -68,18 +70,6 @@ document
     }
 
     openModal("modal-load-balancer");
-
-    // Obtém os dados preenchidos pelo usuário
-    const nome = document.getElementById("nome-load").value;
-
-    // Cria um objeto com os dados
-    const dados = {
-      nome: nome,
-      regiao: regiao,
-    };
-
-    // Chama a função para criar recursos na Azure, passando os dados
-    criarRecursosAzure("criar-grupo-recursos", dados);
   });
 
 // Event listener para o botão de criar Grupo de Recursos
@@ -108,19 +98,6 @@ document
     }
 
     openModal("modal-grupo-recursos");
-
-    // Obtém os dados preenchidos pelo usuário
-    const nome = document.getElementById("nome-grupo").value;
-    const regiao = document.getElementById("regiao-grupo").value;
-
-    // Cria um objeto com os dados
-    const dados = {
-      nome: nome,
-      regiao: regiao,
-    };
-
-    // Chama a função para criar recursos na Azure, passando os dados
-    criarRecursosAzure("criar-grupo-recursos", dados);
   });
 
 // Event listener para o botão de criar Conta de Armazenamento
@@ -149,12 +126,6 @@ document
     }
 
     openModal("modal-conta-armazenamento");
-
-    const nome = document.getElementById("nome-conta").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("criar-conta-armazenamento", dados);
   });
 
 // Event listener para o botão de criar VNET
@@ -183,14 +154,6 @@ document
     }
 
     openModal("modal-vnet");
-
-    const nome = document.getElementById("nome-vnet").value;
-    const endereco = document.getElementById("endereco-vnet").value;
-    const dados = {
-      nome: nome,
-      endereco: endereco,
-    };
-    criarRecursosAzure("criar-vnet", dados);
   });
 
 // Event listener para o botão de criar Subrede Pública
@@ -218,14 +181,6 @@ document
     }
 
     openModal("modal-subrede-publica");
-
-    const nome = document.getElementById("nome-subrede-publica").value;
-    const endereco = document.getElementById("endereco-subrede-publica").value;
-    const dados = {
-      nome: nome,
-      endereco: endereco,
-    };
-    criarRecursosAzure("criar-subrede-publica", dados);
   });
 
 // Event listener para o botão de criar Subrede Privada
@@ -253,14 +208,6 @@ document
     }
 
     openModal("modal-subrede-privada");
-
-    const nome = document.getElementById("nome-subrede-privada").value;
-    const endereco = document.getElementById("endereco-subrede-privada").value;
-    const dados = {
-      nome: nome,
-      endereco: endereco,
-    };
-    criarRecursosAzure("criar-subrede-privada", dados);
   });
 
 // Event listener para o botão de criar Grupo de Segurança
@@ -288,12 +235,6 @@ document
     }
 
     openModal("modal-grupo-seguranca-linux");
-
-    const nome = document.getElementById("nome-grupo-seguranca").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("criar-grupo-seguranca-linux", dados);
   });
 
 // Event listener para o botão de criar Grupo de Segurança
@@ -321,12 +262,6 @@ document
     }
 
     openModal("modal-grupo-seguranca-windows");
-
-    const nome = document.getElementById("nome-grupo-seguranca").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("criar-grupo-seguranca-windows", dados);
   });
 
 // Event listener para o botão de criar IP Público Linux
@@ -354,12 +289,6 @@ document
     }
 
     openModal("modal-ip-publico-linux");
-
-    const nome = document.getElementById("nome-ip-publico-linux").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("criar-interface-ip-linux", dados);
   });
 
 // Event listener para o botão de criar IP Público Windows
@@ -387,12 +316,6 @@ document
     }
 
     openModal("modal-ip-publico-windows");
-
-    const nome = document.getElementById("nome-ip-publico-windows").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("criar-interface-ip-windows", dados);
   });
 
 // Event listener para o botão de criar Máquina Virtual Linux
@@ -420,16 +343,6 @@ document
     }
 
     openModal("modal-maquina-virtual-linux");
-
-    const nome = document.getElementById("nome-maquina-linux").value;
-    const usuario = document.getElementById("usuario-linux").value;
-    const senha = document.getElementById("senha-linux").value;
-    const dados = {
-      nome: nome,
-      usuario: usuario,
-      senha: senha,
-    };
-    criarRecursosAzure("criar-maquina-virtual-linux", dados);
   });
 
 // Event listener para o botão de criar Máquina Virtual Windows
@@ -457,17 +370,238 @@ document
     }
 
     openModal("modal-maquina-virtual-windows");
-
-    const nome = document.getElementById("nome-maquina-windows").value;
-    const usuario = document.getElementById("usuario-windows").value;
-    const senha = document.getElementById("senha-windows").value;
-    const dados = {
-      nome: nome,
-      usuario: usuario,
-      senha: senha,
-    };
-    criarRecursosAzure("criar-maquina-virtual-windows", dados);
   });
+
+// ----------------------------------------------------AZURE/Requisição----------------------------------------------------------- //
+
+// Event listener para o botão de enviar dentro do modal de Load Balancer
+document.querySelector(".modal-load-balancer .enviar-btn-load-balancer").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-load").value;
+
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      // Chama a função para criar recursos na Azure, passando os dados
+      await criarRecursosAzure("criar-load-balancer", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Grupo de Recursos
+document.querySelector(".modal-grupo-recursos .enviar-btn-grupo-recursos").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-grupo").value;
+  const regiao = document.getElementById("regiao-grupo").value;
+
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+    regiao: regiao,
+  };
+
+  try {
+      // Chama a função para criar recursos na Azure, passando os dados
+      await criarRecursosAzure("criar-grupo-recursos", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Conta de Armazenamento
+document.querySelector(".modal-conta-armazenamento .enviar-btn-conta-armazenamento").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-conta").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("criar-conta-armazenamento", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de VNET
+document.querySelector(".modal-vnet .enviar-btn-vnet").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-vnet").value;
+  const endereco = document.getElementById("endereco-vnet").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("criar-vnet", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Subrede Pública
+document.querySelector(".modal-subrede-publica .enviar-btn-subrede-publica").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-subrede-publica").value;
+  const endereco = document.getElementById("endereco-subrede-publica").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("criar-subrede-publica", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Subrede Privada
+document.querySelector(".modal-subrede-privada .enviar-btn-subrede-privada").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-subrede-privada").value;
+  const endereco = document.getElementById("endereco-subrede-privada").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("criar-subrede-privada", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Linux
+document.querySelector(".modal-grupo-seguranca-linux .enviar-btn-grupo-seguranca").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-grupo-seguranca").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("criar-grupo-seguranca-linux", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Windows
+document.querySelector(".modal-grupo-seguranca-windows .enviar-btn-grupo-seguranca").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-grupo-seguranca").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("criar-grupo-seguranca-windows", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de IP Público Linux
+document.querySelector(".modal-ip-publico-linux .enviar-btn-ip-publico-linux").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-ip-publico-linux").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("criar-interface-ip-linux", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de IP Público Windows
+document.querySelector(".modal-ip-publico-windows .enviar-btn-ip-publico-windows").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-ip-publico-windows").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("criar-interface-ip-windows", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Linux
+document.querySelector(".modal-maquina-virtual-linux .enviar-btn-maquina-virtual-linux").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-maquina-linux").value;
+  const usuario = document.getElementById("usuario-linux").value;
+  const senha = document.getElementById("senha-linux").value;
+
+  const dados = {
+    nome: nome,
+    usuario: usuario,
+    senha: senha,
+  };
+
+  try {
+      await criarRecursosAzure("criar-maquina-virtual-linux", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Windows
+document.querySelector(".modal-maquina-virtual-windows .enviar-btn-maquina-virtual-windows").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-maquina-windows").value;
+  const usuario = document.getElementById("usuario-windows").value;
+  const senha = document.getElementById("senha-windows").value;
+
+  const dados = {
+    nome: nome,
+    usuario: usuario,
+    senha: senha,
+  };
+
+  try {
+      await criarRecursosAzure("criar-maquina-virtual-windows", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
 
 // ----------------------------------------------------AWS---------------------------------------------------------- //
 

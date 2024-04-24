@@ -417,8 +417,7 @@ form {
   text-align: center;
   position: relative;
   transition: all 0.2s ease-in-out;
-  margin: 160px auto 0; /* centraliza o formulário horizontalmente */
-  width: 50%; /* define a largura do formulário */
+  margin: 50px auto 0 15px; /* centraliza o formulário horizontalmente */
 }
 
 form label {
@@ -434,7 +433,7 @@ form button {
   margin: 10px auto; /* centraliza os campos e o botão verticalmente */
   padding: 10px; /* ajusta o espaçamento interno */
   width: 90%; /* define a largura dos campos de entrada e do botão */
-  border-radius: 5px; /* arredonda as bordas */
+  border-radius: 50px; /* arredonda as bordas */
   border: none; /* remove a borda */
   background: rgba(240, 0, 0, 0.1); /* torna o fundo dos campos de entrada transparente */
   color: white; /* define a cor do texto */
@@ -461,7 +460,7 @@ form button:hover {
   position: relative; /* Posicionamento relativo */
   transition: all 0.2s ease-in-out; /* Transição suave */
   margin: 160px auto 0; /* Centraliza o formulário horizontalmente */
-  width: 95%; /* Define a largura do formulário em porcentagem */
+  width: 100%; /* Define a largura do formulário em porcentagem */
   max-width: 1000px; /* Define a largura máxima do formulário */
 }
 
