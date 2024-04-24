@@ -1,185 +1,181 @@
 # MENU
 
+#-------------------------------AZURE-------------------------------#
 
-#--------------------AWS-------------------------------
-# VPC (Virtual Private Cloud)
-# Recurso: VPC
-# Descrição: Cria uma VPC para isolar seus recursos na AWS.
-# Exemplo de Solicitação no Postman:
+# Criar Grupo de Recursos na Azure:
+# Método: POST
+# Endpoint: /azure/criar-grupo-recursos
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["vpc"]
+    "nome": "nome_grupo_recursos",
+    "regiao": "regiao_grupo_recursos"
 }
-
-# Subnets
-# Recurso: Subnet_Publica
-# Descrição: Cria uma sub-rede pública dentro da VPC.
-# Exemplo de Solicitação no Postman:
+# Criar Conta de Armazenamento na Azure:
+# Método: POST
+# Endpoint: /azure/criar-conta-armazenamento
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["subnet_publica"]
+    "nome": "nome_conta_armazenamento"
 }
-
-# Subnets
-# Recurso: Subnet_Privada
-# Descrição: Cria uma sub-rede privada dentro da VPC.
-# Exemplo de Solicitação no Postman:
+# Criar VNET na Azure:
+# Método: POST
+# Endpoint: /azure/criar-vnet
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["subnet_privada"]
+    "nome": "nome_vnet",
+    "endereco": "endereco_vnet"
 }
-
-# Internet Gateway
-# Recurso: Internet_Gateway
-# Descrição: Permite que instâncias na VPC acessem a internet.
-# Exemplo de Solicitação no Postman:
+# Criar Subrede Pública na Azure:
+# Método: POST
+# Endpoint: /azure/criar-subrede-publica
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["internet_gateway"]
+    "nome": "nome_subrede_publica",
+    "endereco": "endereco_subrede_publica"
 }
-
-# Route Table
-# Recurso: Route_Table
-# Descrição: Define as rotas para a VPC.
-# Exemplo de Solicitação no Postman:
+# Criar Subrede Privada na Azure:
+# Método: POST
+# Endpoint: /azure/criar-subrede-privada
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["route_table"]
+    "nome": "nome_subrede_privada",
+    "endereco": "endereco_subrede_privada"
 }
-
-# Route Table Association
-# Recurso: Route_Table_Association
-# Descrição: Associa a tabela de rotas à sub-rede pública.
-# Exemplo de Solicitação no Postman:
+# Criar Grupo de Segurança Linux na Azure:
+# Método: POST
+# Endpoint: /azure/criar-grupo-seguranca-linux
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["route_table_association"]
+    "nome": "nome_grupo_seguranca_linux"
 }
-
-# Security Groups
-# Recurso: Security_Group_Linux
-# Descrição: Permite o tráfego SSH para instâncias Linux.
-# Exemplo de Solicitação no Postman:
+# Criar Grupo de Segurança Windows na Azure:
+# Método: POST
+# Endpoint: /azure/criar-grupo-seguranca-windows
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["security_group_linux"]
+    "nome": "nome_grupo_seguranca_windows"
 }
-
-# Security Groups
-# Recurso: Security_Group_Windows
-# Descrição: Permite o tráfego RDP para instâncias Windows.
-# Exemplo de Solicitação no Postman:
+# Criar Interface de IP Público Linux na Azure:
+# Método: POST
+# Endpoint: /azure/criar-interface-ip-linux
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["security_group_windows"]
+    "nome": "nome_interface_ip_linux"
 }
-
-# EC2 Instances
-# Recurso: EC2_Linux
-# Descrição: Cria uma instância EC2 Linux.
-# Exemplo de Solicitação no Postman:
+# Criar Interface de IP Público Windows na Azure:
+# Método: POST
+# Endpoint: /azure/criar-interface-ip-windows
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["ec2_linux"]
+    "nome": "nome_interface_ip_windows"
 }
-
-# EC2 Instances
-# Recurso: EC2_Windows
-# Descrição: Cria uma instância EC2 Windows.
-# Exemplo de Solicitação no Postman:
+# Criar Máquina Virtual Linux na Azure:
+# Método: POST
+# Endpoint: /azure/criar-maquina-virtual-linux
+# Corpo da Requisição (JSON):
 {
-   "platform": "aws",
-   "resources_to_create": ["ec2_windows"]
+    "nome": "nome_maquina_virtual_linux",
+    "usuario": "nome_usuario_linux",
+    "senha": "senha_usuario_linux"
 }
-
-
-#--------------------AZURE-------------------------------
-# Resource Group
-# Recurso: Resource_Group
-# Descrição: Cria um grupo de recursos para organizar e gerenciar recursos na Azure.
-# Exemplo de Solicitação no Postman:
+# Criar Máquina Virtual Windows na Azure:
+# Método: POST
+# Endpoint: /azure/criar-maquina-virtual-windows
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["resource_group"]
+    "nome": "nome_maquina_virtual_windows",
+    "usuario": "nome_usuario_windows",
+    "senha": "senha_usuario_windows"
 }
-
-# Storage Account
-# Recurso: Storage_Account
-# Descrição: Cria uma conta de armazenamento para armazenar dados na Azure.
-# Exemplo de Solicitação no Postman:
+# Criar Load Balancer na Azure:
+# Método: POST
+# Endpoint: /azure/criar-load-balancer
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["storage_account"]
+    "nome": "nome_load_balancer"
 }
+# Destruir Recursos na Azure:
+# Método: POST
+# Endpoint: /azure/destruir-recursos
+# Somente Rodar com o Endpoint
 
-# Virtual Network
-# Recurso: Virtual_Network
-# Descrição: Cria uma VNet para isolar seus recursos na Azure.
-# Exemplo de Solicitação no Postman:
-{
-   "platform": "azure",
-   "resources_to_create": ["virtual_network"]
-}
+#-------------------------------AWS-------------------------------#
 
-# Subnets
-# Recurso: Subnet_Publica
-# Descrição: Cria uma sub-rede pública dentro da VNet.
-# Exemplo de Solicitação no Postman:
+   
+# Criar VPC na AWS:
+# Método: POST
+# Endpoint: /aws/vpc
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["subnet_publica"]
+    "nome": "nome_vpc",
+    "endereco": "endereco_vpc"
 }
-
-# Subnets
-# Recurso: Subnet_Privada
-# Descrição: Cria uma sub-rede privada dentro da VNet.
-# Exemplo de Solicitação no Postman:
+# Criar Subrede Privada na AWS:
+# Método: POST
+# Endpoint: /aws/Subrede Privada
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["subnet_privada"]
+    "nome": "nome_subrede_privada",
+    "endereco": "endereco_subrede_privada"
 }
-
-# Network Security Group
-# Recurso: Network_Security_Group
-# Descrição: Define regras de segurança para a VNet.
-# Exemplo de Solicitação no Postman:
+# Criar Subrede Pública na AWS:
+# Método: POST
+# Endpoint: /aws/Subrede Pública
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["network_security_group"]
+    "nome": "nome_subrede_publica",
+    "endereco": "endereco_subrede_publica"
 }
-
-# Public IPs
-# Recurso: Public_IP_Linux
-# Descrição: Cria um endereço IP público para acesso externo.
-# Exemplo de Solicitação no Postman:
+# Criar Gateway de Internet na AWS:
+# Método: POST
+# Endpoint: /aws/Gateway
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["public_ip_linux"]
+    "nome": "nome_gateway"
 }
-
-# Public IPs
-# Recurso: Public_IP_Windows
-# Descrição: Cria um endereço IP público para acesso externo.
-# Exemplo de Solicitação no Postman:
+# Criar Tabela de Rota na AWS:
+# Método: POST
+# Endpoint: /aws/Tabela de Rota
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["public_ip_windows"]
+    "nome": "nome_tabela_rotas"
 }
-
-# Network Interfaces
-# Recurso: Interface_de_Rede_Linux
-# Descrição: Cria uma interface de rede para a instância Linux.
-# Exemplo de Solicitação no Postman:
+# Criar Grupo de Segurança Linux na AWS:
+# Método: POST
+# Endpoint: /aws/Grupo de Segurança Linux
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["interface_de_rede_linux"]
+    "nome": "nome_grupo_seguranca_linux"
 }
-
-# Network Interfaces
-# Recurso: Interface_de_Rede_Windows
-# Descrição: Cria uma interface de rede para a instância Windows.
-# Exemplo de Solicitação no Postman:
+# Criar Grupo de Segurança Windows na AWS:
+# Método: POST
+# Endpoint: /aws/Grupo de Segurança Windows
+# Corpo da Requisição (JSON):
 {
-   "platform": "azure",
-   "resources_to_create": ["interface_de_rede_windows"]
+    "nome": "nome_grupo_seguranca_windows"
 }
+# Criar Instância EC2 Linux na AWS:
+# Método: POST
+# Endpoint: /aws/Máquina Virtual Windows
+# Corpo da Requisição (JSON):
+{
+    "nome": "nome_maquina_virtual_windows"
+}
+# Criar Instância EC2 Windows na AWS:
+# Método: POST
+# Endpoint: /aws/Máquina Virtual Linux
+# Corpo da Requisição (JSON):
+{
+    "nome": "nome_maquina_virtual_linux"
+}
+# Criar Balanceador de Carga na AWS:
+# Método: POST
+# Endpoint: /aws/Load Balancer
+# Corpo da Requisição (JSON):
+{
+    "nome": "nome_balanceador_carga"
+}
+# Destruir Recursos na AWS:
+# Método: POST
+# Endpoint: /aws/Destruir Recursos
+# Somente Rodar com o Endpoint

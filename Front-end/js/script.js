@@ -633,10 +633,10 @@ async function criarRecursosAWS(recurso, dados) {
     // Tratar o erro aqui, como exibir uma mensagem de erro para o usuário
 
     // Atualiza o conteúdo do modal com a mensagem de erro
-    document.getElementById("modal-message").innerText = error.message;
+    //document.getElementById("modal-message").innerText = error.message;
 
     // Abre o modal
-    openModal();
+    openModal(modalContent);
   }
 }
 
@@ -647,10 +647,13 @@ document.getElementById("close").addEventListener("click", function (event) {
   modalContent.style.display = "none";
 });
 
+// ----------------------------------------------------AWS/MODAL----------------------------------------------------------- //
+
 // Event listener para o botão de criar Load Balancer na AWS
 document
   .getElementById("botão-load-btn")
-  .addEventListener("click", function () {
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
 
     // Selecione o elemento .modal-content
   const modalContent = document.querySelector(".modal-content");
@@ -666,19 +669,18 @@ document
   // Selecione o elemento que corresponde ao novo seletor
   const novoElemento = modalContent.querySelector(novoSeletor);
 
+  // Oculte todos os elementos dentro de modal-content antes de exibir o novo
+  // modalContent.querySelectorAll('div').forEach(elemento => {
+  //   elemento.style.display = "none";
+  // });
+
   // Aplique o estilo desejado ao novo elemento
   if (novoElemento) {
     novoElemento.style.display = "block";
   }
 
   openModal("modal-load-balancer-aws");
-
-    const nome = document.getElementById("nome-load-balancer-aws").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAWS("Load Balancer", dados);
-  });
+});
 
 // Event listener para o botão de criar VPC na AWS
 document
@@ -705,14 +707,6 @@ document
   }
 
   openModal("modal-vpc");
-
-  const nome = document.getElementById("nome-vpc").value;
-  const endereco = document.getElementById("endereco-vpc").value;
-  const dados = {
-    nome: nome,
-    endereco: endereco,
-  };
-  criarRecursosAzure("vpc", dados);
 });
 
 // Event listener para o botão de criar Subrede Pública na AWS
@@ -740,17 +734,7 @@ document
   }
 
   openModal("modal-subrede-publica-aws");
-
-    const nome = document.getElementById("nome-subrede-publica-aws").value;
-    const endereco = document.getElementById(
-      "endereco-subrede-publica-aws"
-    ).value;
-    const dados = {
-      nome: nome,
-      endereco: endereco,
-    };
-    criarRecursosAzure("Subrede Pública", dados);
-  });
+});
 
 // Event listener para o botão de criar Subrede Privada na AWS
 document
@@ -777,17 +761,7 @@ document
   }
 
   openModal("modal-subrede-privada-aws");
-
-    const nome = document.getElementById("nome-subrede-privada-aws").value;
-    const endereco = document.getElementById(
-      "endereco-subrede-privada-aws"
-    ).value;
-    const dados = {
-      nome: nome,
-      endereco: endereco,
-    };
-    criarRecursosAzure("Subrede Privada", dados);
-  });
+});
 
 // Event listener para o botão de criar Gateway de Internet na AWS
 document
@@ -814,13 +788,7 @@ document
   }
 
   openModal("modal-gateway");
-
-    const nome = document.getElementById("nome-gateway").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAzure("Gateway", dados);
-  });
+});
 
 // Event listener para o botão de criar Tabela de Rotas na AWS
 document
@@ -847,13 +815,7 @@ document
   }
 
   openModal("modal-tabela-rotas");
-
-    const nome = document.getElementById("nome-tabela").value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAWS("Tabela de Rota", dados);
-  });
+});
 
 // Event listener para o botão de criar Grupo de Segurança Linux na AWS
 document
@@ -880,15 +842,7 @@ document
   }
 
   openModal("modal-grupo-seguranca-linux-aws");
-
-    const nome = document.getElementById(
-      "nome-grupo-seguranca-linux-aws"
-    ).value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAWS("Grupo de Segurança Linux", dados);
-  });
+});
 
 // Event listener para o botão de criar Grupo de Segurança Windows na AWS
 document
@@ -915,15 +869,7 @@ document
   }
 
   openModal("modal-grupo-seguranca-Windows-aws");
-
-    const nome = document.getElementById(
-      "nome-grupo-seguranca-windows-aws"
-    ).value;
-    const dados = {
-      nome: nome,
-    };
-    criarRecursosAWS("Grupo de Segurança Windows", dados);
-  });
+});
 
 // Event listener para o botão de criar Instância EC2 Linux na AWS
 document
@@ -950,17 +896,7 @@ document
   }
 
   openModal("modal-maquina-virtual-linux-aws");
-
-    const nome = document.getElementById("nome-maquina-linux-aws").value;
-    const usuario = document.getElementById("usuario-linux-aws").value;
-    const senha = document.getElementById("senha-linux-aws").value;
-    const dados = {
-      nome: nome,
-      usuario: usuario,
-      senha: senha,
-    };
-    criarRecursosAWS("Máquina Virtual Linux", dados);
-  });
+});
 
 // Event listener para o botão de criar Instância EC2 Windows na AWS
 document
@@ -987,19 +923,207 @@ document
   }
 
   openModal("modal-maquina-virtual-windows-aws");
+});
 
-    const nome = document.getElementById("nome-maquina-windows-aws").value;
-    const usuario = document.getElementById("usuario-windows-aws").value;
-    const senha = document.getElementById("senha-windows-aws").value;
-    const dados = {
-      nome: nome,
-      usuario: usuario,
-      senha: senha,
-    };
-    criarRecursosAWS("Máquina Virtual Windows", dados);
-  });
+// ----------------------------------------------------AWS/Requisição----------------------------------------------------------- //
 
-// ----------------------------------------------------MODAL----------------------------------------------------------- //
+// Event listener para o botão de enviar dentro do modal de Load Balancer
+document.querySelector(".modal-load-balancer-aws .enviar-btn-load-balancer-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-load-aws").value;
+
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      // Chama a função para criar recursos na Azure, passando os dados
+      await criarRecursosAzure("Load Balancer", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de VNET
+document.querySelector(".modal-vpc .enviar-btn-vpc").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-vpc").value;
+  const endereco = document.getElementById("endereco-vpc").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("vpc", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Subrede Pública
+document.querySelector(".modal-subrede-publica-aws .enviar-btn-subrede-publica-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-subrede-publica").value;
+  const endereco = document.getElementById("endereco-subrede-publica").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("Subrede Pública", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Subrede Privada
+document.querySelector(".modal-subrede-privada-aws .enviar-btn-subrede-privada-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-subrede-privada").value;
+  const endereco = document.getElementById("endereco-subrede-privada").value;
+
+  const dados = {
+    nome: nome,
+    endereco: endereco,
+  };
+
+  try {
+      await criarRecursosAzure("Subrede Privada", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal Gateway
+document.querySelector(".modal-gateway .enviar-btn-gateway").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-gateway").value;
+
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      // Chama a função para criar recursos na Azure, passando os dados
+      await criarRecursosAzure("Gateway", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal Tabela de Rotas
+document.querySelector(".modal-tabela-rotas .enviar-btn-tabela-rotas").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-tabela-rotas").value;
+
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      // Chama a função para criar recursos na Azure, passando os dados
+      await criarRecursosAzure("Tabela de Rota", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Linux
+document.querySelector(".modal-grupo-seguranca-linux-aws .enviar-btn-grupo-seguranca-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-grupo-seguranca").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("Grupo de Segurança Linux", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Windows
+document.querySelector(".modal-grupo-seguranca-windows-aws .enviar-btn-grupo-seguranca-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-grupo-seguranca").value;
+
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      await criarRecursosAzure("Grupo de Segurança Windows", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Linux
+document.querySelector(".modal-maquina-virtual-linux-aws .enviar-btn-maquina-virtual-linux-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-maquina-linux").value;
+  const usuario = document.getElementById("usuario-linux").value;
+  const senha = document.getElementById("senha-linux").value;
+
+  const dados = {
+    nome: nome,
+    usuario: usuario,
+    senha: senha,
+  };
+
+  try {
+      await criarRecursosAzure("Máquina Virtual Linux", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Windows
+document.querySelector(".modal-maquina-virtual-windows-aws .enviar-btn-maquina-virtual-windows-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  
+  const nome = document.getElementById("nome-maquina-windows").value;
+  const usuario = document.getElementById("usuario-windows").value;
+  const senha = document.getElementById("senha-windows").value;
+
+  const dados = {
+    nome: nome,
+    usuario: usuario,
+    senha: senha,
+  };
+
+  try {
+      await criarRecursosAzure("Máquina Virtual Windows", dados);
+  } catch (error) {
+      console.error(error);
+  }
+});
+
+// ----------------------------------------------------MENU----------------------------------------------------------- //
 
 document.addEventListener("DOMContentLoaded", function () {
   // Seleciona a tag h1 onde o nome do usuário será exibido

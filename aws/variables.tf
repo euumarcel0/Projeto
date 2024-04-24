@@ -4,7 +4,7 @@ variable "nome_vpc" {
 }
 variable "endereco_vpc" {
   description = "Descricao da variavel endereco_vpc"
-  default     = ["153.10.0.0/16"]
+  default     = "153.10.0.0/16"
 }
 variable "nome_subrede_publica_aws" {
   description = "Descricao da variavel nome_subrede_publica_aws"
@@ -12,7 +12,7 @@ variable "nome_subrede_publica_aws" {
 }
 variable "endereco_subrede_publica_aws" {
   description = "Descricao da variavel endereco_subrede_publica_aws"
-  default     = ["172.16.0.0/24"]
+  default     = "172.16.0.0/24"
 }
 variable "nome_subrede_privada_vpc" {
   description = "Descricao da variavel nome_subrede_privada_vpc"
@@ -20,7 +20,7 @@ variable "nome_subrede_privada_vpc" {
 }
 variable "endereco_subrede_privada_vpc" {
   description = "Descricao da variavel endereco_subrede_privada_vpc"
-  default     = ["172.16.1.0/24"]
+  default     = "172.16.1.0/24"
 }
 variable "nome_gateway" {
   description = "Descricao da variavel nome_gateway"

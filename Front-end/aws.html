@@ -78,15 +78,15 @@
 
         <!-- Modal -->
         <div id="myModal" class="modal">
-            <div class="modal-content">
+            <div class="modal-content" style="display: none;">
               <span class="close" id="close">&times;</span>
 
           <!-- Modal para LoadBalancer -->
           <div class="modal-load-balancer-aws">
             <form>
-              <label for="nome-grupo">Nome do Load Balancer:</label><br>
-              <input type="text" id="nome-grupo" name="nome-load" required><br>
-              <button type="submit" class="enviar-btn-load-balancer">Enviar</button>
+              <label for="nome-load-aws">Nome do Load Balancer:</label><br>
+              <input type="text" id="nome-load-aws" name="nome-load-aws" required><br>
+              <button type="submit" class="enviar-btn-load-balancer-aws">Enviar</button>
             </form>
           </div>
 
@@ -108,7 +108,7 @@
               <input type="text" id="nome-subrede-publica" name="nome-subrede-publica" required><br>
               <label for="endereco-subrede-publica">Endereço da Subrede Pública:</label><br>
               <input type="text" id="endereco-subrede-publica" name="endereco-subrede-publica" required><br>
-              <button type="submit" class="enviar-btn-subrede-publica">Enviar</button>
+              <button type="submit" class="enviar-btn-subrede-publica-aws">Enviar</button>
             </form>
           </div>
 
@@ -119,7 +119,7 @@
               <input type="text" id="nome-subrede-privada" name="nome-subrede-privada" required><br>
               <label for="endereco-subrede-privada">Endereço da Subrede Privada:</label><br>
               <input type="text" id="endereco-subrede-privada" name="endereco-subrede-privada" required><br>
-              <button type="submit" class="enviar-btn-subrede-privada">Enviar</button>
+              <button type="submit" class="enviar-btn-subrede-privada-aws">Enviar</button>
             </form>
           </div>
 
@@ -146,7 +146,7 @@
             <form>
               <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Linux:</label><br>
               <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
-              <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+              <button type="submit" class="enviar-btn-grupo-seguranca-aws">Enviar</button>
             </form>
           </div>
 
@@ -155,7 +155,7 @@
             <form>
                 <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Windows:</label><br>
                 <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
-                <button type="submit" class="enviar-btn-grupo-seguranca">Enviar</button>
+                <button type="submit" class="enviar-btn-grupo-seguranca-aws">Enviar</button>
               </form>
             </div>
 
@@ -168,7 +168,7 @@
               <input type="text" id="usuario-linux" name="usuario-linux" required><br>
               <label for="senha-linux">Senha:</label><br>
               <input type="password" id="senha-linux" name="senha-linux" required><br>
-              <button type="submit" class="enviar-btn-maquina-virtual-linux">Enviar</button>
+              <button type="submit" class="enviar-btn-maquina-virtual-linux-aws">Enviar</button>
             </form>
           </div>
 
@@ -181,7 +181,7 @@
               <input type="text" id="usuario-windows" name="usuario-windows" required><br>
               <label for="senha-windows">Senha:</label><br>
               <input type="password" id="senha-windows" name="senha-windows" required><br>
-              <button type="submit" class="enviar-btn-maquina-virtual-windows">Enviar</button>
+              <button type="submit" class="enviar-btn-maquina-virtual-windows-aws">Enviar</button>
             </form>
           </div>
         </div>

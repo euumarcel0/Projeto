@@ -19,28 +19,40 @@ provider "aws" {
 
 # Criar VPC
 resource "aws_vpc" "vpc" {
- cidr_block = "193.16.0.0/16"
+ cidr_block = var.endereco_vpc
 
  tags = {
-   name = "VPC"
+   Name = var.nome_vpc
  }
 }
 
 # Criar Subrede Pública
 resource "aws_subnet" "Subrede_Publica" {
  vpc_id     = aws_vpc.vpc.id
- cidr_block = "193.16.1.0/24"
+ cidr_block = var.endereco_subrede_publica_aws
+
+ tags = {
+  Name = var.nome_subrede_publica_aws
+ }
 }
 
 # Criar Subrede Privada
 resource "aws_subnet" "Subrede_Privada" {
  vpc_id     = aws_vpc.vpc.id
- cidr_block = "193.16.2.0/24"
+ cidr_block = var.endereco_subrede_privada_vpc
+
+ tags = {
+   Name = var.nome_subrede_privada_vpc
+ }
 }
 
 # Criar Gateway de Internet 
 resource "aws_internet_gateway" "igw" {
  vpc_id = aws_vpc.vpc.id
+
+ tags = {
+  Name = var.nome_gateway
+ }
 }
 
 # Criar Tabelade Rotas
@@ -50,6 +62,10 @@ resource "aws_route_table" "public" {
  route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
+ }
+
+ tags = {
+   Name = var.nome_tabela_rotas
  }
 }
 
@@ -61,21 +77,23 @@ resource "aws_route_table_association" "public" {
 
 # Criar Grupo de Segurança Linux
 resource "aws_security_group" "Grupo_de_Seguranca_LInux" {
- name        = "allow_ssh"
+ name        = var.nome_grupo_seguranca_linux_aws
  description = "Allow SSH inbound traffic"
  vpc_id      = aws_vpc.vpc.id
-
+  
  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+
+  
  }
 }
 
 # Criar Grupo de Segurança Windows
 resource "aws_security_group" "Grupo_de_Seguranca_Windows" {
- name        = "allow_rdp"
+ name        = var.nome_grupo_seguranca_windows_aws
  description = "Allow rdp inbound traffic"
  vpc_id      = aws_vpc.vpc.id
 
@@ -97,7 +115,7 @@ resource "aws_instance" "linux" {
  associate_public_ip_address = true
 
  tags = {
-    Name = "Linux_Instance"
+    Name = var.nome_maquina_virtual_linux_aws
  }
 }
 
@@ -111,13 +129,13 @@ resource "aws_instance" "windows" {
  associate_public_ip_address = true
 
  tags = {
-    Name = "Windows_Instance"
+    Name = var.nome_maquina_virtual_windows_aws
  }
 }
 
 # Criar o load balancer na AWS
 resource "aws_lb" "loadb" {
-  name               = "loadb"  # Nome do load balancer
+  name               = var.nome_load_balancer_aws  # Nome do load balancer
   internal           = false    # Indica se o load balancer é interno ou externo
   load_balancer_type = "network"  # Tipo do load balancer, neste caso, é do tipo network
   subnets            = [aws_subnet.Subrede_Publica.id]  # Subnets onde o load balancer será provisionado
