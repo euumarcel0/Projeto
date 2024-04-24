@@ -32,11 +32,19 @@ variable "nome_tabela_rotas" {
 }
 variable "nome_grupo_seguranca_linux_aws" {
   description = "Descricao da variavel nome_grupo_seguranca_linux_aws"
-  default     = "ggs"
+  default     = "sgwindows"
+}
+variable "descriptions_sg_linux" {
+  description = "SGLINUX"
+  default     = "windowslindao"
 }
 variable "nome_grupo_seguranca_windows_aws" {
   description = "Descricao da variavel nome_grupo_seguranca_windows_aws"
   default     = "stas"
+}
+variable "descriptions_sg_windows" {
+  description = "SGWINDOWS"
+  default     = "sg_windows"
 }
 variable "nome_maquina_virtual_linux_aws" {
   description = "Descricao da variavel nome_maquina_virtual_linux_aws"

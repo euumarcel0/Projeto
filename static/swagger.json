@@ -618,6 +618,10 @@
                 "nome": {
                   "type": "string",
                   "description": "Nome do Grupo de Segurança Linux"
+                },
+                "descrição": {
+                  "type": "string",
+                  "description": "Descrição do Grupo Linux"
                 }
               }
             }
@@ -649,6 +653,10 @@
                 "nome": {
                   "type": "string",
                   "description": "Nome do Grupo de Segurança Windows"
+                },
+                "descrição": {
+                  "type": "string",
+                  "description": "Descrição do Grupo Windows"
                 }
               }
             }
