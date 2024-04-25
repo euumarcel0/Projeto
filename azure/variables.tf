@@ -1,7 +1,7 @@
 # ----------------------------------------------------AZURE-----------------------------------------------------------#
 variable "nome_grupo_recursos" {
   description = "Descricao da variavel nome_grupo_recursos"
-  default     = "APIsadsada"
+  default     = "MarceloZIca"
 }
 variable "regiao" {
   description = "Descricao da variavel regiao"
