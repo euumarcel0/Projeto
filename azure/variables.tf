@@ -1,8 +1,7 @@
 # ----------------------------------------------------AZURE-----------------------------------------------------------#
-
 variable "nome_grupo_recursos" {
   description = "Descricao da variavel nome_grupo_recursos"
-  default     = "MarceloZIca"
+  default     = "APIsadsada"
 }
 variable "regiao" {
   description = "Descricao da variavel regiao"
@@ -38,11 +37,11 @@ variable "endereco_subrede_privada" {
 }
 variable "nome_grupo_seguranca_linux" {
   description = "Descricao da variavel nome_grupo_seguranca_linux"
-  default     = "gplinux"
+  default     = "daadad"
 }
 variable "nome_grupo_seguranca_windows" {
   description = "Descricao da variavel nome_grupo_seguranca_windows"
-  default     = ""
+  default     = "gpwindows"
 }
 variable "nome_interface_ip_linux" {
   description = "Descricao da variavel nome_interface_ip_linux"

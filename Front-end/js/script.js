@@ -501,7 +501,7 @@ document.querySelector(".modal-subrede-privada .enviar-btn-subrede-privada").add
 document.querySelector(".modal-grupo-seguranca-linux .enviar-btn-grupo-seguranca").addEventListener("click", async function (event) {
   event.preventDefault(); 
   
-  const nome = document.getElementById("nome-grupo-seguranca").value;
+  const nome = document.getElementById("nome-grupo-seguranca-linux").value;
 
   const dados = {
     nome: nome,
@@ -518,7 +518,7 @@ document.querySelector(".modal-grupo-seguranca-linux .enviar-btn-grupo-seguranca
 document.querySelector(".modal-grupo-seguranca-windows .enviar-btn-grupo-seguranca").addEventListener("click", async function (event) {
   event.preventDefault(); 
   
-  const nome = document.getElementById("nome-grupo-seguranca").value;
+  const nome = document.getElementById("nome-grupo-seguranca-windows").value;
 
   const dados = {
     nome: nome,

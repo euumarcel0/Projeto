@@ -139,11 +139,15 @@ def criar_grupo_recursos_azure():
     dados = request.json
     nome_grupo_recursos = dados['nome']
     regiao_grupo_recursos = dados['regiao']
+    
     terraform_dir = './azure/'
+    
     atualizar_nomes_tf({"nome": "nome_grupo_recursos", "valor": nome_grupo_recursos }, terraform_dir)
     atualizar_nomes_tf({"nome": "regiao", "valor": regiao_grupo_recursos}, terraform_dir)  
+    
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_resource_group.Grupo_de_recursos'], cwd=terraform_dir, check=True)
+        
         return jsonify({"message": "Grupo de Recursos criado com sucesso!"}), 200
     except subprocess.CalledProcessError as e:
         return jsonify({"error": f"Erro ao criar Grupo de Recursos: {e}"}), 500
