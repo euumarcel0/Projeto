@@ -339,10 +339,18 @@ def criar_load_balancer_azure():
 def destruir_recursos_azure():
     terraform_dir = './azure/'
     try:
-        subprocess.run(['terraform', 'destroy', '-auto-approve'], cwd=terraform_dir, check=True)
-        return jsonify({"message": "Recursos na Azure destruídos com sucesso!"}), 200
+        data = request.get_json()  # Obter os dados JSON da solicitação
+        recurso = data.get('recurso')  # Extrair o nome do recurso dos dados
+
+        if not recurso:
+            return jsonify({"error": "Nome do recurso não fornecido"}), 400
+
+        subprocess.run(['terraform', 'destroy', '-target=' + recurso, '-auto-approve'], cwd=terraform_dir, check=True)
+        return jsonify({"message": f"Recurso {recurso} na Azure destruído com sucesso!"}), 200
     except subprocess.CalledProcessError as e:
-        return jsonify({"error": f"Erro ao destruir recursos na Azure: {e}"}), 500
+        return jsonify({"error": f"Erro ao destruir recurso na Azure: {e}"}), 500
+    except Exception as ex:
+        return jsonify({"error": f"Erro interno ao processar a solicitação: {ex}"}), 500
 
 # ----------------------------------------------------AWS-----------------------------------------------------------#
 

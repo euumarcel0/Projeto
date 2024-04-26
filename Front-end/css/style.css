@@ -83,6 +83,7 @@ body {
   text-align: center; /* Centraliza o conteúdo dentro do modal */
 }
 
+
 .modal-content > div{
   display: none;
 }
@@ -440,6 +441,7 @@ form button {
   font-size: 16px; /* define o tamanho da fonte */
 }
 
+
 form button {
   cursor: pointer; /* altera o cursor ao passar sobre o botão */
   background-color: #171817; /* define a cor de fundo do botão */
@@ -500,4 +502,29 @@ form button:hover {
   width: 40px; /* Largura da imagem do perfil */
   height: 40px; /* Altura da imagem do perfil */
   border-radius: 50%; /* Torna a imagem do perfil circular */
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input[type="password"] {
+  padding-right: 40px; /* Adiciona espaço para o ícone */
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; /* Ajuste conforme necessário */
+  cursor: pointer;
+}
+
+/* Reduz o tamanho do ícone para evitar quebrar o layout */
+.password-toggle i {
+  font-size: 1.2em; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+.senha-linux {
+  width: 100%; /* Defina o tamanho desejado para o campo de senha */
 }

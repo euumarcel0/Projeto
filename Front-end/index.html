@@ -87,7 +87,7 @@
           <div class="modal-content">
             <span class="close" id="close">&times;</span>
 
-            <!-- Modal para LoadBalancer -->
+            <!-- Modal para aws-->
           <div class="modal-aws">
             <form>
               <label for="acces_key">Acces_key:</label><br>
@@ -165,6 +165,12 @@
           }
         });
 
+      document.getElementById("close").addEventListener('click', function(){
+        document.querySelector('.modal-content').style.display = "none";
+
+        document.querySelector('.modal-aws').style.display = "none";
+      })
+
       document.getElementById("loginBtn").addEventListener("click", function () {
         // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
         fetch('http://localhost:5000/azure/login', {
@@ -196,6 +202,10 @@
 
       document.getElementById("loginawsBtn").addEventListener("click", function () {
         // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
+        document.querySelector('.modal-content').style.display = "block";
+
+        document.querySelector('.modal-aws').style.display = "block";
+
         fetch('http://localhost:5000/aws/login', {
           method: 'POST',
           headers: {
@@ -219,7 +229,6 @@
           .catch(error => {
             // Exibe a mensagem de erro
             console.error('Erro:', error);
-            alert("Login executado com sucesso!");
           });
       });
 

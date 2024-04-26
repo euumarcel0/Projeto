@@ -1,5 +1,32 @@
 // ----------------------------------------------------AZURE----------------------------------------------------------- //
 // Função para criar recursos na Azure
+
+// document.getElementById('enviar-btn-load-balancer-aws').addEventListener('click',function(){
+//   alert('rodei')
+// })
+
+// Event listener para o botão de enviar dentro do modal de Load Balancer
+document.getElementById("enviar-btn-load-balancer-aws").addEventListener("click", async function (event) {
+  event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
+  
+  // Obtém os dados preenchidos pelo usuário
+  const nome = document.getElementById("nome-load").value; // Corrigido para nome-load
+  
+  // Cria um objeto com os dados
+  const dados = {
+    nome: nome,
+  };
+
+  try {
+      // Chama a função para criar recursos na AWS, passando os dados
+      await criarRecursosAWS("load-balancer", dados);
+  } catch (error) {
+      console.error(error);
+      // Trate o erro conforme necessário
+  }
+});
+
+
 async function criarRecursosAzure(recurso, dados) {
   try {
     const response = await fetch(`http://localhost:5000/azure/${recurso}`, {
@@ -385,6 +412,8 @@ document.querySelector(".modal-load-balancer .enviar-btn-load-balancer").addEven
   
   // Obtém os dados preenchidos pelo usuário
   const nome = document.getElementById("nome-load").value;
+
+  alert('criando')
 
   // Cria um objeto com os dados
   const dados = {
@@ -919,8 +948,9 @@ document
 
 // ----------------------------------------------------AWS/Requisição----------------------------------------------------------- //
 
+
 // Event listener para o botão de enviar dentro do modal de Load Balancer
-document.querySelector(".modal-load-balancer-aws .enviar-btn-load-balancer-aws").addEventListener("click", async function (event) {
+document.querySelector("enviar-btn-load-balancer-aws").addEventListener("click", async function (event) {
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
@@ -1153,3 +1183,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+function togglePassword(inputId) {
+  const passwordInput = document.getElementById(inputId);
+  const passwordToggle = document.querySelector(`[onclick="togglePassword('${inputId}')]`);
+  
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    passwordToggle.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+  } else {
+    passwordInput.type = 'password';
+    passwordToggle.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+  }
+}
+
+
+document.getElementById("loginawsBtn").addEventListener('click', function(){
+  document.querySelector('.modal-content').style.display = "block";
+
+  document.querySelector('.modal-aws').style.display = "block";
+})

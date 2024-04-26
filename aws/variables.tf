@@ -90,5 +90,5 @@ variable "senha_usuario_windows_aws" {
 }
 variable "nome_load_balancer_aws" {
   description = "Descricao da variavel nome_load_balancer_aws"
-  default     = "string"
+  default     = "Nome"
 }

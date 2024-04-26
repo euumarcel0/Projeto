@@ -2,6 +2,16 @@ provider "azurerm" {
   features {}
 }
 
+# Configuração de autenticação usando Service Principal
+provider "azurerm" {
+  features {}
+  subscription_id = "21375536-8557-4040-97af-c2ce2ac8b5b3"
+
+  client_id       = "CLIENT_ID_DO_SERVICE_PRINCIPAL"
+  client_secret   = "CLIENT_SECRET_DO_SERVICE_PRINCIPAL"
+  tenant_id       = "TENANT_ID_DO_AZURE_ACTIVE_DIRECTORY"
+}
+
 # Criar Grupo de Recursos
 resource "azurerm_resource_group" "Grupo_de_recursos" {
   name     = var.nome_grupo_recursos
