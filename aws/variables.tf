@@ -2,23 +2,23 @@
 
 variable "access_key" {
   description = "access_key AWS"
-  default     = "sla"
+  default     = "marcelo"
 }
 
 variable "secret_key" {
   description = "secret_key AWS"
-  default     = "sla"
+  default     = "marcelo"
 }
 
 variable "token" {
   description = "Token AWS"
-  default     = "sla"
+  default     = "marcelo"
 }
 
 // ----------------------------------------------------VARIABLES----------------------------------------------------------- //
 variable "nome_vpc" {
   description = "Descricao da variavel nome_vpc"
-  default     = "bacana"
+  default     = "VPCSenai"
 }
 variable "endereco_vpc" {
   description = "Descricao da variavel endereco_vpc"

@@ -73,8 +73,7 @@
         <div class="update update-1">
 
           <div class="updt-left">
-            <img src="https://cdn.iconscout.com/icon/free/png-256/free-aws-1869025-1583149.png?f=webp"
-              alt="aws icon" />
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-aws-1869025-1583149.png?f=webp" alt="aws icon" />
             <h1>AWS</h1>
           </div>
           <div class="buttons">
@@ -88,84 +87,64 @@
             <span class="close" id="close">&times;</span>
 
             <!-- Modal para aws-->
-          <div class="modal-aws">
-            <form>
-              <label for="acces_key">Acces_key:</label><br>
-              <input type="text" id="acces_key" name="acces_key" required><br>
-              <label for="secret_access_key">Secret_key:</label><br>
-              <input type="text" id="secret_access_key" name="secret_access_key" required><br>
-              <label for="token">Token:</label><br>
-              <input type="text" id="token" name="token" required><br>
-              <button type="submit" class="enviar-btn-acesso">Enviar</button>
-            </form>
-          </div>
-          </div>
-
-        <div class="update">
-
-          <div class="updt-left">
-            <img src="https://cdn-icons-png.flaticon.com/512/873/873107.png" alt="word icon" />
-            <h1>AZURE</h1>
-          </div>
-          <div class="buttons">
-            <button id="loginBtn">Acessar</button>
-          </div>
-        </div>
-
-        <div class="update">
-
-          <div class="updt-left">
-            <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="lightroom icon" />
-            <h1>GITHUB</h1>
+            <div class="modal-aws">
+              <form>
+                <label for="access_key">Access Key:</label><br>
+                <input type="text" id="access_key" name="access_key" required><br>
+                <label for="secret_access_key">Secret Key:</label><br>
+                <input type="text" id="secret_access_key" name="secret_access_key" required><br>
+                <label for="token">Token:</label><br>
+                <input type="text" id="token" name="token" required><br>
+                <button type="submit" id="enviar-btn-acesso">Enviar</button>
+              </form>
+            </div>
           </div>
 
-          <div class="buttons">
-            <a href="https://github.com/euumarcel0/Projeto.git" target="_warning">
-              <button>Update</button>
-            </a>
-          </div>
-        </div>
+          <div class="update">
 
-        <div class="update">
-
-          <div class="updt-left">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/018/930/587/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
-              alt="xcode icon" />
-            <h1>Linkedin</h1>
+            <div class="updt-left">
+              <img src="https://cdn-icons-png.flaticon.com/512/873/873107.png" alt="word icon" />
+              <h1>AZURE</h1>
+            </div>
+            <div class="buttons">
+              <button id="loginBtn">Acessar</button>
+            </div>
           </div>
 
-          <div class="buttons">
-            <a href="https://www.linkedin.com/in/marcelo-mesquita-941843267/" target="_warning">
-              <button>Update</button>
-            </a>
+          <div class="update">
+
+            <div class="updt-left">
+              <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="lightroom icon" />
+              <h1>GITHUB</h1>
+            </div>
+
+            <div class="buttons">
+              <a href="https://github.com/euumarcel0/Projeto.git" target="_warning">
+                <button>Update</button>
+              </a>
+            </div>
           </div>
-        </div>
+
+          <div class="update">
+
+            <div class="updt-left">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/018/930/587/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
+                alt="xcode icon" />
+              <h1>Linkedin</h1>
+            </div>
+
+            <div class="buttons">
+              <a href="https://www.linkedin.com/in/marcelo-mesquita-941843267/" target="_warning">
+                <button>Update</button>
+              </a>
+            </div>
+          </div>
       </section>
     </div>
     <script>
-        // Event listener para o botão de acesso a AWS
-        document.querySelector(".modal-aws .enviar-btn-acesso").addEventListener("click", async function (event) {
-          event.preventDefault(); 
-          
-          const nome = document.getElementById("access_key").value;
-          const usuario = document.getElementById("secret_access_key").value;
-          const senha = document.getElementById("token").value;
 
-          const dados = {
-            nome: nome,
-            usuario: usuario,
-            senha: senha,
-          };
-
-          try {
-              await criarRecursosAWS("login", dados);
-          } catch (error) {
-              console.error(error);
-          }
-        });
-
-      document.getElementById("close").addEventListener('click', function(){
+      document.getElementById("close").addEventListener('click', function () {
         document.querySelector('.modal-content').style.display = "none";
 
         document.querySelector('.modal-aws').style.display = "none";
@@ -197,38 +176,6 @@
             // Exibe a mensagem de erro
             console.error('Erro:', error);
             alert("Login executado com sucesso!");
-          });
-      });
-
-      document.getElementById("loginawsBtn").addEventListener("click", function () {
-        // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-        document.querySelector('.modal-content').style.display = "block";
-
-        document.querySelector('.modal-aws').style.display = "block";
-
-        fetch('http://localhost:5000/aws/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
-        })
-          .then(response => {
-            if (response.ok) {
-              // Se a resposta for OK, exibe uma mensagem de sucesso
-              return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-            } else {
-              // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-              throw new Error('Erro na requisição.');
-            }
-          })
-          .then(data => {
-            // Exibe a mensagem retornada pela API
-            alert(data.message);
-          })
-          .catch(error => {
-            // Exibe a mensagem de erro
-            console.error('Erro:', error);
           });
       });
 
@@ -270,7 +217,7 @@
         });
 
       // Seleciona o botão saveBtn
-      const saveBtn = document.getElementById('saveBtn');addEventListener("click", function (event) {
+      const saveBtn = document.getElementById('saveBtn'); addEventListener("click", function (event) {
         // Selecione o elemento .modal-content
         const modalContent = document.querySelector(".form");
 
@@ -308,19 +255,19 @@
           alert('Por favor, preencha todos os campos.');
         }
       });
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         // Seleciona a tag h1 onde o nome do usuário será exibido
         const userName = document.querySelector('.profile h1');
-    
+
         // Recupera o nome do usuário do localStorage
         const storedUserName = localStorage.getItem('userName');
-    
+
         // Verifica se o nome do usuário foi armazenado no localStorage
         if (storedUserName) {
-            // Atualiza o conteúdo da tag h1 com o nome do usuário
-            userName.textContent = storedUserName;
+          // Atualiza o conteúdo da tag h1 com o nome do usuário
+          userName.textContent = storedUserName;
         }
-    });
+      });
     </script>
     <script src="/Front-end/js/script.js"></script>
   </div>

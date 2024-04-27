@@ -61,7 +61,7 @@ variable "nome_usuario_linux" {
 }
 variable "senha_usuario_linux" {
   description = "Descricao da variavel senha_usuario_linux"
-  default     = "Senai@134@134"
+  default     = " hvhjvjvj"
 }
 variable "nome_maquina_virtual_windows" {
   description = "Descricao da variavel nome_maquina_virtual_windows"
@@ -73,10 +73,10 @@ variable "nome_usuario_windows" {
 }
 variable "senha_usuario_windows" {
   description = "Descricao da variavel senha_usuario_windows"
-  default     = "Senai#@134@134"
+  default     = "vvyvuvuvv"
 }
 variable "nome_load_balancer" {
   description = "Descricao da variavel nome_load_balancer"
-  default     = "sla"
+  default     = "Nome"
 }
 
