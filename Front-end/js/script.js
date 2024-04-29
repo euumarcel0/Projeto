@@ -1,3 +1,65 @@
+document.getElementById("close").addEventListener("click", function (event) {
+  // Selecione o elemento .modal-content
+  const modalContent = document.querySelector(".modal-content");
+
+  const modais = document.querySelectorAll(".modal-content > div");
+
+  modais.forEach(div => {
+    div.style.display = "none";  
+  });
+
+  modalContent.style.display = "none";
+});
+
+// Event listener para o botão de login que abre o modal
+document.getElementById("loginazureBtn").addEventListener("click", function () {
+  // Abre o modal principal
+  const myModal = document.getElementById("myModal");
+  myModal.style.display = "block";
+
+  // Exibe o modal-azure dentro do modal principal
+  const modalAzure = document.querySelector(".modal-azure");
+  modalAzure.style.display = "block";
+});
+
+// Event listener para o botão de login que abre o modal
+document.getElementById("loginazureBtn").addEventListener("click", function () {
+  // Abre o modal principal
+  const myModal = document.getElementById("myModal");
+  myModal.style.display = "block";
+
+  // Exibe uma mensagem preliminar no modal
+  openModal("A iniciar autenticação na Azure...");
+
+  // Faz uma requisição POST para a rota '/azure/login' quando o botão é clicado
+  fetch('http://localhost:5000/azure/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
+  })
+  .then(response => {
+      if (response.ok) {
+          // Se a resposta for OK, exibe uma mensagem de sucesso
+          return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
+      } else {
+          // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
+          throw new Error('Erro na requisição.');
+      }
+  })
+  .then(data => {
+      // Exibe a mensagem retornada pela API no modal
+      openModal(data.message);
+  })
+  .catch(error => {
+      // Exibe a mensagem de erro
+      console.error('Erro:', error);
+      openModal("Erro ao executar login.");
+  });
+});
+// ----------------------------------------------------AWS----------------------------------------------------------- //
+
 // Event listener para o botão de login que abre o modal
 document.getElementById("loginawsBtn").addEventListener("click", function () {
   // Abre o modal
@@ -88,8 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
 function togglePassword(inputId) {
   const passwordInput = document.getElementById(inputId);
   const passwordToggle = document.querySelector(`[onclick="togglePassword('${inputId}')]`);
@@ -103,30 +163,9 @@ function togglePassword(inputId) {
   }
 }
 
-
 document.getElementById("loginawsBtn").addEventListener('click', function () {
   document.querySelector('.modal-content').style.display = "block";
 
   document.querySelector('.modal-aws').style.display = "block";
 })
 
-// Event listener para o botão de enviar dentro do modal de Máquina Virtual Windows
-document.querySelector(".modal-maquina-virtual-windows-aws .enviar-btn-maquina-virtual-windows-aws").addEventListener("click", async function (event) {
-  event.preventDefault();
-
-  const nome = document.getElementById("nome-maquina-windows").value;
-  const usuario = document.getElementById("usuario-windows").value;
-  const senha = document.getElementById("senha-windows").value;
-
-  const dados = {
-    nome: nome,
-    usuario: usuario,
-    senha: senha,
-  };
-
-  try {
-    await criarRecursosAzure("maquina-windows", dados);
-  } catch (error) {
-    console.error(error);
-  }
-});

@@ -100,6 +100,16 @@
             </div>
           </div>
 
+           <!-- Modal para Azure-->
+          <div class="modal-azure" id="azureModal">
+                <form>
+                    <label for="access_key">Seu Token de Acesso:</label><br>
+                    <label for="secret_access_key">Link De Acesso:</label><br>
+                    <p id="accessLink">https://microsoft.com/devicelogin</p>
+                </form>
+            </div>
+          </div>
+            
           <div class="update">
 
             <div class="updt-left">
@@ -107,7 +117,7 @@
               <h1>AZURE</h1>
             </div>
             <div class="buttons">
-              <button id="loginBtn">Acessar</button>
+              <button id="loginazureBtn" onclick="openModal('modal-azure')">Acessar</button>
             </div>
           </div>
 
@@ -143,42 +153,6 @@
       </section>
     </div>
     <script>
-
-      document.getElementById("close").addEventListener('click', function () {
-        document.querySelector('.modal-content').style.display = "none";
-
-        document.querySelector('.modal-aws').style.display = "none";
-      })
-
-      document.getElementById("loginBtn").addEventListener("click", function () {
-        // Faz uma requisição POST para a rota '/adminazure' quando o botão é clicado
-        fetch('http://localhost:5000/azure/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({}) // Adicione um objeto vazio como parâmetro para JSON.stringify
-        })
-          .then(response => {
-            if (response.ok) {
-              // Se a resposta for OK, exibe uma mensagem de sucesso
-              return response.json(); // Retorna a resposta JSON para ser tratada no próximo then()
-            } else {
-              // Se houver algum erro na resposta, lança um erro para ser tratado no próximo catch()
-              throw new Error('Erro na requisição.');
-            }
-          })
-          .then(data => {
-            // Exibe a mensagem retornada pela API
-            alert(data.message);
-          })
-          .catch(error => {
-            // Exibe a mensagem de erro
-            console.error('Erro:', error);
-            alert("Login executado com sucesso!");
-          });
-      });
-
       // Obtendo os botões
       const awsBtn = document.getElementById('aws-btn');
       const azureBtn = document.getElementById('azure-btn');
@@ -202,7 +176,7 @@
       const userMenu = document.getElementById('userMenu');
 
       // Selecione o botão da bolinha
-      const menuButton = document.querySelector('.menu');
+      const menuButton = document.querySelector('.userMenu');
 
       document
         .addEventListener("click", function (event) {
@@ -255,6 +229,7 @@
           alert('Por favor, preencha todos os campos.');
         }
       });
+
       document.addEventListener('DOMContentLoaded', function () {
         // Seleciona a tag h1 onde o nome do usuário será exibido
         const userName = document.querySelector('.profile h1');

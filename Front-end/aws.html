@@ -67,7 +67,7 @@
             <h1>Load Balancer</h1>
           </div>
           <div class="buttons">
-            <button id="load-balancer-btn" onclick="openModal('modal-load-balancer-aws')">Update</button>
+            <button id="load-balancer-btn-aws" onclick="openModal('modal-load-balancer-aws')">Update</button>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
             <h1>VPC</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-recursos-btn" onclick="openModal('modal-vpc')">Update</button>
+            <button id="vpc-Btn" onclick="openModal('modal-vpc')">Update</button>
           </div>
         </div>
 
@@ -113,7 +113,7 @@
                 <input type="text" id="nome-subrede-publica" name="nome-subrede-publica" required><br>
                 <label for="endereco-subrede-publica">Endereço da Subrede Pública:</label><br>
                 <input type="text" id="endereco-subrede-publica" name="endereco-subrede-publica" required><br>
-                <button type="submit" class="enviar-subrede-publica-aws">Enviar</button>
+                <button type="submit" id="subredep-enviar">Enviar</button>
               </form>
             </div>
 
@@ -124,7 +124,7 @@
                 <input type="text" id="nome-subrede-privada" name="nome-subrede-privada" required><br>
                 <label for="endereco-subrede-privada">Endereço da Subrede Privada:</label><br>
                 <input type="text" id="endereco-subrede-privada" name="endereco-subrede-privada" required><br>
-                <button type="submit" class="enviar-btn-subrede-privada-aws">Enviar</button>
+                <button type="submit" id="enviar-btn-subrede-privada-aws">Enviar</button>
               </form>
             </div>
 
@@ -133,7 +133,7 @@
               <form>
                 <label for="nome-gateway">Nome do Gateway:</label><br>
                 <input type="text" id="nome-gateway" name="nome-gateway" required><br>
-                <button type="submit" class="enviar-btn-gateway">Enviar</button>
+                <button type="submit" id="enviar-btn-gateway">Enviar</button>
               </form>
             </div>
 
@@ -142,29 +142,29 @@
               <form>
                 <label for="nome-tabela-rotas">Nome da Tabela de Rotas:</label><br>
                 <input type="text" id="nome-tabela-rotas" name="nome-tabela-rotas" required><br>
-                <button type="submit" class="enviar-btn-tabela-rotas">Enviar</button>
+                <button type="submit" id="enviar-btn-tabela-rotas">Enviar</button>
               </form>
             </div>
 
             <!-- Modal para criar Grupo de Segurança Linux -->
             <div class="modal-grupo-seguranca-linux-aws">
               <form>
-                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Linux:</label><br>
+                <label for="nome-grupo-seguranca-linux">Nome do Grupo de Segurança Linux:</label><br>
                 <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
-                <label for="descricao-grupo-seguranca">Descrição do Grupo de Segurança Linux:</label><br>
+                <label for="descricao-grupo-seguranca-linux">Descrição do Grupo de Segurança Linux:</label><br>
                 <input type="text" id="descricao-grupo-linux" name="descricao-grupo-linux" required><br>
-                <button type="submit" class="enviar-btn-grupo-seguranca-aws">Enviar</button>
+                <button type="submit" id="enviar-linux-aws">Enviar</button>
               </form>
             </div>
 
             <!-- Modal para criar Grupo de Segurança Windows -->
             <div class="modal-grupo-seguranca-Windows-aws">
               <form>
-                <label for="nome-grupo-seguranca">Nome do Grupo de Segurança Windows:</label><br>
+                <label for="nome-grupo-seguranca-windows-aws">Nome do Grupo de Segurança Windows:</label><br>
                 <input type="text" id="nome-grupo-seguranca" name="nome-grupo-seguranca" required><br>
-                <label for="descricao-grupo-seguranca">Descrição do Grupo de Segurança Windows:</label><br>
+                <label for="descricao-grupo-seguranca-windows-aws">Descrição do Grupo de Segurança Windows:</label><br>
                 <input type="text" id="descricao-grupo-windows" name="descricao-grupo-windows" required><br>
-                <button type="submit" class="enviar-btn-grupo-seguranca-aws">Enviar</button>
+                <button type="submit" id="enviar-windows-aws">Enviar</button>
               </form>
             </div>
 
@@ -177,7 +177,7 @@
                 <input type="text" id="usuario-windows" name="usuario-windows" required><br>
                 <label for="senha-windows">Senha:</label><br>
                 <input type="password" id="senha-windows" name="senha-windows" required><br>
-                <button type="submit" class="enviar-btn-maquina-virtual-windows-aws">Enviar</button>
+                <button type="submit" id="enviar-btn-maquina-virtual-windows-aws">Enviar</button>
               </form>
             </div>
 
@@ -190,7 +190,7 @@
                 <input type="text" id="usuario-linux" name="usuario-linux" required><br>
                 <label for="senha-linux">Senha:</label><br>
                 <input type="password" id="senha-linux" name="senha-linux" required><br>
-                <button type="submit" class="enviar-btn-maquina-virtual-linux-aws">Enviar</button>
+                <button type="submit" id="enviar-btn-maquina-virtual-linux-aws">Enviar</button>
               </form>
             </div>
           </div>
@@ -203,7 +203,7 @@
             <h1>Subrede Pública</h1>
           </div>
           <div class="buttons">
-            <button id="conta-armazenamento-btn" onclick="openModal('modal-subrede-publica-aws')">Update</button>
+            <button id="subredep-btn" onclick="openModal('modal-subrede-publica-aws')">Update</button>
           </div>
         </div>
 
@@ -213,7 +213,7 @@
             <h1>Subrede Privada</h1>
           </div>
           <div class="buttons">
-            <button id="vnet-btn" onclick="openModal('modal-subrede-privada-aws')">Update</button>
+            <button id="subredepriv-btn" onclick="openModal('modal-subrede-privada-aws')">Update</button>
           </div>
         </div>
 
@@ -223,7 +223,7 @@
             <h1>Gateway</h1>
           </div>
           <div class="buttons">
-            <button id="subnet-publica-btn" onclick="openModal('modal-gateway')">Update</button>
+            <button id="gateway-btn" onclick="openModal('modal-gateway')">Update</button>
           </div>
         </div>
 
@@ -233,7 +233,7 @@
             <h1>Tabela de Rota</h1>
           </div>
           <div class="buttons">
-            <button id="subnet-privada-btn" onclick="openModal('modal-tabela-rotas')">Update</button>
+            <button id="tabela-de-rotas-btn" onclick="openModal('modal-tabela-rotas')">Update</button>
           </div>
         </div>
 
@@ -243,8 +243,7 @@
             <h1>Grupo de Segurança Linux</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-seguranca-linux-btn"
-              onclick="openModal('modal-grupo-seguranca-linux-aws')">Update</button>
+            <button id="grupo-seguranca-linux-btn-aws" onclick="openModal('modal-grupo-seguranca-linux-aws')">Update</button>
           </div>
         </div>
 
@@ -254,8 +253,7 @@
             <h1>Grupo de Segurança Windows</h1>
           </div>
           <div class="buttons">
-            <button id="grupo-seguranca-windows-btn"
-              onclick="openModal('modal-grupo-seguranca-Windows-aws')">Update</button>
+            <button id="grupo-seguranca-windows-btn-aws" onclick="openModal('modal-grupo-seguranca-Windows-aws')">Update</button>
           </div>
         </div>
 
@@ -265,7 +263,7 @@
             <h1>Máquina Virtual Windows</h1>
           </div>
           <div class="buttons">
-            <button id="ip-publico-linux-btn" onclick="openModal('modal-maquina-virtual-windows-aws')">Update</button>
+            <button id="maquinawin-btn" onclick="openModal('modal-maquina-virtual-windows-aws')">Update</button>
           </div>
         </div>
 
@@ -275,7 +273,7 @@
             <h1>Máquina Virtual Linux</h1>
           </div>
           <div class="buttons">
-            <button id="ip-publico-windows-btn" onclick="openModal('modal-maquina-virtual-linux-aws')">Update</button>
+            <button id="maquinalinux-btn" onclick="openModal('modal-maquina-virtual-linux-aws')">Update</button>
           </div>
         </div>
     </div>

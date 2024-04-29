@@ -409,7 +409,7 @@ aside {
 }
 
 form {
-  display: none;
+  display: block;
   background: rgba(255, 255, 255, 0.1); /* torna o fundo do formulário transparente */
   padding: 3em;
   border-radius: 20px;
