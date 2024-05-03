@@ -13,8 +13,8 @@ app = Flask(__name__)
 
 # Configuração do CORS para permitir solicitações de todas as origens para determinados endpoints
 CORS(app, resources={
-    r"/azure/*": {"origins": "*"},
-    r"/aws/*": {"origins": "*"}
+    r"/API-Azure/azure/*": {"origins": "*"},
+    r"/API-Aws/aws/*": {"origins": "*"}
 })
 
 @app.route('/swagger.json')
@@ -140,7 +140,7 @@ def criar_grupo_recursos_azure():
     nome_grupo_recursos = dados['nome']
     regiao_grupo_recursos = dados['regiao']
     
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     
     atualizar_nomes_tf({"nome": "nome_grupo_recursos", "valor": nome_grupo_recursos }, terraform_dir)
     atualizar_nomes_tf({"nome": "regiao", "valor": regiao_grupo_recursos}, terraform_dir)  
@@ -157,7 +157,7 @@ def criar_grupo_recursos_azure():
 def criar_conta_armazenamento_azure():
     dados = request.json
     nome_conta_armazenamento = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_conta_armazenamento", "valor": nome_conta_armazenamento}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_storage_account.Conta_de_armazenamento'], cwd=terraform_dir, check=True)
@@ -173,7 +173,7 @@ def criar_vnet_azure():
     endereco_usuario = dados['endereco']
     endereco_vnet = "[" + "\"" + endereco_usuario + "\"" + "]"   
 
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     
     # Atualizar as variáveis no arquivo variables.tf
     atualizar_nomes_tf({"nome": "nome_vnet", "valor": nome_vnet}, terraform_dir)
@@ -194,7 +194,7 @@ def criar_subrede_publica_azure():
     endereco_subrede_publica = dados['endereco']
     endereco_subpub = "[" + "\"" + endereco_subrede_publica + "\"" + "]"  
     
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     
     atualizar_nomes_tf({"nome": "nome_subrede_publica", "valor": nome_subrede_publica}, terraform_dir)
     atualizar_endereco_tf({"nome": "endereco_subrede_publica", "valor": endereco_subpub}, terraform_dir)
@@ -212,7 +212,7 @@ def criar_subrede_privada_azure():
     endereco_subrede_privada = dados['endereco']
     endereco_subpri = "[" + "\"" + endereco_subrede_privada + "\"" + "]" 
     
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     
     atualizar_nomes_tf({"nome": "nome_subrede_privada", "valor": nome_subrede_privada}, terraform_dir)
     atualizar_endereco_tf({"nome": "endereco_subrede_privada", "valor": endereco_subpri}, terraform_dir)
@@ -227,7 +227,7 @@ def criar_subrede_privada_azure():
 def criar_grupo_seguranca_linux_azure():
     dados = request.json
     nome_grupo_seguranca_linux = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_grupo_seguranca_linux", "valor": nome_grupo_seguranca_linux}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_network_security_group.Grupo_de_Seguranca_Linux'], cwd=terraform_dir, check=True)
@@ -240,7 +240,7 @@ def criar_grupo_seguranca_linux_azure():
 def criar_grupo_seguranca_windows_azure():
     dados = request.json
     nome_grupo_seguranca_windows = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_grupo_seguranca_windows", "valor": nome_grupo_seguranca_windows}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_network_security_group.Grupo_de_Seguranca_Windows'], cwd=terraform_dir, check=True)
@@ -253,7 +253,7 @@ def criar_grupo_seguranca_windows_azure():
 def criar_interface_ip_linux_azure():
     dados = request.json
     nome_interface_ip_linux = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_interface_ip_linux", "valor": nome_interface_ip_linux}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_public_ip.public_ip_linux', '-target=azurerm_network_interface.Interface_de_rede_Linux'], cwd=terraform_dir, check=True)
@@ -266,7 +266,7 @@ def criar_interface_ip_linux_azure():
 def criar_interface_ip_windows_azure():
     dados = request.json
     nome_interface_ip_windows = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_interface_ip_windows", "valor": nome_interface_ip_windows}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=azurerm_public_ip.public_ip_windows', '-target=azurerm_network_interface.Interface_de_rede_Windows'], cwd=terraform_dir, check=True)
@@ -281,7 +281,7 @@ def criar_maquina_virtual_linux_azure():
     nome_maquina_virtual_linux = dados['nome']
     nome_usuario_linux = dados ['usuario']
     senha_usuario_linux = dados['senha']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_linux", "valor": nome_maquina_virtual_linux}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_usuario_linux", "valor": nome_usuario_linux}, terraform_dir)
     atualizar_nomes_tf({"nome": "senha_usuario_linux", "valor": senha_usuario_linux}, terraform_dir)
@@ -298,7 +298,7 @@ def criar_maquina_virtual_windows_azure():
     nome_maquina_virtual_windows = dados['nome']
     nome_usuario_windows = dados ['usuario']
     senha_usuario_windows = dados['senha']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_windows", "valor": nome_maquina_virtual_windows}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_usuario_windows", "valor": nome_usuario_windows}, terraform_dir)
     atualizar_nomes_tf({"nome": "senha_usuario_windows", "valor": senha_usuario_windows}, terraform_dir)
@@ -313,7 +313,7 @@ def criar_maquina_virtual_windows_azure():
 def criar_load_balancer_azure():
     dados = request.json
     nome_load_balancer = dados['nome']
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     atualizar_nomes_tf({"nome": "nome_load_balancer", "valor": nome_load_balancer}, terraform_dir)
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', 
@@ -337,7 +337,7 @@ def criar_load_balancer_azure():
 # Endpoint para destruir recursos na Azure
 @app.route('/azure/destruir-recursos', methods=['POST'])
 def destruir_recursos_azure():
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     try:
         data = request.get_json()  # Obter os dados JSON da solicitação
         recurso = data.get('recurso')  # Extrair o nome do recurso dos dados
@@ -361,7 +361,7 @@ def criar_vpc():
     endereco_usuario = dados['endereco']
     endereco_vnet = "\"" + endereco_usuario + "\""
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_vpc", "valor": nome_vnet}, terraform_dir)
     atualizar_endereco_tf({"nome": "endereco_vpc", "valor": endereco_vnet}, terraform_dir)
@@ -380,7 +380,7 @@ def criar_subrede_privada_aws():
     endereco_subrede_privada = dados['endereco']
     endereco_subpri = "\"" + endereco_subrede_privada + "\""
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_subrede_privada_vpc", "valor": nome_subrede_privada}, terraform_dir)
     atualizar_endereco_tf({"nome": "endereco_subrede_privada_vpc", "valor": endereco_subpri}, terraform_dir)
@@ -399,7 +399,7 @@ def criar_subrede_publica_aws():
     endereco_subrede_publica = dados['endereco']
     endereco_subpub = "\"" + endereco_subrede_publica + "\""
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_subrede_publica_aws", "valor": nome_subrede_publica}, terraform_dir)
     atualizar_endereco_tf({"nome": "endereco_subrede_publica_aws", "valor": endereco_subpub}, terraform_dir)
@@ -416,7 +416,7 @@ def criar_gateway_internet_aws():
     dados = request.json
     nome_gateway = dados['nome']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_gateway", "valor": nome_gateway}, terraform_dir)
     try:
@@ -431,7 +431,7 @@ def criar_tabela_rotas_aws():
     dados = request.json
     nome_tabela_rotas = dados['nome']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_tabela_rotas", "valor": nome_tabela_rotas}, terraform_dir)
 
@@ -448,7 +448,7 @@ def criar_grupo_seguranca_linux_aws():
     nome_grupo_seguranca_linux = dados['nome']
     descricao = dados['descrição']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "descriptions_sg_linux", "valor": descricao}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_grupo_seguranca_linux_aws", "valor": nome_grupo_seguranca_linux}, terraform_dir)
@@ -466,7 +466,7 @@ def criar_grupo_seguranca_windows_aws():
     nome_grupo_seguranca_windows = dados['nome']
     descricao = dados['descrição']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "descriptions_sg_windows", "valor": descricao}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_grupo_seguranca_windows_aws", "valor": nome_grupo_seguranca_windows}, terraform_dir)
@@ -485,7 +485,7 @@ def criar_instancia_ec2_linux_aws():
     nome_usuario_windows = dados ['usuario']
     senha_usuario_winodws = dados['senha']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_windows_aws", "valor": nome_maquina_virtual_windows}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_usuario_windows_aws", "valor": nome_usuario_windows}, terraform_dir)
@@ -505,7 +505,7 @@ def criar_instancia_ec2_windows_aws():
     nome_usuario_linux = dados ['usuario']
     senha_usuario_linux = dados['senha']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_linux_aws", "valor": nome_maquina_virtual_linux}, terraform_dir)
     atualizar_nomes_tf({"nome": "nome_usuario_linux_aws", "valor": nome_usuario_linux}, terraform_dir)
@@ -523,7 +523,7 @@ def criar_load_balancer_aws():
     dados = request.json
     nome_load_balancer = dados['nome']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "nome_load_balancer_aws", "valor": nome_load_balancer}, terraform_dir)
 
@@ -545,7 +545,7 @@ def criar_load_balancer_aws():
 # Endpoint para destruir recursos na AWS
 @app.route('/aws/destruir-recursos', methods=['POST'])
 def destruir_recursos_aws():
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     try:
         subprocess.run(['terraform', 'destroy', '-auto-approve'], cwd=terraform_dir, check=True)
         return jsonify({"message": "Recursos na AWS destruídos com sucesso!"}), 200
@@ -554,7 +554,7 @@ def destruir_recursos_aws():
 
 @app.route('/azure/login', methods=['POST', 'OPTIONS'])
 def fazer_login_azure():
-    terraform_dir = './azure/'
+    terraform_dir = './API-Azure/azure/'
     try:
         # Execute o login e inicialize o terraform
         subprocess.run('az login --use-device-code', shell=True, cwd=terraform_dir)
@@ -569,7 +569,7 @@ def fazer_login_aws():
     secret_key = dados['secret_access_key']
     token = dados['token']
     
-    terraform_dir = './aws/'
+    terraform_dir = './API-AWS/aws/'
     
     atualizar_nomes_tf({"nome": "access_key", "valor": access_key}, terraform_dir)
     atualizar_nomes_tf({"nome": "secret_key", "valor": secret_key}, terraform_dir)

@@ -306,13 +306,9 @@
                 "usuario": {
                   "type": "string",
                   "description": "Nome do usuário da Instância Linux"
-                },
-                "senha": {
-                  "type": "string",
-                  "description": "Senha da Instância Linux"
                 }
               },
-              "required": ["nome", "usuario", "senha"]
+              "required": ["nome", "usuario"]
               }
             }
         ],
@@ -346,13 +342,9 @@
                 "usuario": {
                   "type": "string",
                   "description": "Nome do usuário da Instância Windows"
-                },
-                "senha": {
-                  "type": "string",
-                  "description": "Senha da Instância Windows"
                 }
               },
-              "required": ["nome", "usuario", "senha"]
+              "required": ["nome", "usuario"]
               }
             }
         ],

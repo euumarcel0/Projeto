@@ -2,17 +2,17 @@
 
 variable "access_key" {
   description = "access_key AWS"
-  default     = "marcelo"
+  default     = "dadad"
 }
 
 variable "secret_key" {
   description = "secret_key AWS"
-  default     = "marcelo"
+  default     = "dadada"
 }
 
 variable "token" {
   description = "Token AWS"
-  default     = "marcelo"
+  default     = "adad"
 }
 
 // ----------------------------------------------------VARIABLES----------------------------------------------------------- //
@@ -38,7 +38,7 @@ variable "nome_subrede_privada_vpc" {
 }
 variable "endereco_subrede_privada_vpc" {
   description = "Descricao da variavel endereco_subrede_privada_vpc"
-  default     = "dqwdq"
+  default     = "172.16.3.0/24"
 }
 variable "nome_gateway" {
   description = "Descricao da variavel nome_gateway"
@@ -46,7 +46,7 @@ variable "nome_gateway" {
 }
 variable "nome_tabela_rotas" {
   description = "Descricao da variavel nome_tabela_rotas"
-  default     = "qwdqd"
+  default     = "dada"
 }
 variable "nome_grupo_seguranca_linux_aws" {
   description = "Descricao da variavel nome_grupo_seguranca_linux_aws"
@@ -66,27 +66,15 @@ variable "descriptions_sg_windows" {
 }
 variable "nome_maquina_virtual_linux_aws" {
   description = "Descricao da variavel nome_maquina_virtual_linux_aws"
-  default     = ""
-}
-variable "nome_usuario_linux_aws" {
-  description = "Descricao da variavel nome_usuario_linux_aws"
-  default     = ""
-}
-variable "senha_usuario_linux_aws" {
-  description = "Descricao da variavel senha_usuario_linux_aws"
-  default     = ""
+  default     = "MaquinaLinux"
 }
 variable "nome_maquina_virtual_windows_aws" {
   description = "Descricao da variavel nome_maquina_virtual_windows_aws"
-  default     = "MaquinaLinux"
+  default     = "MaquinaWindows"
 }
-variable "nome_usuario_windows_aws" {
-  description = "Descricao da variavel nome_usuario_windows_aws"
+variable "key_name" {
+  description = "Chave da ec2"
   default     = "marcelo"
-}
-variable "senha_usuario_windows_aws" {
-  description = "Descricao da variavel senha_usuario_windows_aws"
-  default     = "weef3f3f"
 }
 variable "nome_load_balancer_aws" {
   description = "Descricao da variavel nome_load_balancer_aws"

@@ -257,19 +257,16 @@ def criar_grupo_seguranca_windows_aws():
         return jsonify({"error": f"Erro ao criar Grupo de Segurança: {e}"}), 500
 
 # Função para criar instância EC2 Linux na AWS
-@app.route('/aws/Máquina Virtual Linux', methods=['POST'])
+@app.route('/aws/Máquina Virtual Windows', methods=['POST'])
 def criar_instancia_ec2_linux_aws():
     dados = request.json
     nome_maquina_virtual_windows = dados['nome']
     nome_usuario_windows = dados ['usuario']
-    senha_usuario_winodws = dados['senha']
     
     terraform_dir = './aws/'
     
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_windows_aws", "valor": nome_maquina_virtual_windows}, terraform_dir)
-    atualizar_nomes_tf({"nome": "nome_usuario_windows_aws", "valor": nome_usuario_windows}, terraform_dir)
-    atualizar_nomes_tf({"nome": "senha_usuario_windows_aws", "valor": senha_usuario_winodws}, terraform_dir)
-    
+    atualizar_nomes_tf({"nome": "key_name", "valor": nome_usuario_windows}, terraform_dir)    
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=aws_instance.windows'], cwd=terraform_dir, check=True)
         return jsonify({"message": "Instância EC2 Linux criada com sucesso!"}), 200
@@ -277,19 +274,16 @@ def criar_instancia_ec2_linux_aws():
         return jsonify({"error": f"Erro ao criar Instância EC2 Linux: {e}"}), 500
 
 # Função para criar instância EC2 Windows na AWS
-@app.route('/aws/Máquina Virtual Windows', methods=['POST'])
+@app.route('/aws/Máquina Virtual Linux', methods=['POST'])
 def criar_instancia_ec2_windows_aws():
     dados = request.json
     nome_maquina_virtual_linux = dados['nome']
     nome_usuario_linux = dados ['usuario']
-    senha_usuario_linux = dados['senha']
     
     terraform_dir = './aws/'
     
     atualizar_nomes_tf({"nome": "nome_maquina_virtual_linux_aws", "valor": nome_maquina_virtual_linux}, terraform_dir)
-    atualizar_nomes_tf({"nome": "nome_usuario_linux_aws", "valor": nome_usuario_linux}, terraform_dir)
-    atualizar_nomes_tf({"nome": "senha_usuario_linux_aws", "valor": senha_usuario_linux}, terraform_dir)
-    
+    atualizar_nomes_tf({"nome": "key_name", "valor": nome_usuario_linux}, terraform_dir)    
     try:
         subprocess.run(['terraform', 'apply', '-auto-approve', '-target=aws_instance.linux'], cwd=terraform_dir, check=True)
         return jsonify({"message": "Instância EC2 Windows criada com sucesso!"}), 200

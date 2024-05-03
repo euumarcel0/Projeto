@@ -118,7 +118,7 @@ resource "aws_security_group" "Grupo_de_Seguranca_Windows" {
 resource "aws_instance" "linux" {
  ami           = "ami-058bd2d568351da34" # Debian 
  instance_type = "t2.micro"
- key_name      = "terraform" # Não esqueca de gerar a chave  pública e privada para este nome!
+ key_name      = var.key_name # Não esqueca de gerar a chave  pública e privada para este nome!
  vpc_security_group_ids = [aws_security_group.Grupo_de_Seguranca_LInux.id]
  subnet_id     = aws_subnet.Subrede_Publica.id
  associate_public_ip_address = true
@@ -132,7 +132,7 @@ resource "aws_instance" "linux" {
 resource "aws_instance" "windows" {
  ami           = "ami-03cd80cfebcbb4481" # Windows Server 2022 Base
  instance_type = "t2.micro"
- key_name      = "terraform" # Não esqueca de gerar a chave  pública e privada para este nome!
+ key_name      = var.key_name # Não esqueca de gerar a chave  pública e privada para este nome!
  vpc_security_group_ids = [aws_security_group.Grupo_de_Seguranca_Windows.id]
  subnet_id     = aws_subnet.Subrede_Publica.id
  associate_public_ip_address = true
@@ -209,7 +209,7 @@ resource "aws_instance" "Linuxlb" {
   subnet_id     = aws_subnet.Subrede_Publica.id   # ID da subnet onde as instâncias serão criadas
   vpc_security_group_ids = [aws_security_group.lb_sg.id]  # IDs do grupo de segurança associados às instâncias
   associate_public_ip_address = true              # Associa um IP público às instâncias
-  key_name = "terraform"                          # Nome da chave SSH utilizada para acessar as instâncias
+  key_name = "vockey"                         # Nome da chave SSH utilizada para acessar as instâncias
 
   user_data = var.custom_data_script  # Script a ser executado na inicialização das instâncias
 

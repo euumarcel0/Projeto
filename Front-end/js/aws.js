@@ -380,15 +380,13 @@ document.getElementById("grupo-seguranca-linux-btn-aws").addEventListener("click
   openModal("modal-grupo-seguranca-linux-aws");
 });
 
-// Event listener para o botão de enviar dentro do modal de VPC
-document.getElementById("enviar-linux-aws").addEventListener("click", async function (event) {
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Linux
+document.getElementById(".enviar-linux-aws-api").addEventListener("click", async function (event) {
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
   const nome = document.getElementById("nome-grupo-seguranca-linux").value;
-
-  // Obtém os dados preenchidos pelo usuário
-  const descricao = document.getElementById("descricao-grupo-seguranca-linux").value;
+  const descricao = document.getElementById("descricao-grupo-linux").value;
   
   // Cria um objeto com os dados
   const dados = {
@@ -397,13 +395,13 @@ document.getElementById("enviar-linux-aws").addEventListener("click", async func
   };
   
   try {
-      // Chama a função para criar recursos na Azure, passando os dados
+      // Chama a função para criar recursos na AWS, passando os dados
       await criarRecursosAWS("Grupo de Segurança Linux", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
   }
-  });
+});
 
 // ---------------------------------------------------Grupo de Segurança Widnows---------------------------------------------------//
 // Event listener para o botão de VPC
@@ -432,15 +430,13 @@ document.getElementById("grupo-seguranca-windows-btn-aws").addEventListener("cli
   openModal("modal-grupo-seguranca-Windows-aws");
 });
 
-// Event listener para o botão de enviar dentro do modal de VPC
+// Event listener para o botão de enviar dentro do modal de Grupo de Segurança Windows
 document.getElementById("enviar-windows-aws").addEventListener("click", async function (event) {
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
   const nome = document.getElementById("nome-grupo-seguranca-windows-aws").value;
-
-  // Obtém os dados preenchidos pelo usuário
-  const descricao = document.getElementById("descricao-grupo-seguranca-windows-aws").value;
+  const descricao = document.getElementById("descricao-grupo-windows-aws").value;
   
   // Cria um objeto com os dados
   const dados = {
@@ -449,14 +445,13 @@ document.getElementById("enviar-windows-aws").addEventListener("click", async fu
   };
   
   try {
-      // Chama a função para criar recursos na Azure, passando os dados
+      // Chama a função para criar recursos na AWS, passando os dados
       await criarRecursosAWS("Grupo de Segurança Windows", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
   }
-  });
-
+});
 
 // ---------------------------------------------------Grupo de Máquina Virtual Windows---------------------------------------------------//
 
@@ -486,34 +481,28 @@ document.getElementById("maquinawin-btn").addEventListener("click", function (ev
   openModal("modal-maquina-virtual-windows-aws");
 });
 
-// Event listener para o botão de enviar dentro do modal de Máquina Windows
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Windows
 document.getElementById("enviar-btn-maquina-virtual-windows-aws").addEventListener("click", async function (event) {
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
   const nome = document.getElementById("nome-maquina-windows").value;
-
-  // Obtém os dados preenchidos pelo usuário
   const usuario = document.getElementById("usuario-windows").value;
-
-  // Obtém os dados preenchidos pelo usuário
-  const senha = document.getElementById("senha-windows").value;
   
   // Cria um objeto com os dados
   const dados = {
     nome: nome,
-    usuario: usuario,
-    senha: senha
+    usuario: usuario
   };
   
   try {
-      // Chama a função para criar recursos na Azure, passando os dados
+      // Chama a função para criar recursos na AWS, passando os dados
       await criarRecursosAWS("Máquina Virtual Windows", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
   }
-  });
+});
 
 // ---------------------------------------------------Grupo de Máquina Virtual Linux---------------------------------------------------//
 
@@ -543,33 +532,27 @@ document.getElementById("maquinalinux-btn").addEventListener("click", function (
   openModal("modal-maquina-virtual-linux-aws");
 });
 
-// Event listener para o botão de enviar dentro do modal de Máquina Linux
+// Event listener para o botão de enviar dentro do modal de Máquina Virtual Linux
 document.getElementById("enviar-btn-maquina-virtual-linux-aws").addEventListener("click", async function (event) {
   event.preventDefault(); // Evita o comportamento padrão de submissão do formulário
   
   // Obtém os dados preenchidos pelo usuário
   const nome = document.getElementById("nome-maquina-linux").value;
-
-  // Obtém os dados preenchidos pelo usuário
   const usuario = document.getElementById("usuario-linux").value;
-
-  // Obtém os dados preenchidos pelo usuário
-  const senha = document.getElementById("senha-linux").value;
   
   // Cria um objeto com os dados
   const dados = {
     nome: nome,
-    usuario: usuario,
-    senha: senha
+    usuario: usuario
   };
   
   try {
-      // Chama a função para criar recursos na Azure, passando os dados
+      // Chama a função para criar recursos na AWS, passando os dados
       await criarRecursosAWS("Máquina Virtual Linux", dados);
   } catch (error) {
       console.error(error);
       // Trate o erro conforme necessário
   }
-  });
+});
 
 
